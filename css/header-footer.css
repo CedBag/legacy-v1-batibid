@@ -338,3 +338,53 @@
   padding: 1.5rem;
   border-top: 1px solid var(--gray-200);
 }
+
+/* ==========================================
+   RESPONSIVE OVERRIDES (HEADER / FOOTER)
+   ========================================== */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2rem;
+  }
+  
+  .footer-desc {
+    max-width: 100%;
+    margin: 0 auto 1.5rem;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1.25rem;
+    text-align: center;
+    padding: 1.25rem 0 0;
+  }
+  
+  .footer-bottom-links {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  #header-visitor-actions,
+  #header-user-actions {
+    display: none !important;
+  }
+  
+  .logo-img {
+    height: 32px;
+  }
+  
+  .header-container {
+    padding: 0 16px;
+  }
+}

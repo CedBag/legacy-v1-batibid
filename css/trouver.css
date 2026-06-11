@@ -326,3 +326,36 @@
   color: var(--primary);
   margin-right: 0.25rem;
 }
+
+/* ==========================================
+   RESPONSIVE OVERRIDES (TROUVER CATALOG)
+   ========================================== */
+@media (max-width: 992px) {
+  .properties-list-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .properties-list-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .catalog-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .catalog-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .custom-search-promo-card {
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+}

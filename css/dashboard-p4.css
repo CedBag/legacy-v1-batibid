@@ -282,3 +282,11 @@
     justify-content: space-between;
   }
 }
+
+@media (max-width: 576px) {
+  .dash-housing-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+    padding: 1rem;
+  }
+}

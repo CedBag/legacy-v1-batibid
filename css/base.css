@@ -10,6 +10,8 @@ html {
   scroll-behavior: smooth;
   color: var(--secondary);
   background-color: var(--bg-light);
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -17,6 +19,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  width: 100%;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   background-color: var(--bg-light);

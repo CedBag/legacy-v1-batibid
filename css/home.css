@@ -816,3 +816,124 @@
 .counter-num {
   transition: all 0.1s ease;
 }
+
+/* ==========================================
+   LOCATAIRE CTA BANNER & RESPONSIVE HOME
+   ========================================== */
+.locataire-cta-section {
+  padding-top: 1rem;
+  padding-bottom: 4rem;
+  width: 100%;
+}
+
+.locataire-cta-banner {
+  background: linear-gradient(135deg, var(--secondary) 0%, #252525 100%);
+  color: var(--white);
+  padding: 3rem;
+  border-radius: var(--radius-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  box-shadow: var(--shadow-dark);
+  width: 100%;
+}
+
+.locataire-cta-banner-text {
+  max-width: 600px;
+  text-align: left;
+}
+
+.locataire-cta-banner-text h2 {
+  color: var(--white);
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.locataire-cta-banner-text p {
+  color: var(--gray-400);
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.locataire-cta-banner-action {
+  flex-shrink: 0;
+}
+
+.locataire-cta-banner-action a {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Media Queries for Home Page Responsiveness */
+@media (max-width: 768px) {
+  .locataire-cta-banner {
+    padding: 1.5rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .locataire-cta-banner-text {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .locataire-cta-banner-action {
+    width: 100%;
+  }
+
+  .locataire-cta-banner-action a {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .premium-hero {
+    padding: 3.5rem 0;
+  }
+
+  .premium-hero-title {
+    font-size: 1.85rem;
+    line-height: 1.25;
+  }
+
+  .premium-hero-desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.75rem;
+  }
+
+  .premium-hero-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .premium-hero-actions a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .premium-hero-image-box {
+    height: 250px;
+  }
+
+  .avatar-group {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .avatar-group-text {
+    margin-left: 0;
+  }
+}
