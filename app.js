@@ -90,6 +90,13 @@ function handleRoute() {
   if (scrollBar) scrollBar.style.display = isDashboard ? "none"  : "";
   if (mobileStickyCta) mobileStickyCta.style.display = (isDashboard || state.currentUser) ? "none" : "";
 
+  // Toggle dashboard body class
+  if (isDashboard) {
+    document.body.classList.add("dashboard-active-mode");
+  } else {
+    document.body.classList.remove("dashboard-active-mode");
+  }
+
   window.scrollTo(0, 0);
 
   // Trigger view-specific initializations

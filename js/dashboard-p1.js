@@ -69,6 +69,12 @@ function renderDashboardProprietaireIntegral(user) {
           <a class="dash-nav-item" href="#blog" onclick="navigateTo('#blog')">
             <i class="fas fa-newspaper"></i> Blog BatiBid
           </a>
+          <a class="dash-nav-item" href="#home" onclick="navigateTo('#home')">
+            <i class="fas fa-home"></i> Retour au site
+          </a>
+          <a class="dash-nav-item" onclick="handleLogout()" style="color: #ff6b6b !important;">
+            <i class="fas fa-sign-out-alt"></i> Se déconnecter
+          </a>
         </nav>
 
         <div class="dash-sidebar-support">

@@ -127,3 +127,26 @@
     padding: 0.65rem 0.8rem;
   }
 }
+
+/* Custom dashboard-active-mode rules on mobile viewports */
+@media (max-width: 900px) {
+  body.dashboard-active-mode .header {
+    display: none !important;
+  }
+  
+  body.dashboard-active-mode .main-content {
+    margin-top: 0 !important;
+  }
+  
+  body.dashboard-active-mode #dashboard.view-section {
+    height: 100vh !important;
+  }
+  
+  body.dashboard-active-mode .dashboard-p1,
+  body.dashboard-active-mode .dashboard-p2,
+  body.dashboard-active-mode .dashboard-p3,
+  body.dashboard-active-mode .dashboard-p4,
+  body.dashboard-active-mode .dashboard-layout {
+    height: 100vh !important;
+  }
+}
