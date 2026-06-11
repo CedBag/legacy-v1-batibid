@@ -112,6 +112,21 @@
     gap: 0.75rem !important;
   }
   
+  /* Stack flex layout containers inside modals on mobile */
+  .custom-modal-box div[style*="display:flex"],
+  .custom-modal-box div[style*="display: flex"] {
+    flex-wrap: wrap !important;
+    gap: 0.75rem !important;
+  }
+  
+  .custom-modal-box div[style*="display:flex"] .btn,
+  .custom-modal-box div[style*="display: flex"] .btn {
+    flex: none !important;
+    width: 100% !important;
+    white-space: normal !important;
+    text-align: center;
+  }
+  
   .formula-select-card {
     padding: 0.75rem !important;
   }
