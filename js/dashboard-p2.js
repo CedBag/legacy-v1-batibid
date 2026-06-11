@@ -39,6 +39,13 @@ function renderDashboardProprietaireAnnonce(user) {
 
   root.innerHTML = `
     <div class="dashboard-p2">
+      <div class="dash-mobile-topbar">
+        <button class="dash-menu-toggle" onclick="toggleDashSidebar()">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="dash-mobile-logo">BatiBid Espace</div>
+        <div class="dash-avatar-small">${user.avatar}</div>
+      </div>
 
       <!-- ===== SIDEBAR ===== -->
       <aside class="dash-sidebar">
@@ -488,6 +495,12 @@ function dashTabP2(tab, userId) {
   const main = document.getElementById("dash-main-content");
   if (!main) return;
 
+  // Auto-close mobile drawer sidebar
+  const sidebar = document.querySelector(".dash-sidebar");
+  if (sidebar) sidebar.classList.remove("open");
+  const backdrop = document.querySelector(".dash-sidebar-backdrop");
+  if (backdrop) backdrop.classList.remove("active");
+
   // Mettre à jour l'état actif dans la navigation
   document.querySelectorAll(".dash-nav-item").forEach(el => {
     el.classList.remove("active");
@@ -595,7 +608,7 @@ function openAddListingModalP2(userId) {
         <!-- CHOIX DE FORMULE -->
         <div class="form-group">
           <label class="form-label" style="font-weight:600;">Formule de publication</label>
-          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-bottom: 0.5rem;">
+          <div class="form-grid-3col">
             <!-- Découverte Card -->
             <div id="formula-p2-decouverte" class="formula-select-card" onclick="selectFormulaP2('decouverte')">
               <div class="formula-card-title">Découverte</div>
@@ -637,7 +650,7 @@ function openAddListingModalP2(userId) {
           <input type="hidden" id="add-images-count" value="0">
         </div>
         
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+        <div class="form-grid-2col">
           <div class="form-group">
             <label class="form-label" for="add-type">Type de bien</label>
             <select class="form-control" id="add-type">
@@ -657,7 +670,7 @@ function openAddListingModalP2(userId) {
           </div>
         </div>
 
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+        <div class="form-grid-2col">
           <div class="form-group">
             <label class="form-label" for="add-address">Quartier</label>
             <input type="text" class="form-control" id="add-address" placeholder="Ex: Fidjrossè" required>
@@ -668,7 +681,7 @@ function openAddListingModalP2(userId) {
           </div>
         </div>
 
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+        <div class="form-grid-2col">
           <div class="form-group">
             <label class="form-label" for="add-loyer">Loyer mensuel (FCFA)</label>
             <input type="number" class="form-control" id="add-loyer" placeholder="Ex: 120000" required>

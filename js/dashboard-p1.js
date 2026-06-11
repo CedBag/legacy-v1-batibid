@@ -23,6 +23,13 @@ function renderDashboardProprietaireIntegral(user) {
 
   root.innerHTML = `
     <div class="dashboard-p1">
+      <div class="dash-mobile-topbar">
+        <button class="dash-menu-toggle" onclick="toggleDashSidebar()">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="dash-mobile-logo">BatiBid Espace</div>
+        <div class="dash-avatar-small">${user.avatar}</div>
+      </div>
 
       <!-- ===== SIDEBAR ===== -->
       <aside class="dash-sidebar">
@@ -670,6 +677,12 @@ function dashTab(tab, userId) {
   const main = document.getElementById("dash-main-content");
   if (!main) return;
 
+  // Auto-close mobile drawer sidebar
+  const sidebar = document.querySelector(".dash-sidebar");
+  if (sidebar) sidebar.classList.remove("open");
+  const backdrop = document.querySelector(".dash-sidebar-backdrop");
+  if (backdrop) backdrop.classList.remove("active");
+
   // Update active nav item
   document.querySelectorAll(".dash-nav-item").forEach(el => {
     el.classList.remove("active");
@@ -858,7 +871,7 @@ function openAddListingModalP1(userId) {
 
         <div class="form-group">
           <label class="form-label">Formule de Gestion Locative</label>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 0.5rem;">
+          <div class="form-grid-2col" style="margin-bottom: 0.5rem;">
             <!-- Standard Card -->
             <div id="formula-standard" class="formula-select-card active" onclick="selectFormulaP1('standard')">
               <div class="formula-card-title">Offre Standard</div>
@@ -883,7 +896,7 @@ function openAddListingModalP1(userId) {
           <input type="hidden" id="add-p1-formula" value="standard">
         </div>
         
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+        <div class="form-grid-2col">
           <div class="form-group">
             <label class="form-label" for="add-p1-type">Type de logement</label>
             <select class="form-control" id="add-p1-type">
@@ -902,7 +915,7 @@ function openAddListingModalP1(userId) {
           </div>
         </div>
 
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+        <div class="form-grid-2col">
           <div class="form-group">
             <label class="form-label" for="add-p1-address">Quartier</label>
             <input type="text" class="form-control" id="add-p1-address" placeholder="Ex: Fidjrossè" required>
@@ -913,7 +926,7 @@ function openAddListingModalP1(userId) {
           </div>
         </div>
 
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+        <div class="form-grid-2col">
           <div class="form-group">
             <label class="form-label" for="add-p1-loyer">Loyer demandé (FCFA)</label>
             <input type="number" class="form-control" id="add-p1-loyer" placeholder="Ex: 250000" required>

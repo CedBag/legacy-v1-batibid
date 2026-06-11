@@ -22,6 +22,13 @@ function renderDashboardLocataireGere(user) {
 
   root.innerHTML = `
     <div class="dashboard-p4">
+      <div class="dash-mobile-topbar">
+        <button class="dash-menu-toggle" onclick="toggleDashSidebar()">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="dash-mobile-logo">BatiBid Espace</div>
+        <div class="dash-avatar-small">${user.avatar}</div>
+      </div>
 
       <!-- ===== SIDEBAR ===== -->
       <aside class="dash-sidebar">
@@ -619,6 +626,12 @@ function dashTabP4(tab, userId) {
 
   const main = document.getElementById("dash-main-content");
   if (!main) return;
+
+  // Auto-close mobile drawer sidebar
+  const sidebar = document.querySelector(".dash-sidebar");
+  if (sidebar) sidebar.classList.remove("open");
+  const backdrop = document.querySelector(".dash-sidebar-backdrop");
+  if (backdrop) backdrop.classList.remove("active");
 
   // Mettre à jour l'état actif dans la navigation
   document.querySelectorAll(".dash-nav-item").forEach(el => {

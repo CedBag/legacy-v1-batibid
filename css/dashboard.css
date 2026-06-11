@@ -112,3 +112,31 @@
   font-weight: 800;
   color: var(--secondary);
 }
+
+/* Responsive grid columns for form fields inside dashboards */
+.form-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-grid-3col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .form-grid-2col, .form-grid-3col {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+}

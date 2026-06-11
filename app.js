@@ -1396,6 +1396,30 @@ function renderDashboard() {
   renderTenantDashboard(layout, user);
 }
 
+// Global dashboard sidebar drawer toggle helper for mobile
+window.toggleDashSidebar = function() {
+  const sidebar = document.querySelector(".dash-sidebar");
+  if (!sidebar) return;
+  sidebar.classList.toggle("open");
+  
+  let backdrop = document.querySelector(".dash-sidebar-backdrop");
+  if (!backdrop) {
+    backdrop = document.createElement("div");
+    backdrop.className = "dash-sidebar-backdrop";
+    backdrop.addEventListener("click", () => {
+      sidebar.classList.remove("open");
+      backdrop.classList.remove("active");
+    });
+    document.body.appendChild(backdrop);
+  }
+  
+  if (sidebar.classList.contains("open")) {
+    backdrop.classList.add("active");
+  } else {
+    backdrop.classList.remove("active");
+  }
+};
+
 // ==========================================
 // CUSTOM MODAL UTILITY
 // ==========================================
