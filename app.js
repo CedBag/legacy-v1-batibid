@@ -1417,7 +1417,7 @@ window.toggleDashSidebar = function() {
       sidebar.classList.remove("open");
       backdrop.classList.remove("active");
     });
-    document.body.appendChild(backdrop);
+    sidebar.parentNode.appendChild(backdrop);
   }
   
   if (sidebar.classList.contains("open")) {
