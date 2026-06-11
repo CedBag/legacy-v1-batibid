@@ -1,0 +1,50 @@
+:root {
+  /* Colors from DESIGN.md and screenshots */
+  --primary: #D95E2B;
+  --primary-hover: #c44d1c;
+  --primary-light: #FDF6ED;
+  --primary-tint: #ffebd9;
+  --secondary: #1C1C1C;
+  --secondary-light: #2c2c2c;
+  --tertiary: #FDF6ED;
+  --white: #FFFFFF;
+  --bg-light: #F9F9F9;
+  --bg-dark: #121212;
+  
+  /* Grays */
+  --gray-100: #F7F7F8;
+  --gray-200: #EEEEEE;
+  --gray-300: #E2E2E2;
+  --gray-400: #DADADA;
+  --gray-500: #8b7168;
+  --gray-600: #5A5A5D;
+  
+  /* Status Colors */
+  --success: #2E7D32;
+  --success-light: #E8F5E9;
+  --error: #D32F2F;
+  --error-light: #FFEBEE;
+  
+  /* Fonts */
+  --font-family: 'Hanken Grotesk', sans-serif;
+  
+  /* Layout Spacing */
+  --container-max: 1280px;
+  --gutter: 24px;
+  --section-gap: 80px;
+  
+  /* Borders & Shadows */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+  
+  --shadow-soft: 0px 8px 30px rgba(0, 0, 0, 0.03);
+  --shadow-hover: 0px 15px 35px rgba(28, 28, 28, 0.08);
+  --shadow-dark: 0px 10px 40px rgba(0, 0, 0, 0.12);
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

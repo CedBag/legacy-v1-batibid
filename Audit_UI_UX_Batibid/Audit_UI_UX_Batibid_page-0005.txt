@@ -1,0 +1,25 @@
+﻿1.2 Appels à l'action — trop de boutons, pas assez de clarté
+Un "appel à l'action" est un bouton ou un lien qui invite l'utilisateur à faire quelque chose. Trop d'appels à l'action
+différents crée de la confusion.
+Le bouton "Prendre contact" de l'offre Premium ne fonctionne pas
+Sur la page des tarifs, le bouton "Prendre contact" associé à l'offre Premium (gestion locative à 100/0) est
+un simple texte non cliquable. Un utilisateur prêt à souscrire se trouve bloqué sans pouvoir avancer.
+—+ Corriger immédiatement ce bouton en y ajoutant un lien vers le formulaire de contact ou la page
+appropnée.
+Offre Premium
+IO % du loyer I mois
+(XOF)
+Toutes les fonctionnalités de
+l'offre Standard
+O Assistance prioritaire 24/7
+O Contrats numériques
+O Tableau de tMd dédié
+O Notifications e-mail et SMS
+Prendre contet
+Aucune distinction entre les parcours propriétaire et locataire
+Le site s'adresse à deux types d'utilisateurs très différents, mais la page d'accueil ne leur propose pas de
+chemin distinct.
+—+ Proposer deux boutons distincts dès le haut de page : "Je suis propriétaire" et "Je cherche un
+logement".
+Audit BatiBid
+Réalisé par HOUNKPA TIN Enorel

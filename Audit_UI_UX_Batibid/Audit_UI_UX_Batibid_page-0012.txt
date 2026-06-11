@@ -1,0 +1,26 @@
+﻿—+ Repenser l'application mobile comme un à part entière, distinct de la web app. Adopter les
+conventions mobiles : écrans focalisés sur une seule tâche, boutons larges facilement touchables (min.
+48px de hauteur), et progressive disclosure pour masquer la complexité derrière des interactions
+secondaires.
+BatÀPid
+Quel est votre projet ?
+FCFA
+BabiBid
+Quel est votre projet ?
+Raym
+Rayon
+M. lson Appartement
+Problèmes d'alignement et de disposition : une interface sans grille cohérente
+Sur mobile, l'absence d'une grille de mise en page stricte se traduit par plusieurs problèmes visuels
+directement perceptibles : les éléments ne sont pas alignés sur un même axe vertical, les marges gauche
+et droite varient d'un bloc à l'autre, certains boutons ou libellés débordent hors de leur conteneur, et les
+espaces entre les sections sont incohérents (tantôt trop serrés, tantôt trop larges). Ce manque de rigueur
+dans la disposition donne une impression d'interface bâclée, même lorsque le contenu est pertinent. Sur
+un écran étroit, chaque pixel compte : un désalignement de 4 à 8 pixels perœptible sur desktop devient
+criant sur mobile.
+—+ Adopter un système de grille fixe (ex. 4 colonnes sur mobile, marges latérales constantes de 16 px)
+et l'appliquer uniformément à tous les écrans de l'application. Auditer chaque écran avec un outil de
+superposition de grille (Figma, DevTools) pour détecter et corriger tous les désalignements.
+Standardiser les espacements verticaux entre sections (ex. 8 / 16 / 24 / 32 px selon une échelle fixe).
+Audit BatiBid
+Réalisé par HOUNKPA TIN Enorel

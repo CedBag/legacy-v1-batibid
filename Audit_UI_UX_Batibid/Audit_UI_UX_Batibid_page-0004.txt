@@ -1,0 +1,18 @@
+﻿4 liens de menu, seulement 2 destinations réelles
+"Propriétaire/Locataire" et "Mise en location" pointent vers la même page. "Construction & rénovation" et
+"Partenariats" pointent également vers la même page. Le menu donne l'illusion de choix sans en offrir
+réellement.
+—+ Créer des pages distinctes pour chaque offre, ou au minimum des sections différentes avec un
+contexte adapté à chaque profil.
+Aucun catalogue de biens disponibles
+Un visiteur qui cherche un logement s'attend naturellement à pouvoir consulter des annonces directement
+sur la page. Le site ne propose aucun accès direct à une liste de biens depuis la page d'accueil. Il oblige
+a faire 03 clique supplémentaire pour voir des propositions de logement
+—+ Ajouter un bouton "Voir les biens dismibles" dans le menu et en appel à l'action secondaire sur la
+page d'accueil.
+une néo-agence immobilière au service de vos projets
+Gestion locative, mise en location, rénovation et gestion intégrale de projet
+de construction — tout on un
+Audit BatiBid
+simplieité_
+Réalisé par HOUNKPA TIN Enorel

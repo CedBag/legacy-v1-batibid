@@ -1,0 +1,39 @@
+﻿5. Mes analyses et propositions personnelles
+Il faut créer des pages dédiées ou des sessions dédiées :
+Gérer — Faire louer — Trouver une location — Construire & Rénover — Découvrir — Contact
+•
+•
+•
+•
+1.
+Propriétaire/Locataire —+ Gestion locative
+Mise en location —+ Trouver un location
+Construction & Rénovation —+ Construire & Rénover
+Partenariats -4 Collaborer
+Contact
+Gestion locative — Faire louer — Trouver une location — Construire & Rénover —
+Collaborer — S'identifier — Contact
+2.
+3. Détails
+Gérer
+Faire louer
+Trouver une location
+Construire & Rénover
+Découvrir
+S'identifier
+—è Gestion location
+-4 Mise en location
+—è Annonces
+page de recherche / Catalogue locatif
+-4 Commandez une recherche
+personnalisée
+Rénovation
+construction
+Û Collaborer
+-9 Partenariats
+n Blog
+Û Contact
+-4 service support client WhatsApp
+Formulaire de contact
+—è Se connecter
+—è S'lnscrlre

@@ -1,0 +1,190 @@
+/* ==========================================
+   DASHBOARD PROFIL 3 — LOCATAIRE CHERCHEUR
+   ========================================== */
+
+.dashboard-p3 {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  width: 100%;
+  height: calc(100vh - 72px);
+  overflow: hidden;
+  background: #f5f6fa;
+  position: relative;
+}
+
+/* ── SOLVENCY DOSSIER JAUGE ── */
+.solvency-box {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  border: 1px solid var(--gray-100);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.solvency-progress-wrapper {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.solvency-progress-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.solvency-progress-bg {
+  fill: none;
+  stroke: var(--gray-300);
+  stroke-width: 8;
+}
+
+.solvency-progress-bar {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 8;
+  stroke-dasharray: 251.2; /* 2 * PI * r (r=40) */
+  stroke-dashoffset: 251.2;
+  transition: stroke-dashoffset 0.6s ease;
+  stroke-linecap: round;
+}
+
+.solvency-percent {
+  position: absolute;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--secondary);
+}
+
+.solvency-info {
+  flex: 1;
+}
+
+.solvency-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.solvency-status--verified {
+  background: #e8f5e9;
+  color: #2E7D32;
+}
+
+.solvency-status--pending {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+/* ── TIMELINE DES CANDIDATURES ── */
+.cand-timeline {
+  display: flex;
+  justify-content: space-between;
+  margin: 1.5rem 0 1rem;
+  position: relative;
+  padding: 0 1rem;
+}
+
+.cand-timeline::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 2rem;
+  right: 2rem;
+  height: 3px;
+  background: var(--gray-300);
+  z-index: 1;
+}
+
+.cand-timeline-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 2;
+  font-size: 0.75rem;
+  color: var(--gray-600);
+  font-weight: 600;
+}
+
+.cand-step-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 3px solid var(--gray-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  transition: all var(--transition-fast);
+}
+
+.cand-timeline-step.active .cand-step-dot {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--white);
+}
+
+.cand-timeline-step.completed .cand-step-dot {
+  border-color: var(--success);
+  background: var(--success);
+  color: var(--white);
+}
+
+.cand-timeline-step.active {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.cand-timeline-step.completed {
+  color: var(--success);
+}
+
+/* ── FAVORIS GRID ── */
+.fav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ── RESPONSIVE P3 ── */
+@media (max-width: 900px) {
+  .dashboard-p3 {
+    grid-template-columns: 1fr;
+  }
+  .solvency-box {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  .cand-timeline {
+    overflow-x: auto;
+    gap: 1.5rem;
+    justify-content: flex-start;
+    padding-bottom: 1rem;
+  }
+  .cand-timeline::before {
+    display: none;
+  }
+  .cand-timeline-step {
+    flex-shrink: 0;
+    width: 100px;
+  }
+}

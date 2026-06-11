@@ -1,0 +1,130 @@
+<div class="auth-wrapper">
+  <div class="auth-card">
+    
+    <!-- SUB-VIEW 1: REGISTER / ONBOARDING (Visible by default) -->
+    <div id="auth-register-view" class="auth-form-view active">
+      <h2 class="auth-card-title"><i class="fas fa-user-plus" style="color: var(--primary); margin-right: 0.5rem;"></i> S'inscrire</h2>
+      
+      <!-- Wizard Step Indicators -->
+      <div class="auth-onboarding-steps">
+        <div class="auth-onboarding-step active" id="auth-step-indicator-1">1</div>
+        <div class="auth-onboarding-step" id="auth-step-indicator-2">2</div>
+      </div>
+      
+      <!-- Step 1: Select Profile -->
+      <div class="auth-onboarding-view active" id="auth-step-1-view">
+        <h3 class="auth-onboarding-title">Quel est votre profil ?</h3>
+        <div class="auth-role-cards">
+          <div class="auth-role-card" id="auth-role-proprietaire" onclick="selectAuthRole('proprietaire')">
+            <div class="auth-role-card-icon"><i class="fas fa-key"></i></div>
+            <h4>Propriétaire</h4>
+            <p>Je souhaite faire gérer mes biens et sécuriser mes revenus locatifs.</p>
+          </div>
+          <div class="auth-role-card" id="auth-role-locataire" onclick="selectAuthRole('locataire')">
+            <div class="auth-role-card-icon"><i class="fas fa-home"></i></div>
+            <h4>Locataire</h4>
+            <p>Je recherche un bien de standing et souhaite payer mon loyer en ligne.</p>
+          </div>
+        </div>
+        <button class="btn btn-primary" id="auth-next-1" disabled style="width: 100%; margin-top: 1rem;" onclick="nextAuthStep()">Continuer</button>
+        
+        <div class="text-center" style="margin-top: 1.5rem;">
+          <button type="button" class="auth-toggle-btn" onclick="toggleAuthForm('login')">Déjà un compte ? Se connecter</button>
+        </div>
+      </div>
+      
+      <!-- Step 2: Account Details & Security -->
+      <div class="auth-onboarding-view" id="auth-step-2-view">
+        <h3 class="auth-onboarding-title">Finalisez vos informations</h3>
+        <form onsubmit="handleAuthRegisterSubmit(event)">
+          <div class="form-group">
+            <label class="form-label" for="auth-reg-name">Nom complet</label>
+            <input type="text" id="auth-reg-name" class="form-control" required placeholder="Ex: Jean DOSSOU">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="auth-reg-phone">Numéro WhatsApp</label>
+            <input type="tel" id="auth-reg-phone" class="form-control" required placeholder="Ex: +229 97 00 00 00">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="auth-reg-email">Adresse Email</label>
+            <input type="email" id="auth-reg-email" class="form-control" required placeholder="nom@exemple.com">
+          </div>
+          <div class="form-group" id="auth-formula-group" style="display: none;">
+            <label class="form-label" for="auth-reg-formula">Formule souhaitée</label>
+            <select id="auth-reg-formula" class="form-control">
+              <option value="standard">Gestion Standard (8% / mois) — Collecte & Rapports</option>
+              <option value="premium">Gestion Premium (10% / mois) — Gestion Intégrale 24/7</option>
+              <option value="simple">Annonce Simple (Gratuit) — Recherche autonome</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 0.75rem;">
+            <label class="form-label" for="auth-reg-password">Mot de passe</label>
+            <input type="password" id="auth-reg-password" class="form-control" required placeholder="Créer un mot de passe fort" onkeyup="validatePasswordStrength()">
+          </div>
+          
+          <!-- Password Strength Checklist -->
+          <div class="password-criteria-box">
+            <div class="criteria-item" id="crit-length"><i class="fas fa-circle-notch"></i> Au moins 8 caractères</div>
+            <div class="criteria-item" id="crit-upper"><i class="fas fa-circle-notch"></i> Une lettre majuscule</div>
+            <div class="criteria-item" id="crit-number"><i class="fas fa-circle-notch"></i> Un chiffre (0-9)</div>
+            <div class="criteria-item" id="crit-special"><i class="fas fa-circle-notch"></i> Un caractère spécial (ex: @, #, $, !)</div>
+          </div>
+
+          <!-- Locataire type checkbox (visible only when role = locataire) -->
+          <div id="auth-locataire-type-group" style="display: none; margin-top: 1.25rem;">
+            <div class="locataire-type-checkbox-card">
+              <label class="locataire-type-label" for="auth-locataire-gere">
+                <div class="locataire-type-icon"><i class="fas fa-building"></i></div>
+                <div class="locataire-type-text">
+                  <span class="locataire-type-title">Mon propriétaire fait gérer son bien par BatiBid</span>
+                  <span class="locataire-type-desc">Cochez cette case si votre loyer est collecté par BatiBid. Vous aurez accès à un espace dédié pour payer en ligne et signaler des incidents.</span>
+                </div>
+                <input type="checkbox" id="auth-locataire-gere" style="accent-color: var(--primary); width: 18px; height: 18px; flex-shrink: 0; margin-top: 0.15rem;" onchange="state.authLocataireGere = this.checked">
+              </label>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" id="auth-reg-submit-btn" disabled style="width: 100%; margin-top: 1.5rem;">Créer mon compte BatiBid</button>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; font-size: 0.9rem;">
+            <a href="#auth" onclick="prevAuthStep()" style="color: var(--gray-600); font-weight: 600;"><i class="fas fa-arrow-left"></i> Retour</a>
+            <button type="button" class="auth-toggle-btn" onclick="toggleAuthForm('login')">Déjà un compte ? Se connecter</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+    <!-- SUB-VIEW 2: LOGIN (Hidden by default) -->
+    <div id="auth-login-view" class="auth-form-view">
+      <h2 class="auth-card-title"><i class="fas fa-sign-in-alt" style="color: var(--primary); margin-right: 0.5rem;"></i> Se connecter</h2>
+      
+      <div style="background-color: var(--primary-light); border-left: 4px solid var(--primary); padding: 0.75rem 1rem; border-radius: var(--radius-sm); margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--secondary-light); text-align: left; line-height: 1.4;">
+        <i class="fas fa-info-circle" style="color: var(--primary); margin-right: 0.35rem;"></i>
+        <strong>Bail BatiBid actif ?</strong> Connectez-vous ici pour régler votre loyer en cours ou déclarer un incident technique.
+      </div>
+      
+      <form onsubmit="handleLoginSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" for="login-email">Adresse Email</label>
+          <input type="email" id="login-email" class="form-control" required placeholder="nom@exemple.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="login-password">Mot de passe</label>
+          <input type="password" id="login-password" class="form-control" required placeholder="••••••••">
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; font-size: 0.85rem;">
+          <label style="display: flex; align-items: center; gap: 0.35rem; cursor: pointer;">
+            <input type="checkbox" style="accent-color: var(--primary);"> Se souvenir de moi
+          </label>
+          <a href="#auth" style="color: var(--primary); font-weight: 600;" onclick="showAlert('info', 'Mot de passe oublié', 'Simulation : un email de réinitialisation a été envoyé.')">Mot de passe oublié ?</a>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">Se connecter</button>
+        
+        <div class="text-center" style="margin-top: 1.5rem;">
+          <button type="button" class="auth-toggle-btn" onclick="toggleAuthForm('register')">Nouveau sur BatiBid ? Créer un compte</button>
+        </div>
+      </form>
+    </div>
+    
+  </div>
+</div>

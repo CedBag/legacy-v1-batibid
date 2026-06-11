@@ -1,0 +1,40 @@
+﻿Pas de distinction claire entre propriétaire et locataire
+L'application ne demande pas immédiatement à l'utilisateur quel est son profil. Il doit trouver seul comment
+accéder aux fonctionnalités qui le concernent.
+Afficher dès l'écran de bienvenue ou de connexion un choix clair : "Je suis propriétaire" / "Je suis
+locataire".
+biBid
+Gérez un bien
+de votre bien
+immobilier le notre
+équipe.
+Suivez l' état de et
+d'un revenu régulier,
+sans effort
+Mettre en gestion
+Gérez plusieurs biens
+biBid
+Vous vouez ?
+Déposer une
+Vous un logement ?
+Faire demande
+vous à ?
+une (multi-
+logements)
+NOS DERNIERS BIENS
+2.3 Application mobile — une copie de la web app qui nuit à l'expérience
+Une application mobile n'est pas une simple version réduite d'un site web. Elle obéit à des codes d'interaction, des
+d'écran et des habitudes d'usage radicalement différents. Ici, l'application reproduit mécaniquement
+l'interface web sans adaptation, ce qui génère une expérience dégradée et un design incohérent avec les standards
+mobiles.
+L'application mobile est une reproduction directe de la web app — sans adaptation
+au mobile
+L'application mobile de BatiBid reprend à l'identique la structure, les composants et la densité
+d'information de la version web , les mêmes grilles à plusieurs colonnes et les mêmes blocs de texte
+denses sont affichés sur un écran de 5 à 6 pouces sans aucune réorganisation. Le résultat est une
+interface visuellement étouffante, difficile à parcourir au doigt et épuisante à l'usage quotidien. Une
+application mobile native ou progressive doit être pensée avec des composants pleine largeur, une
+navigation par onglets en bas d'écran, des actions primaires accessibles en un seul geste et une densité
+d'information réduite par écran.
+Audit BatiBid
+Réalisé par HOUNKPA TIN Enorel

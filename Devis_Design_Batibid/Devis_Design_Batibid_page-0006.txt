@@ -1,0 +1,51 @@
+﻿OPTION C — FULL PACK
+Tout l'Option B + design system complet, prototype interactif, kit Ul développeurs et suivi d'intégration
+Ce que cette option ajoute à "Option B
+e
+4
+Tout le contenu de "Option B
+Option A + maquettes app écrans, design system léger, 12 icônes, guide enrichi.
+Ecrans supplémentaires — application
+Ecran de connexion/inscription, page paiement loyer, notifications.
+Design System complet (Figma)
+Extension du design system léger : ajout des états (hover, focus, disabled, erreur), dark mode partiel, tokens de
+couleurs et d'espacement documentés.
+8 icônes supplémentaires (x20 au total)
+Complétion de la bibliothèque à 20 icônes sur mesure couvrant toutes les sections du produit.
+Prototype interactif Figma
+Simulation cliquable des parcours propriétaire et locataire, présentable à des investisseurs ou partenaires.
+Kit Ul pour développeurs
+Export structuré des composants Figma avec spécifications CSS (variables couleurs, espacements, tailles de
+polices) prêt à intégrer.
+Session de passation technique (1 h)
+Visioconférence avec l'équipe de développement pour présenter les livrables, expliquer le design system et
+répondre aux questions d'intégration.
+Détail financier — Option C
+Prestation
+Tout "Option B
+Option A complète + app 5 écrans, design system léger, 12 icônes, guide
+enrichi
+Ecrans app supplémentaires
+Connexion/inscription, paiement loyer, notifiations
+Design System complet
+États, dark partiel, tokens couleurs & espacement dœumentés
+8 icônes supplémentaires
+Complétion à 20 icônes — SVG + PNG
+Prototype interactif Figma
+Parcours proprio & loataire cliquables, présentable à des partenaires
+Délai
+42 j
+Kit Ul + passation technique
+Export Figma structuré, specs CSS, visio 1h avec l'équipe dev
+Révisions (3 rounds inclus)
+Proposition commerciale BatiBid —
+Montant
+(FCFA)
+485 000
+70 000
+80 000
+35 000
+60 000
+55 000
+inclus
+HOUNKPATIN Enorel I Page 6

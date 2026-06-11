@@ -1,0 +1,22 @@
+﻿1.3 Contenu & clarté de l'offre
+Les tarifs sont difficiles à lire pour un non-initié
+Les onglets "Gestion locative", "Mise en location" et "Annonce" ne sont pas immédiatement
+compréhensibles pour un utilisateur qui arrive pour la première fois.
+—+ Faire précéder les tarifs d'une question simple : "Vous êtes... ?" avec des icônes illustrant chaque
+profil.
+Choisissez le plan qui vous convient
+Des offres flexibles pour les propriétaires et les locataires.
+Gestion locative
+Mise en
+Annonce
+Les chiffres clés n'ont pas de date de référence
+"1500+ locataires satisfaits", "85M XOF collectés" — sans indication de date, ces données semblent
+invérifiables et peuvent paraître exagérées.
+—+ Ajouter une précision temporelle comme "depuis 2023" ou "au 31 décembre 2025" pour crédibiliser
+ces métriques.
+1500+ Locataires satisfaits
+350+ Propriétaires confiants
+85 M XOF coll%te
+500+ Biens geres
+Audit BatiBid
+Réalisé par HOUNKPA TIN Enorel

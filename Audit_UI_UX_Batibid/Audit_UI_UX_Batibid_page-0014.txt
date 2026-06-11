@@ -1,0 +1,32 @@
+﻿10:48
+BabiBid
+Pas de retour artière
+Aucun bouton ni
+breadcrumb. L'utilisateur
+S'insc
+ne sait pas où il est.
+Icône trop petite
+Pictogramrne —24px
+illisible. Taille minimale
+recommandée : 44px.
+Gérez un bien
+Simplifiez la gestion de votre bien
+immobilier en le confiant à notre
+équipe.
+Suivez l'état de vos locations et
+assurez-VOUS d'un revenu régulier,
+sans effort supplémentaire.
+m•uton pleine largeu
+@gestion
+attre
+Incohérent avec l'accu eil
+(boutons outline courts).
+Style non unifié.
+Gérez plusieurs bie
+Contenu tronqué
+Carte coupée sans flèche
+ni indicateur de scroll.
+Découvrabilité nulle.
+Pas d'état actif
+Onglet 'Accueil' toujours
+non mis en surbrillance.

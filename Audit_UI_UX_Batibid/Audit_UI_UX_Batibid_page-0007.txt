@@ -1,0 +1,18 @@
+﻿1.4 Design visuel — une impression de manque de finition
+Le design visuel concerne l'apparence générale : couleurs, typographie, espacement, équilibre entre texte et images.
+Un bon design inspire confiance et guide le regard sans effort.
+Pages surchargées en informations
+Les pages accumulent beaucoup de contenu sur un même écran : blocs de texte denses, nombreux
+boutons, statistiques, témoignages, grilles de tarifs. L'œil ne sait pas où se poser en priorité. Cela fatigue
+l'utilisateur et l'empêche de se concentrer sur l'essentiel.
+-+ Aérer les pages en espaçant davantage les sections. Réduire le nombre d'éléments visibles à la
+fois. Une idée principale par section, un seul appel à l'action par zone.
+Une néo-agence immobilière service de vos projets
+Nos derniers artlces
+Hiérarchie visuelle peu lisible
+Les titres, sous-titres, textes et boutons ont des tailles et des styles trop proches. Il est difficile de
+distinguer d'un coup d'œil ce qui est important de ce qui est secondaire.
+—+ Renforcer les contrastes visuels : titres principaux plus grands et plus gras, sous-titres clairement
+différenciés, boutons principaux plus visibles que les boutons secondaires.
+Audit BatiBid
+Réalisé par HOUNKPA TIN Enorel

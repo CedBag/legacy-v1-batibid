@@ -1,0 +1,23 @@
+/* ==========================================
+   BATIBID CENTRAL STYLE SYSTEM (MODULAR IMPORTS)
+   ========================================== */
+@import url('css/variables.css');
+@import url('css/base.css');
+@import url('css/header-footer.css');
+@import url('css/home.css');
+@import url('css/gerer.css');
+@import url('css/trouver.css');
+@import url('css/construire.css');
+@import url('css/blog.css');
+@import url('css/contact.css');
+@import url('css/auth.css');
+@import url('css/partenariats.css');
+@import url('css/dashboard.css');
+@import url('css/dashboard-p1.css');
+@import url('css/dashboard-p4.css');
+@import url('css/dashboard-p2.css');
+@import url('css/dashboard-p3.css');
+@import url('css/detail.css');
+@import url('css/pay.css');
+@import url('css/modals.css');
+@import url('css/responsive.css');

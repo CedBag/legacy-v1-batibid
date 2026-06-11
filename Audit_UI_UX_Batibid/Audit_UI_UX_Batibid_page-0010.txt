@@ -1,0 +1,24 @@
+﻿La page d'accueil de l'application est le moment où l'utilisateur décide si le produit vaut la peine d'être exploré.
+Actuellement, plusieurs éléments le font douter ou abandonner.
+La page ne se charge pas sans JavaScript — message d'erreur en anglais
+Si JavaScript est désactivé (fréquent sur certains appareils ou réseaux lents), la page affiche uniquement
+• "Please enable JavaScript to continue using this application." — en anglais. L'utilisateur béninois qui voit
+ce message ne comprend pas ce qui se passe.
+Afficher un message d'erreur en français avec une explication simple et un lien vers une alternative
+(numéro WhatsApp, email).
+Message d'erreur en anglais pour une audience francophone
+Le seul message visible sur la page sans JavaScript est en anglais ("Please enable JavaScript"),
+alors que toute la de BatiBid est en français et que la cible principale est béninoise.
+-9 Traduire ce message en français et y ajouter un de secours (WhatsApp ou téléphone).
+Aucun onboarding ni explication du produit à l'arrivée
+Un utilisateur qui découvre BatiBid pour la première fois et qui atterrit sur l'application ne reçoit aucun
+guide de bienvenue. Il doit deviner lui-même comment utiliser la plateforme.
+—+ Créer un court écran de bienvenue (3 étapes maximum) expliquant ce que l'application permet de
+faire et orientant l'utilisateur selon son profil.
+BabiBid
+Quel est votre projet ?
+Entrer adresge
+Ra gan de
+A M 'i son Appartement
+Audit BatiBid
+Réalisé par HOUNKPA TIN Enorel

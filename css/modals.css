@@ -1,0 +1,118 @@
+/* ==========================================
+   ALERT / MODAL & SLIDE-OVER DRAWER COMPONENTS
+   ========================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(28,28,28,0.5);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-card {
+  background-color: var(--white);
+  padding: 2.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-dark);
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  animation: modalIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.9) translateY(15px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-icon {
+  font-size: 3rem;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.modal-icon.success {
+  color: var(--success);
+}
+
+.modal-icon.error {
+  color: var(--error);
+}
+
+.modal-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.modal-card p {
+  color: var(--gray-600);
+  margin-bottom: 2rem;
+}
+
+/* Slide-over Drawer: Formulaire Survolant */
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(28,28,28,0.4);
+  backdrop-filter: blur(2px);
+  z-index: 2000;
+  display: none;
+  justify-content: flex-end; /* Align card to the right edge */
+}
+
+.drawer-overlay.active {
+  display: flex;
+}
+
+.drawer-card {
+  background-color: var(--white);
+  width: 100%;
+  max-width: 480px;
+  height: 100%;
+  padding: 3rem 2.5rem;
+  box-shadow: -10px 0px 40px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  position: relative;
+  animation: slideInRight 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* ==========================================
+   RESPONSIVE FORM & MODAL ADJUSTMENTS
+   ========================================== */
+@media (max-width: 550px) {
+  .custom-modal-box {
+    padding: 1.5rem 1.25rem !important;
+    width: 95% !important;
+  }
+  
+  /* Stack grid layouts (two-column/three-column rows) inside modals on mobile */
+  .custom-modal-box form div[style*="display: grid"],
+  .custom-modal-box form div[style*="display:grid"] {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+  
+  .formula-select-card {
+    padding: 0.75rem !important;
+  }
+}

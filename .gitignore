@@ -1,0 +1,15 @@
+# Temp Base64 files
+design_base64.txt
+design_base64_clean.txt
+
+# System / OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Caches
+.gemini/
+.git/
+node_modules/
+dist/
+.vscode/

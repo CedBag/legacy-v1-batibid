@@ -1,0 +1,114 @@
+/* ==========================================
+   PAGE: DASHBOARD COMPONENT (LOGGED IN SHELL)
+   ========================================== */
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: calc(100vh - 72px);
+  background-color: var(--gray-100);
+}
+
+.sidebar {
+  background-color: var(--white);
+  border-right: 1px solid var(--gray-300);
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-menu {
+  list-style: none;
+}
+
+.sidebar-item a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  color: var(--gray-600);
+  border-left: 4px solid transparent;
+  font-size: 0.95rem;
+}
+
+.sidebar-item.active a, .sidebar-item a:hover {
+  color: var(--primary);
+  background-color: var(--primary-light);
+  border-left-color: var(--primary);
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 0 2rem;
+}
+
+.dashboard-main {
+  padding: 2.5rem;
+  overflow-y: auto;
+}
+
+.dashboard-welcome {
+  margin-bottom: 2.5rem;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.metric-card {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--gray-300);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.metric-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.metric-icon-box.blue {
+  background-color: rgba(26, 115, 232, 0.1);
+  color: #1a73e8;
+}
+
+.metric-icon-box.orange {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.metric-icon-box.green {
+  background-color: var(--success-light);
+  color: var(--success);
+}
+
+.metric-icon-box.purple {
+  background-color: rgba(103, 58, 183, 0.1);
+  color: #673ab7;
+}
+
+.metric-info h5 {
+  font-size: 0.85rem;
+  color: var(--gray-600);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.metric-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--secondary);
+}

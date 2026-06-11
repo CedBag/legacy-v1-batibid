@@ -1,0 +1,111 @@
+<div class="catalog-layout">
+  
+  <!-- Left filter sidebar -->
+  <aside class="filter-sidebar">
+    <div class="filter-title">
+      <span>Filtres</span>
+      <a href="#trouver" onclick="initSearchFilters(); applySearchFilters();" style="font-size: 0.85rem; color: var(--primary); font-weight: 700;">Réinitialiser</a>
+    </div>
+    
+    <form onsubmit="event.preventDefault(); applySearchFilters();">
+      <div class="filter-group">
+        <label class="filter-label">Localisation</label>
+        <div style="position: relative;">
+          <input type="text" id="search-city-input" class="form-control" placeholder="Cotonou, Calavi..." style="width: 100%; padding-left: 2rem;">
+          <i class="fas fa-search" style="position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--gray-500);"></i>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <label class="filter-label" style="display: flex; justify-content: space-between; align-items: center;">
+          <span>Rayon de recherche</span>
+          <span id="radius-display" style="font-weight: 800; color: var(--primary); font-size: 0.95rem;">5 km</span>
+        </label>
+        <input
+          type="range"
+          id="search-radius-input"
+          min="1"
+          max="50"
+          step="1"
+          value="5"
+          class="radius-slider"
+          oninput="document.getElementById('radius-display').textContent = this.value + ' km'; updateRadiusSlider();"
+        >
+        <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--gray-500); margin-top: 0.35rem;">
+          <span>1 km</span>
+          <span>25 km</span>
+          <span>50 km</span>
+        </div>
+      </div>
+      
+      <div class="filter-group">
+        <label class="filter-label">Type de bien</label>
+        <div class="filter-checkbox-group">
+          <label class="filter-checkbox-label">
+            <input type="checkbox" name="type-bien" value="appartement" checked> Appartement
+          </label>
+          <label class="filter-checkbox-label">
+            <input type="checkbox" name="type-bien" value="maison"> Maison
+          </label>
+          <label class="filter-checkbox-label">
+            <input type="checkbox" name="type-bien" value="bureau"> Bureau
+          </label>
+        </div>
+      </div>
+      
+      <div class="filter-group">
+        <label class="filter-label">Budget (XOF/mois)</label>
+        <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 0.5rem; align-items: center;">
+          <input type="number" id="budget-min" class="form-control" placeholder="Min" style="width: 100%;">
+          <span>-</span>
+          <input type="number" id="budget-max" class="form-control" placeholder="Max" style="width: 100%;">
+        </div>
+      </div>
+      
+      <div class="filter-group">
+        <label class="filter-label">Chambres</label>
+        <div class="rooms-btn-group">
+          <button type="button" class="rooms-btn">1+</button>
+          <button type="button" class="rooms-btn active">2+</button>
+          <button type="button" class="rooms-btn">3+</button>
+          <button type="button" class="rooms-btn">4+</button>
+        </div>
+      </div>
+      
+      <button type="submit" class="btn btn-primary" style="width: 100%; border-radius: var(--radius-sm);">Appliquer les filtres</button>
+    </form>
+  </aside>
+  
+  <!-- Main list area -->
+  <div class="catalog-main">
+    <div class="catalog-header">
+      <h2>Biens à louer <span id="catalog-count-badge">124 résultats trouvés</span></h2>
+      
+      <div class="catalog-controls">
+        <div class="view-mode-toggle">
+          <button class="view-mode-btn active"><i class="fas fa-th-large"></i> Liste</button>
+          <button class="view-mode-btn" onclick="showAlert('info', 'Carte', 'Simulation : affichage sur carte géographique de Cotonou.')"><i class="fas fa-map"></i> Carte</button>
+        </div>
+        
+        <select class="form-control" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
+          <option value="recent">Plus récent</option>
+          <option value="price-asc">Prix croissant</option>
+          <option value="price-desc">Prix décroissant</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="properties-list-grid">
+      <!-- Property cards rendered dynamically by app.js -->
+    </div>
+    
+    <!-- Flying Custom Search trigger block -->
+    <div class="custom-search-promo-card">
+      <i class="fas fa-search-plus" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem; display: block;"></i>
+      <h4 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">Vous ne trouvez pas votre bonheur ?</h4>
+      <p class="body-md" style="margin-bottom: 1.5rem;">Confiez vos critères à BatiBid et commandez une recherche personnalisée.</p>
+      <button class="btn btn-primary" onclick="openCustomSearchModal()"><i class="fas fa-magic" style="margin-right: 0.5rem;"></i> Lancer une recherche personnalisée</button>
+    </div>
+  </div>
+  
+</div>

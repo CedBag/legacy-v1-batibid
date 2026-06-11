@@ -1,0 +1,129 @@
+<div class="partner-hero">
+  <div class="partner-hero-inner">
+    <span class="hero-badge" style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 1.25rem; display: inline-flex;">🤝 PROGRAMME PARTENAIRES</span>
+    <h1 class="headline-xl">Partenariats <span style="color: var(--primary);">BatiBid</span></h1>
+    <p class="body-lg" style="max-width: 580px; margin: 0 auto 2rem;">Boostez votre activité immobilière en collaborant avec la PropTech n°1 au Bénin. Rejoignez +50 partenaires actifs.</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <div class="partner-hero-stat"><span class="partner-stat-num">+50</span><span class="partner-stat-label">Partenaires actifs</span></div>
+      <div class="partner-hero-stat"><span class="partner-stat-num">500+</span><span class="partner-stat-label">Biens référencés</span></div>
+      <div class="partner-hero-stat"><span class="partner-stat-num">100%</span><span class="partner-stat-label">Commission garantie</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Partner types -->
+<div class="premium-section">
+  <div class="premium-section-header">
+    <h2 class="headline-lg">À qui s'adresse ce programme ?</h2>
+    <p class="body-md">Un programme taillé pour les professionnels de l'immobilier béninois.</p>
+  </div>
+  <div class="partner-cards-grid">
+    <div class="partner-card">
+      <div class="partner-card-icon"><i class="fas fa-store"></i></div>
+      <h3>Agences Immobilières</h3>
+      <p>Dégagez une visibilité maximale pour vos catalogues de vente et de location. Notre scoring locataire réduit vos impayés à zéro.</p>
+      <ul class="partner-card-perks">
+        <li><i class="fas fa-check"></i> Référencement prioritaire</li>
+        <li><i class="fas fa-check"></i> Accès au scoring locataire</li>
+        <li><i class="fas fa-check"></i> Dashboard dédié agence</li>
+      </ul>
+    </div>
+    <div class="partner-card">
+      <div class="partner-card-icon"><i class="fas fa-hammer"></i></div>
+      <h3>Promoteurs Immobiliers</h3>
+      <p>Vendez ou louez vos programmes immobiliers neufs en un temps record grâce à notre communauté active de prospects qualifiés.</p>
+      <ul class="partner-card-perks">
+        <li><i class="fas fa-check"></i> Campagne de promotion ciblée</li>
+        <li><i class="fas fa-check"></i> Accès à la base de prospects</li>
+        <li><i class="fas fa-check"></i> Contrat de partenariat officiel</li>
+      </ul>
+    </div>
+    <div class="partner-card">
+      <div class="partner-card-icon"><i class="fas fa-handshake"></i></div>
+      <h3>Apporteurs d'Affaires</h3>
+      <p>Recommandez des propriétaires ou des locataires à BatiBid et percevez des commissions récurrentes garanties et transparentes.</p>
+      <ul class="partner-card-perks">
+        <li><i class="fas fa-check"></i> Commission sur chaque contrat</li>
+        <li><i class="fas fa-check"></i> Suivi en temps réel</li>
+        <li><i class="fas fa-check"></i> Paiement via Mobile Money</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Partner form -->
+<div class="premium-section alternate">
+  <div class="partner-form-wrap">
+    <div class="partner-form-left">
+      <span class="hero-badge" style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 1rem;">REJOIGNEZ-NOUS</span>
+      <h2 class="headline-lg" style="margin-bottom: 1rem;">Devenez Partenaire</h2>
+      <p class="body-md" style="color: var(--gray-600); margin-bottom: 2rem;">Remplissez le formulaire et notre responsable partenariats vous contactera sous 48h avec une proposition personnalisée.</p>
+      <div class="partner-trust-items">
+        <div class="partner-trust-item"><i class="fas fa-shield-alt"></i><span>Données confidentielles</span></div>
+        <div class="partner-trust-item"><i class="fas fa-clock"></i><span>Réponse sous 48h</span></div>
+        <div class="partner-trust-item"><i class="fas fa-file-contract"></i><span>Contrat officiel fourni</span></div>
+      </div>
+    </div>
+
+    <div class="partner-form-right">
+      <form id="partner-form" onsubmit="submitPartnerForm(event)">
+
+        <!-- Nom -->
+        <div class="form-group">
+          <label class="form-label" for="partner-name">Nom complet / Nom d'agence <span style="color: var(--error);">*</span></label>
+          <input type="text" id="partner-name" class="form-control" required minlength="3"
+            placeholder="Ex: Agence Immo Bénin ou Jean DOSSOU"
+            oninput="validatePartnerName(this)">
+          <span class="field-hint" id="partner-name-hint"></span>
+        </div>
+
+        <!-- Type d'activité -->
+        <div class="form-group">
+          <label class="form-label" for="partner-type">Type d'activité <span style="color: var(--error);">*</span></label>
+          <select id="partner-type" class="form-control" required onchange="handlePartnerTypeChange(this)">
+            <option value="">-- Sélectionner --</option>
+            <option value="agence">Agence Immobilière</option>
+            <option value="promoteur">Promoteur Immobilier</option>
+            <option value="agent">Démarcheur / Agent Indépendant</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+
+        <!-- Champ "Autre" conditionnel -->
+        <div class="form-group" id="partner-autre-group" style="display: none;">
+          <label class="form-label" for="partner-autre">Précisez votre activité <span style="color: var(--error);">*</span></label>
+          <input type="text" id="partner-autre" class="form-control" placeholder="Ex: Cabinet juridique, Notaire, Architecte...">
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="form-group">
+          <label class="form-label" for="partner-phone">Numéro WhatsApp <span style="color: var(--error);">*</span></label>
+          <input type="tel" id="partner-phone" class="form-control" required
+            placeholder="Ex: 01 97 00 00 00"
+            oninput="validatePartnerPhone(this)">
+          <span class="field-hint" id="partner-phone-hint" style="font-size: 0.78rem; color: var(--gray-500);">Format : 01 XX XX XX XX (nouveau format béninois)</span>
+        </div>
+
+        <!-- Email (recommandé) -->
+        <div class="form-group">
+          <label class="form-label" for="partner-email">
+            Adresse Email
+            <span style="font-size: 0.75rem; font-weight: 500; color: var(--primary); background: var(--primary-light); padding: 0.15rem 0.5rem; border-radius: var(--radius-full); margin-left: 0.4rem;">Recommandé</span>
+          </label>
+          <input type="email" id="partner-email" class="form-control" placeholder="contact@votreagence.com">
+          <span class="field-hint" style="font-size: 0.78rem; color: var(--gray-500);">Nous vous enverrons notre kit partenaire par email.</span>
+        </div>
+
+        <!-- Message (optionnel) -->
+        <div class="form-group">
+          <label class="form-label" for="partner-message">Message (facultatif)</label>
+          <textarea id="partner-message" class="form-control" rows="3" placeholder="Décrivez brièvement votre activité ou vos attentes..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%;">
+          <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i> Envoyer ma demande de partenariat
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+﻿Point exhaustive des recommandations Ul - UX de la sandbox du programme MTN
+INNOVATION LAB
+CONTEXTE
+Les entretiens avec la SANDBOX avaient pour objectif principal •
+• de présenter la plateforme BatiBid
+• de recueillir des retours techniques et stratégiques sur l'Ul (interface utilisateur) et
+l'UX (expérience utilisateur).
+Les échanges ont principalement porté sur :
+le site vitrine (www.batibid.com) ;
+la web app ;
+l'expérience de navigation ;
+la présentation des offres ;
+et la cohérence globale du produit.
+1. Feedbacks sur le site vitrine — BatiBid.com
+Catégorie
+Navigation &
+Structure
+Observation
+Menu principal
+Section Hero
+Statistiques /
+Boutons Hero
+Recommandations
+Sandbox
+Ajouter le bouton «
+S'inscrire »
+directement dans le
+menu principal
+Revoir la
+hiérarchisation des
+éléments du Hero
+Réduire la
+surcharge
+d'informations
+Objectif
+Réduire les frictions
+et améliorer la
+conversion
+Faciliter la
+compréhension
+immédiate de la
+proposition de
+valeur
+Améliorer la lisibilité
+et la clarté

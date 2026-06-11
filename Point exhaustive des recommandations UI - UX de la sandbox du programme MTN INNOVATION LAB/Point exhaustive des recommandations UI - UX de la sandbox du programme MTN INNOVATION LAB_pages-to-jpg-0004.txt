@@ -1,0 +1,45 @@
+﻿UX I Conversion
+Cohérence Visuelle
+Filtres
+Garanties locataires
+Utilisation des
+couleurs
+Présentation
+générale
+Optimiser les filtres
+de recherche
+Mettre davantage en
+avant les garanties
+Réserver les
+couleurs aux
+éléments clés
+Renforcer la rigueur
+visuelle
+Améliorer la
+précision des
+recherches
+Renforcer la
+confiance et réduire
+l'incertitude
+Améliorer la
+hiérarchie visuelle
+Améliorer la
+perception premium
+du produit
+3. Sessions 2 Sandbox — Feedbacks Produit & Technique
+Sujet
+Facturation
+Données obligatoires
+Intégration MTN
+SMS / USSD
+4. Remarques Sandbox
+Recommandation
+Améliorer le design des factures
+(illustrations, marges, structure)
+Ajouter mail, numéro, prix, assistance
+Utiliser une intégration non exclusive via
+agrégateur
+Faire une demande officielle au programme
+l-LAB
+Il faut collaborer avec un Designer UI/UX pour repenser et améliorer la présentation de
+toutes les interfaces sur la plateforme de BatiBid.

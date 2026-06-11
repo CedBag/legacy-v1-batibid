@@ -1,0 +1,26 @@
+﻿RECAPITULATIF GENERAL — PRIORITES D'ACTION
+I Vue d'ensemble
+L'audit mené sur le site vitrine batibid.com et l'application app.batibid.com révèle un produit en cours de
+construction, porté par une ambition claire, mais freiné par des défauts structurels qui nuisent directement à
+la confiance des utilisateurs et à la conversion.
+Sur le site vitrine, la navigation désoriente dès les premières secondes : les liens du menu
+ouvrent des onglets non sollicités, plusieurs entrées du menu mènent à la même page, et
+aucun retour vers le site n'est possible depuis l'application. Le visiteur se retrouve rapidement
+perdu, sans repère, et sans chemin clair selon qu'il est propriétaire ou locataire. À cela
+s'ajoutent des appels à l'action insuffisamment différenciés, un bouton de contact non
+fonctionnel sur l'offre Premium — bloquant un utilisateur prêt à souscrire — et un contenu
+visuellement surchargé qui épuise le regard avant de convaincre.
+Du côté de l'application, les problèmes s'aggravent. L'interface mobile est une reproduction
+directe de la version web, sans aucune adaptation aux contraintes de l'écran : boutons trop
+petits, marges inégales, blocs d'information denses à défiler au doigt. Aucun message de
+bienvenue n'oriente le nouvel utilisateur, aucune distinction n'est faite entre propriétaire et
+locataire à l'entrée, et un message d'erreur en anglais — sur une plateforme entièrement
+francophone — accueille les utilisateurs sur appareils lents. L'impression générale est celle
+d'un produit encore en chantier, livré trop tôt à ses utilisateurs.
+Au total, 6 problèmes critiques ont été identifiés, qui bloquent ou découragent l'utilisateur avant même qu'il
+ait eu la chance de découvrir la valeur du service. Ils sont accompagnés de 8 points importants qui
+dégradent significativement l'expérience, et de 6 améliorations qui renforceront la confiance et la
+conversion sur le moyen terme. Les corrections prioritaires sont rapides à mettre en œuvre et peuvent
+produire un effet visible immédiat sur la qualité perçue du produit.
+Audit BatiBid
+Réalisé par HOUNKPA TIN Enorel

@@ -1,0 +1,27 @@
+﻿— CONTEXTE & PÉRIMÈTRE
+Ce que couvre cette proposition et ce qu'elle ne couvre pas
+L'audit réalisé sur batibid.com et app.batibid.com a mis en lumière des lacunes significatives en matière de design visuel
+et d'expérience utilisateur, impactant directement la crédibilité de la plateforme et le taux de conversion.
+Les trois options ci-dessous sont progressives : chaque option inclut intégralement la précédente et y ajoute des livrables
+supplémentaires. Cette logique permet de choisir selon le budget disponible, tout en gardant la possibilité d'évoluer vers
+l'option supérieure ultérieurement.
+Problèmes couverts par cette proposition
+O
+O
+O
+Navigation & rupture de parcours
+Liens ouvrant des onglets non voulus, impossibilité de revenir à l'accueil, menu peu lisible sur mobile.
+Appels à l'action défaillants
+Bouton Premium non cliquable, surcharge de CTA sans hiérarchie, absence de parcours propriétaire/locataire.
+Surcharge visuelle & hiérarchie
+Pages denses, manque d'espacement, titres et corps de texte trop proches visuellement.
+Incohérence site application
+Styles visuels différents entre le site et l'application, sensation de deux produits distincts.
+Confiance & réassurance
+Avis sans source, témoignages sans visuels, absence de FAQ, incohérence email de contact.
+Design system & composants
+Absence d'un référentiel visuel unifié pour garantir la cohérence future.
+Note : les corrections purement techniques (target="_blank", email, métadonnées og) relèvent du développement et ne
+sont pas incluses dans cette proposition.
+Proposition commerciale BatiBid —
+HOUNKPATIN Enorel I Page 2

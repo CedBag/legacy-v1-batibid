@@ -1,0 +1,30 @@
+{
+  "name": "BatiBid",
+  "short_name": "BatiBid",
+  "description": "Technologie immobilière sécurisée et gestion locative au Bénin",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f9f9f9",
+  "theme_color": "#a43802",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./BatiBid logo app.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
+      "src": "./BatiBid logo app.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "./BatiBid logo app.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ]
+}

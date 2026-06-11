@@ -1,0 +1,12 @@
+﻿Modèle
+économique
+SERVICE DE GESTION LOCATIVE
+Les commissions perçues sur la collecte des loyers pour les services de
+gestion locative standard (8%) et premium (10%)
+MISE EN LOCATION
+Les commissions d'un mois de loyer perçue pour avoir trouvé des
+locataires à des propriétaires ainsi que les frais payés par les propriétaires
+pour passer des annonces de location sur la plateforme
+SERVICES COMPLÉMENTAIRES
+Frais des services complémentaires de nettoyage, de rénovation ou de
+déménagement, qui peuvent être réservés directement via la plateforme.

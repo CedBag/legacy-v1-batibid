@@ -1,0 +1,35 @@
+﻿À PROPOS DE CE DOCUMENT
+Ce rapport présente les observations faites sur le site vitrine batibid .com et sur la page d'accueil de l'application
+web app.batibid Il a été rédigé pour être compréhensible par toute personne, même sans formation
+en design ou en informatique.
+Chaque problème identifié est classé selon trois niveaux de priorité
+O Critique —À corriger en urgence. Bloque ou décourage directement l'utilisateur.
+O Important — À traiter prochainement. Nuit à la qualité de l'expérience.
+O Amélioration — Optimisation recommandée pour renforcer la confiance et la conversion
+Note : les zones encadrées en pointillés sous chaque problème sont réservées pour y insérer une capture d'écran
+illustrant le problème décrit.
+PARTIE 1 — SITE VITRINE
+Évaluation globale du site vitrine
+batibid.com
+Note sur 10 pour chaque critère. Un score en rouge signifie que des corrections urgentes sont nécessaires.
+Design visuel
+5/10
+Navigation
+3/10
+Clarté contenu
+6/10
+Appels à l'action
+4/10
+Accessibilité
+3/10
+1.1 Navigation — ce qui rend le site difficile à parcourir
+La navigation est le chemin que l'utilisateur emprunte pour trouver ce qu'il cherche. Ici, plusieurs obstacles rendent ce
+parcours confus.
+O Les liens du menu ouvrent un nouvel onglet sans prévenir
+Cliquer sur "Propriétaire/Locataire" ou "Mise en location" dans le menu provoque l'ouverture
+automatique d'un second onglet vers l'application. L'utilisateur se retrouve projeté hors du site sans
+l'avoir décidé. Sur mobile, gérer plusieurs onglets est peu intuitif et souvent source d'abandon.
+—+ Supprimer le comportement d'ouverture forcée en nouvel onglet. Ou afficher une page de transition
+expliquant clairement le passage vers l'application.
+Audit BatiBid
+Réalisé par HOUNKPA TIN Enorel

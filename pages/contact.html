@@ -1,0 +1,114 @@
+<div class="contact-section">
+  <div class="contact-grid">
+    <div class="contact-info-panel">
+      <span class="section-tag">Contactez-nous</span>
+      <h2 class="headline-lg mb-4">Besoin d'un renseignement ? Notre équipe est là.</h2>
+      <p class="body-md" style="color: var(--gray-600); margin-bottom: 2.5rem;">
+        Une question sur la gestion locative, les visites virtuelles ou les méthodes de paiement ? Contactez nos conseillers clientèle à tout moment.
+      </p>
+      
+      <a href="https://wa.me/22997000000" class="contact-whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i> Discuter sur WhatsApp
+      </a>
+      
+      <ul class="contact-details-list">
+        <li>
+          <i class="fas fa-envelope"></i>
+          <div>
+            <h4>Adresse Email</h4>
+            <p>support@batibid.com</p>
+          </div>
+        </li>
+        <li>
+          <i class="fas fa-phone-alt"></i>
+          <div>
+            <h4>Téléphone</h4>
+            <p>+229 21 30 40 50 / +229 97 00 00 00</p>
+          </div>
+        </li>
+        <li>
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <h4>Siège Social</h4>
+            <p>Zone Commerciale Akpakpa, Lot 402 - Cotonou, Bénin</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="contact-form-panel">
+      <h3>Envoyez-nous un message</h3>
+
+      <!-- Form Progress Bar -->
+      <div class="contact-form-progress-wrap">
+        <div class="contact-form-progress-steps">
+          <span class="cp-step active" id="cp-step-1">
+            <span class="cp-step-num">1</span>
+            <span class="cp-step-label">Identité</span>
+          </span>
+          <div class="cp-step-line"></div>
+          <span class="cp-step" id="cp-step-2">
+            <span class="cp-step-num">2</span>
+            <span class="cp-step-label">Coordonnées</span>
+          </span>
+          <div class="cp-step-line"></div>
+          <span class="cp-step" id="cp-step-3">
+            <span class="cp-step-num">3</span>
+            <span class="cp-step-label">Message</span>
+          </span>
+        </div>
+        <div class="cp-progress-bar">
+          <div class="cp-progress-fill" id="cp-progress-fill" style="width: 33%;"></div>
+        </div>
+      </div>
+
+      <form id="contact-form" onsubmit="submitContactForm(event)">
+        <!-- Step 1: Nom -->
+        <div class="contact-step" id="contact-step-1">
+          <div class="form-group">
+            <label class="form-label" for="contact-name">Nom complet</label>
+            <input type="text" id="contact-name" class="form-control" placeholder="Ex: Jean DOSSOU"
+              oninput="updateContactProgress()">
+          </div>
+          <button type="button" class="btn btn-primary" style="width: 100%;" onclick="nextContactStep(2)">
+            Continuer <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
+          </button>
+        </div>
+
+        <!-- Step 2: Email -->
+        <div class="contact-step" id="contact-step-2" style="display: none;">
+          <div class="form-group">
+            <label class="form-label" for="contact-email">Adresse Email</label>
+            <input type="email" id="contact-email" class="form-control" placeholder="Ex: jean.dossou@gmail.com"
+              oninput="updateContactProgress()">
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <button type="button" class="btn btn-secondary" style="flex: 1;" onclick="prevContactStep(1)">
+              <i class="fas fa-arrow-left" style="margin-right: 0.5rem;"></i> Retour
+            </button>
+            <button type="button" class="btn btn-primary" style="flex: 2;" onclick="nextContactStep(3)">
+              Continuer <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3: Message -->
+        <div class="contact-step" id="contact-step-3" style="display: none;">
+          <div class="form-group">
+            <label class="form-label" for="contact-msg">Votre message</label>
+            <textarea id="contact-msg" class="form-control" rows="5" placeholder="Comment pouvons-nous vous aider ?"
+              oninput="updateContactProgress()"></textarea>
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <button type="button" class="btn btn-secondary" style="flex: 1;" onclick="prevContactStep(2)">
+              <i class="fas fa-arrow-left" style="margin-right: 0.5rem;"></i> Retour
+            </button>
+            <button type="submit" class="btn btn-primary" style="flex: 2;">
+              <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i> Envoyer
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,77 @@
+/* ==========================================
+   PAGE: PROPERTY DETAIL & 360 VIEWER
+   ========================================== */
+.detail-property-layout {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 2.5rem;
+}
+
+.detail-img-box {
+  position: relative;
+  height: 400px;
+  background-color: var(--gray-300);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.detail-gallery-main {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 360 viewer style */
+.panorama-360-container {
+  position: relative;
+  height: 400px;
+  background-color: var(--secondary);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 2.5rem;
+  border: 3px solid var(--primary);
+}
+
+.panorama-canvas {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+.panorama-canvas:active {
+  cursor: grabbing;
+}
+
+.panorama-overlay-info {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: rgba(28, 28, 28, 0.85);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.panorama-control-tip {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(28, 28, 28, 0.75);
+  color: var(--white);
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

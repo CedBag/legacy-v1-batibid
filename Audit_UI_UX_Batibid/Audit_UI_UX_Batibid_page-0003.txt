@@ -1,0 +1,37 @@
+﻿% app. bidZO
+BabiBid
+Accueil
+Q Recherche
+Demande
+Gérez vos biens immobiliers en toute simplicité.
+Accédez à tous vos services de gestion immobilière en un seul endroit.
+Gérez un bien
+gE"5tion de le
+tonfiant à notre équipe.
+Suivez I • état de locations et assurez-vous d' un
+revenu régulieq sans effort supplémentaire.
+Gérez plusieurs biens
+gérer ?
+Optimisez la rentabilité de Votre portefeui"e
+imn»obilier grâce notre outil de gestion
+multifonction.
+Mettre en gestion
+Faire une demande d'annonce
+annonce Ciblée. publiez et suivez les
+performances de votre annonce, tout en attirant les
+locataires ou acheteurs idéaux rapidement.
+Impossible de revenir à l'accueil depuis l'application
+Une fois arrivé sur app.batibid.com, l'utilisateur ne trouve aucun lien pour retourner au site principal. Pas
+de logo cliquable, pas de bouton "Retour au site", aucune indication. L'utilisateur est bloqué dans un
+tunnel sans sortie visible.
+—+ Ajouter dans l'en-tête de l'application un lien "4— Retour au site" bien visible, ou rendre le logo
+cliquable en pointant vers batibid.com.
+% ue-St
+BabiBid
+Q Rech
+Nous contacter
+Se connecter
+Gérez vos biens immobiliers en toute simplicité.
+Accédez à tous vos services de gestion immobilière en un seul endroit.
+Audit BatiBid
+Réalisé par HOUNKPA TIN Enorel
