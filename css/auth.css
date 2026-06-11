@@ -282,3 +282,15 @@
   color: var(--gray-600);
   line-height: 1.5;
 }
+
+/* Responsive auth adjustments */
+@media (max-width: 576px) {
+  .auth-card {
+    padding: 2.25rem 1.5rem;
+  }
+  
+  .auth-role-cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

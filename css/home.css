@@ -156,6 +156,10 @@
   gap: 1.75rem;
 }
 
+.solutions-grid.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .solution-card {
   background-color: var(--white);
   padding: 2.25rem 2rem;

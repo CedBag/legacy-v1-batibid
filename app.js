@@ -741,8 +741,6 @@ function initSearchFilters() {
     newBtn.addEventListener("click", () => {
       document.querySelectorAll(".rooms-btn").forEach(b => b.classList.remove("active"));
       newBtn.classList.add("active");
-      state.currentFilter.rooms = rVal;
-      applySearchFilters();
     });
   });
 }
@@ -756,12 +754,15 @@ function applySearchFilters() {
   const minPrice = parseInt(document.getElementById("budget-min").value) || 0;
   const maxPrice = parseInt(document.getElementById("budget-max").value) || 2000000;
   
+  const activeRoomsBtn = document.querySelector(".rooms-btn.active");
+  const roomsVal = activeRoomsBtn ? parseInt(activeRoomsBtn.innerText) : 1;
+  
   state.currentFilter = {
     city: document.getElementById("search-city-input").value.trim(),
     types: checkedTypes,
     minPrice: minPrice,
     maxPrice: maxPrice,
-    rooms: state.currentFilter.rooms
+    rooms: roomsVal
   };
   
   renderPropertyList();
