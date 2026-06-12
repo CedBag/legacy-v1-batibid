@@ -19,10 +19,10 @@ let state = {
   authLocataireGere: false,
   currentFilter: {
     city: "",
-    types: ["appartement"], // default checked
+    types: ["appartement", "maison", "bureau"], // default checked
     minPrice: 0,
     maxPrice: 2000000,
-    rooms: 2 // default active
+    rooms: 1 // default active
   },
   currentViewingPropertyId: null,
   activeTestimonialIdx: 0,
@@ -775,6 +775,18 @@ function applySearchFilters() {
   renderPropertyList();
 }
 
+window.resetSearchFilters = function() {
+  state.currentFilter = {
+    city: "",
+    types: ["appartement", "maison", "bureau"],
+    minPrice: 0,
+    maxPrice: 2000000,
+    rooms: 1
+  };
+  initSearchFilters();
+  applySearchFilters();
+};
+
 function renderPropertyList() {
   const listContainer = document.querySelector(".properties-list-grid");
   if (!listContainer) return;
@@ -1009,7 +1021,7 @@ function renderPropertyDetails() {
   const ctaBox = document.getElementById("detail-cta-box");
   if (ctaBox) {
     ctaBox.innerHTML = `
-      <div style="background-color: var(--white); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--gray-300); box-shadow: var(--shadow-soft);">
+      <div class="detail-cta-card">
         <h4 style="margin-bottom: 1rem;">Intéressé par ce bien ?</h4>
         <div style="font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 1.5rem;">${formatCurrency(p.price)} / mois</div>
         <p style="font-size: 0.85rem; color: var(--gray-600); margin-bottom: 1.5rem;">

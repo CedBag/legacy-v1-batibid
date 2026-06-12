@@ -4,7 +4,7 @@
   <aside class="filter-sidebar">
     <div class="filter-title">
       <span>Filtres</span>
-      <a href="#trouver" onclick="initSearchFilters(); applySearchFilters();" style="font-size: 0.85rem; color: var(--primary); font-weight: 700;">Réinitialiser</a>
+      <a href="#trouver" onclick="resetSearchFilters();" style="font-size: 0.85rem; color: var(--primary); font-weight: 700;">Réinitialiser</a>
     </div>
     
     <form onsubmit="event.preventDefault(); applySearchFilters();">
@@ -45,10 +45,10 @@
             <input type="checkbox" name="type-bien" value="appartement" checked> Appartement
           </label>
           <label class="filter-checkbox-label">
-            <input type="checkbox" name="type-bien" value="maison"> Maison
+            <input type="checkbox" name="type-bien" value="maison" checked> Maison
           </label>
           <label class="filter-checkbox-label">
-            <input type="checkbox" name="type-bien" value="bureau"> Bureau
+            <input type="checkbox" name="type-bien" value="bureau" checked> Bureau
           </label>
         </div>
       </div>
@@ -65,8 +65,8 @@
       <div class="filter-group">
         <label class="filter-label">Chambres</label>
         <div class="rooms-btn-group">
-          <button type="button" class="rooms-btn">1+</button>
-          <button type="button" class="rooms-btn active">2+</button>
+          <button type="button" class="rooms-btn active">1+</button>
+          <button type="button" class="rooms-btn">2+</button>
           <button type="button" class="rooms-btn">3+</button>
           <button type="button" class="rooms-btn">4+</button>
         </div>
