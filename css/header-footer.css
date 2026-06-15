@@ -38,16 +38,17 @@
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: 1.1rem;
 }
 
 .nav-link {
-  font-size: 0.9rem;
+  font-size: 0.84rem;
   font-weight: 600;
   color: var(--secondary);
-  padding: 0.5rem 0.25rem;
+  padding: 0.5rem 0.2rem;
   position: relative;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .nav-link:hover, .nav-link.active {
