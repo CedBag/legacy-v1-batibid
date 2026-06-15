@@ -38,14 +38,14 @@
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 1.1rem;
+  gap: 1.75rem;
 }
 
 .nav-link {
-  font-size: 0.84rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--secondary);
-  padding: 0.5rem 0.2rem;
+  padding: 0.5rem 0.25rem;
   position: relative;
   cursor: pointer;
   white-space: nowrap;
@@ -142,6 +142,16 @@
   font-size: 1.35rem;
   cursor: pointer;
   color: var(--secondary);
+}
+
+/* Hide desktop nav, show hamburger below 960px */
+@media (max-width: 960px) {
+  .nav-menu {
+    display: none;
+  }
+  .mobile-menu-btn {
+    display: block;
+  }
 }
 
 /* Footer styling - Premium Dark Background */
