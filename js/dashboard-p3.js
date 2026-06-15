@@ -1,5 +1,5 @@
 /**
- * BatiBid — Dashboard Profil 3 (Locataire Chercheur)
+ * BatiBid - Dashboard Profil 3 (Locataire Chercheur)
  * Rendu complet : KPIs, favoris, mes candidatures, dossier de solvabilité
  */
 
@@ -11,7 +11,7 @@ let p3Candidatures = [
     date: "06/06/2026",
     statut: "À l'étude", // "À l'étude", "Accepté", "Refusé"
     etape: 2, // 1: Dossier envoyé, 2: Visite effectuée & Dossier à l'étude, 3: Contrat proposé, 4: Clés remises
-    bienTitle: "Appartement F3 Haut Standing — Haie Vive",
+    bienTitle: "Appartement F3 Haut Standing - Haie Vive",
     loyer: 350000
   }
 ];

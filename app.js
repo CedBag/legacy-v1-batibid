@@ -7,7 +7,7 @@
 // ==========================================
 // MOCK DATABASE & STATE
 // (mockDb, mockUsers, mockBiens, mockTransactions, mockIncidents,
-//  mockNotifications — définis dans js/db.js chargé avant ce fichier)
+//  mockNotifications - définis dans js/db.js chargé avant ce fichier)
 // ==========================================
 
 // Global App State
@@ -38,7 +38,8 @@ async function loadAllPages() {
   const pages = ['home', 'gerer', 'faire-louer', 'trouver', 'construire', 'conseils-juridiques', 'partenariats', 'blog', 'contact', 'auth', 'dashboard', 'detail', 'pay', 'invoices', 'invoice-detail-view'];
   try {
     await Promise.all(pages.map(async page => {
-      const res = await fetch(`pages/${page}.html`);
+      // Use dynamic timestamp to prevent browser caching of HTML templates
+      const res = await fetch(`pages/${page}.html?v=${Date.now()}`);
       if (!res.ok) throw new Error(`Impossible de charger la page: ${page}`);
       const html = await res.text();
       const el = document.getElementById(page);
@@ -348,7 +349,7 @@ function submitContactForm(e) {
 }
 
 // ==========================================
-// MOBILE STICKY CTA — Toggle on auth state
+// MOBILE STICKY CTA - Toggle on auth state
 // ==========================================
 function updateMobileStickyCtaVisibility() {
   const cta = document.getElementById("mobile-sticky-cta");
@@ -1416,7 +1417,7 @@ function viewInvoiceDetails(txId) {
 }
 
 // ==========================================
-// DASHBOARD VIEWS GENERATION — Dispatcher
+// DASHBOARD VIEWS GENERATION - Dispatcher
 // ==========================================
 function renderDashboard() {
   const layout = document.getElementById("dashboard-root-layout");
@@ -1431,7 +1432,7 @@ function renderDashboard() {
     return;
   }
 
-  // Profil 1 — Propriétaire Gestion Locative (Standard 8% ou Premium 10%)
+  // Profil 1 - Propriétaire Gestion Locative (Standard 8% ou Premium 10%)
   if (user.role === "proprietaire" && (user.formula === "integrale" || user.formula === "standard" || user.formula === "premium")) {
     if (typeof renderDashboardProprietaireIntegral === "function") {
       renderDashboardProprietaireIntegral(user);
@@ -1441,7 +1442,7 @@ function renderDashboard() {
     return;
   }
 
-  // Profil 2 — Propriétaire Mise en Location (annonce)
+  // Profil 2 - Propriétaire Mise en Location (annonce)
   if (user.role === "proprietaire" && (user.formula === "annonce" || user.formula === "collecte" || user.formula === "simple")) {
     if (typeof renderDashboardProprietaireAnnonce === "function") {
       renderDashboardProprietaireAnnonce(user);
@@ -1451,7 +1452,7 @@ function renderDashboard() {
     return;
   }
 
-  // Profil 4 — Locataire géré par BatiBid
+  // Profil 4 - Locataire géré par BatiBid
   if (user.role === "locataire" && user.locataireGere) {
     if (typeof renderDashboardLocataireGere === "function") {
       renderDashboardLocataireGere(user);
@@ -1461,7 +1462,7 @@ function renderDashboard() {
     return;
   }
 
-  // Profil 3 — Locataire chercheur
+  // Profil 3 - Locataire chercheur
   if (user.role === "locataire" && !user.locataireGere) {
     if (typeof renderDashboardLocataireChercheur === "function") {
       renderDashboardLocataireChercheur(user);
@@ -1749,12 +1750,23 @@ document.addEventListener("DOMContentLoaded", async () => {
   updateHeaderAuth();
 });
 
-// Register Service Worker for PWA downloadability
+// Unregister all active Service Workers to avoid cache-poisoning/stale content bugs
 if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("./sw.js")
-      .then((reg) => console.log("Service Worker BatiBid enregistré avec succès !", reg.scope))
-      .catch((err) => console.error("Échec de l'enregistrement du Service Worker BatiBid :", err));
+  navigator.serviceWorker.getRegistrations().then((registrations) => {
+    for (let registration of registrations) {
+      registration.unregister().then(() => {
+        console.log("Service Worker BatiBid désenregistré avec succès !");
+      });
+    }
+  });
+}
+
+// Clear all browser caches for BatiBid
+if ("caches" in window) {
+  caches.keys().then((keys) => {
+    return Promise.all(keys.map((key) => {
+      console.log("Nettoyage du cache du navigateur :", key);
+      return caches.delete(key);
+    }));
   });
 }

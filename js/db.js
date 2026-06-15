@@ -1,5 +1,5 @@
 /**
- * BatiBid — Mock Database (db.js)
+ * BatiBid - Mock Database (db.js)
  * Contient : utilisateurs fictifs, biens, transactions, incidents, notifications
  */
 
@@ -19,11 +19,11 @@ const mockUsers = [
     name: "M. Simplice KODJIA",
     phone: "01 97 50 22 33",
     role: "proprietaire",
-    formula: "integrale",  // Gestion Intégrale — 10%
+    formula: "integrale",  // Gestion Intégrale - 10%
     locataireGere: false,
     avatar: "SK",
     bienIds: ["b1", "b2", "b3"],   // Ses 3 biens gérés par BatiBid
-    rib: "MTN MoMo — +229 01 97 50 22 33"
+    rib: "MTN MoMo: +229 01 97 50 22 33"
   },
   {
     id: "u2",
@@ -32,11 +32,11 @@ const mockUsers = [
     name: "Mme Marie AGOSSOU",
     phone: "01 96 45 10 20",
     role: "proprietaire",
-    formula: "annonce",    // Mise en location — annonce simple
+    formula: "annonce",    // Mise en location - annonce simple
     locataireGere: false,
     avatar: "MA",
     bienIds: ["b4"],
-    rib: "Moov Flooz — +229 01 96 45 10 20"
+    rib: "Moov Flooz: +229 01 96 45 10 20"
   },
   {
     id: "u3",
@@ -74,7 +74,7 @@ const mockBiens = [
     id: "b1",
     proprietaireId: "u1",
     locataireId: "u4",      // Carine est locataire ici
-    title: "Appartement F3 Haut Standing — Haie Vive",
+    title: "Appartement F3 Haut Standing - Haie Vive",
     type: "appartement",
     city: "Cotonou",
     address: "Haie Vive",
@@ -93,7 +93,7 @@ const mockBiens = [
     id: "b2",
     proprietaireId: "u1",
     locataireId: null,      // Libre
-    title: "Villa Duplex Moderne — Fidjrossè",
+    title: "Villa Duplex Moderne - Fidjrossè",
     type: "maison",
     city: "Cotonou",
     address: "Fidjrossè",
@@ -112,7 +112,7 @@ const mockBiens = [
     id: "b3",
     proprietaireId: "u1",
     locataireId: "u_ext",   // Locataire externe (sans compte BatiBid)
-    title: "Plateau Bureau Open Space — Ganhi",
+    title: "Plateau Bureau Open Space - Ganhi",
     type: "bureau",
     city: "Cotonou",
     address: "Ganhi",
@@ -152,7 +152,7 @@ const mockBiens = [
 // TRANSACTIONS
 // ==========================================
 const mockTransactions = [
-  // Juin 2026 — b1 — Carine (u4) → Simplice (u1) via BatiBid
+  // Juin 2026 - b1 - Carine (u4) → Simplice (u1) via BatiBid
   {
     id: "TX-2026-06",
     bienId: "b1",
@@ -206,7 +206,7 @@ const mockTransactions = [
     penalite: 0,
     statutRecouvrement: "amiable"
   },
-  // Bien b3 — Bureau Ganhi
+  // Bien b3 - Bureau Ganhi
   {
     id: "TX-B3-06",
     bienId: "b3",
@@ -259,16 +259,16 @@ const mockIncidents = [
 // ==========================================
 const mockNotifications = {
   u1: [
-    { id: "n1", type: "success", icon: "fa-money-bill-wave", texte: "Loyer Juin 2026 reçu — Appartement Haie Vive (315 000 XOF nets)", date: "03/06/2026", lu: false },
-    { id: "n2", type: "success", icon: "fa-money-bill-wave", texte: "Loyer Juin 2026 reçu — Bureau Ganhi (1 080 000 XOF nets)", date: "05/06/2026", lu: false },
-    { id: "n3", type: "warning", icon: "fa-tools", texte: "Incident signalé — Bureau Ganhi : Panne électrique (Priorité Haute)", date: "08/06/2026", lu: false },
-    { id: "n4", type: "info", icon: "fa-home", texte: "Villa Fidjrossè — Nouveau candidat locataire en attente de validation", date: "07/06/2026", lu: true },
-    { id: "n5", type: "warning", icon: "fa-exclamation-triangle", texte: "Avril 2026 — Loyer Haie Vive couvert par BatiBid. Recouvrement en cours.", date: "06/04/2026", lu: true }
+    { id: "n1", type: "success", icon: "fa-money-bill-wave", texte: "Loyer Juin 2026 reçu - Appartement Haie Vive (315 000 XOF nets)", date: "03/06/2026", lu: false },
+    { id: "n2", type: "success", icon: "fa-money-bill-wave", texte: "Loyer Juin 2026 reçu - Bureau Ganhi (1 080 000 XOF nets)", date: "05/06/2026", lu: false },
+    { id: "n3", type: "warning", icon: "fa-tools", texte: "Incident signalé - Bureau Ganhi : Panne électrique (Priorité Haute)", date: "08/06/2026", lu: false },
+    { id: "n4", type: "info", icon: "fa-home", texte: "Villa Fidjrossè - Nouveau candidat locataire en attente de validation", date: "07/06/2026", lu: true },
+    { id: "n5", type: "warning", icon: "fa-exclamation-triangle", texte: "Avril 2026 - Loyer Haie Vive couvert par BatiBid. Recouvrement en cours.", date: "06/04/2026", lu: true }
   ],
   u4: [
-    { id: "n1", type: "success", icon: "fa-check-circle", texte: "Loyer Juin 2026 confirmé — Quittance disponible en téléchargement", date: "03/06/2026", lu: false },
-    { id: "n2", type: "success", icon: "fa-tools", texte: "Incident plomberie résolu — Fuite du 20/05 réparée avec succès", date: "22/05/2026", lu: true },
-    { id: "n3", type: "warning", icon: "fa-exclamation-triangle", texte: "Rappel : Loyer Avril 2026 non payé — 350 000 XOF dus à BatiBid", date: "20/04/2026", lu: false }
+    { id: "n1", type: "success", icon: "fa-check-circle", texte: "Loyer Juin 2026 confirmé - Quittance disponible en téléchargement", date: "03/06/2026", lu: false },
+    { id: "n2", type: "success", icon: "fa-tools", texte: "Incident plomberie résolu - Fuite du 20/05 réparée avec succès", date: "22/05/2026", lu: true },
+    { id: "n3", type: "warning", icon: "fa-exclamation-triangle", texte: "Rappel : Loyer Avril 2026 non payé - 350 000 XOF dus à BatiBid", date: "20/04/2026", lu: false }
   ]
 };
 

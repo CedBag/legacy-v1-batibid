@@ -1,5 +1,5 @@
 /**
- * BatiBid — Dashboard Profil 4 (Locataire Géré)
+ * BatiBid - Dashboard Profil 4 (Locataire Géré)
  * Rendu complet : KPIs, bail, transactions, incidents, paiement de loyer & dettes
  */
 
@@ -124,7 +124,7 @@ function renderDashP4Overview(user, bien, userTx, incidents, notifs) {
       <div class="dash-alert-card dash-alert--danger">
         <div class="dash-alert-body">
           <h4 class="dash-alert-title">
-            <i class="fas fa-exclamation-triangle"></i> Dette locative active — Avril 2026
+            <i class="fas fa-exclamation-triangle"></i> Dette locative active - Avril 2026
           </h4>
           <p class="dash-alert-desc">
             Votre loyer d'Avril de ${formatCurrency(detteActive.montantBrut)} est en retard et a été <strong>couvert par la garantie BatiBid</strong>. 
@@ -144,7 +144,7 @@ function renderDashP4Overview(user, bien, userTx, incidents, notifs) {
       <div class="dash-alert-card dash-alert--warning">
         <div class="dash-alert-body">
           <h4 class="dash-alert-title">
-            <i class="fas fa-clock"></i> Loyer mensuel en attente — Juin 2026
+            <i class="fas fa-clock"></i> Loyer mensuel en attente - Juin 2026
           </h4>
           <p class="dash-alert-desc">
             Votre loyer de Juin 2026 d'un montant de <strong>${formatCurrency(loyerEnAttente.montantBrut)}</strong> est exigible. 
@@ -188,7 +188,7 @@ function renderDashP4Overview(user, bien, userTx, incidents, notifs) {
         <div class="dash-kpi-body">
           <span class="dash-kpi-label">Mon Bail Actif</span>
           <span class="dash-kpi-value">${bien ? bien.dateDebutBail.split('/')[2] : "2026"}</span>
-          <span class="dash-kpi-sub">Échéance : ${bien ? bien.dateFinBail : "—"}</span>
+          <span class="dash-kpi-sub">Échéance : ${bien ? bien.dateFinBail : "-"}</span>
         </div>
       </div>
       <div class="dash-kpi-card">
@@ -198,7 +198,7 @@ function renderDashP4Overview(user, bien, userTx, incidents, notifs) {
           <span class="dash-kpi-value">
             ${detteActive ? formatCurrency(detteActive.montantBrut) : "0 FCFA"}
           </span>
-          <span class="dash-kpi-sub">Garanti par BatiBid — Sans pénalité</span>
+          <span class="dash-kpi-sub">Garanti par BatiBid - Sans pénalité</span>
         </div>
       </div>
       <div class="dash-kpi-card">
@@ -439,7 +439,7 @@ function renderDashP4Finances(user, userTx) {
                 <tr>
                   <td><span class="dash-tx-ref">${t.id}</span></td>
                   <td><strong>${t.mois}</strong></td>
-                  <td>${t.datePaiement || "—"}</td>
+                  <td>${t.datePaiement || "-"}</td>
                   <td>${formatCurrency(t.montantBrut)}</td>
                   <td>
                     ${t.statutLocataire === "payé"
@@ -504,7 +504,7 @@ function renderDashP4Incidents(user, bien, incidents) {
                   <i class="fas ${i.statut === "Résolu" ? "fa-check-circle" : "fa-tools"}"></i>
                 </div>
                 <div class="incident-details">
-                  <h4>${i.categorie} — ${i.priorite} priorité</h4>
+                  <h4>${i.categorie} - ${i.priorite} priorité</h4>
                   <p>${i.description}</p>
                   <p style="font-size:0.72rem; color:var(--gray-500); margin-top:0.25rem;">Signalé le ${i.date} ${i.technicien ? `· Expert : ${i.technicien}` : ""}</p>
                 </div>
@@ -850,7 +850,7 @@ function viewQuittanceLocataire(txId) {
         <tbody>
           <tr>
             <td>
-              <strong>Loyer mensuel — Mois de ${tx.mois}</strong><br>
+              <strong>Loyer mensuel - Mois de ${tx.mois}</strong><br>
               <span style="font-size: 0.85rem; color: var(--gray-600);">Logement : ${bien ? bien.title : "Appartement F3"} (${bien ? bien.address : ""})</span><br>
               <span style="font-size: 0.85rem; color: var(--gray-600);">Période de location : ${tx.mois}</span>
             </td>

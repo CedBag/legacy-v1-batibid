@@ -1,5 +1,5 @@
 /**
- * BatiBid — Dashboard Profil 1 (Propriétaire Gestion Intégrale)
+ * BatiBid - Dashboard Profil 1 (Propriétaire Gestion Intégrale)
  * Rendu complet : KPIs, biens, transactions, notifications, retrait
  */
 
@@ -104,7 +104,7 @@ function renderDashP1Overview(user, userBiens, totalBrut, totalNet, totalComm, b
     <div class="dash-header">
       <div>
         <h1 class="dash-page-title">Bonjour, ${user.name.split(" ")[1]} 👋</h1>
-        <p class="dash-page-subtitle">Voici l'état de votre portefeuille immobilier — Juin 2026</p>
+        <p class="dash-page-subtitle">Voici l'état de votre portefeuille immobilier - Juin 2026</p>
       </div>
       <button class="btn btn-primary dash-retrait-btn" onclick="openRetraitModal()">
         <i class="fas fa-paper-plane"></i> Retirer mes fonds
@@ -218,7 +218,7 @@ function renderDashP1Overview(user, userBiens, totalBrut, totalNet, totalComm, b
               const isImpaId = t.couvertParBatiBid;
               return `
                 <tr>
-                  <td><small>${bien ? bien.address : "—"}</small></td>
+                  <td><small>${bien ? bien.address : "-"}</small></td>
                   <td>${t.mois}</td>
                   <td>${formatCurrency(t.montantBrut)}</td>
                   <td class="dash-tx-comm">−${formatCurrency(t.commission)}</td>
@@ -286,13 +286,13 @@ function renderDashP1Biens(user) {
                   <div class="dash-bien-stat">
                     <span class="dash-bien-stat-label">Net reçu (Juin)</span>
                     <span class="dash-bien-stat-value" style="color: var(--success);">
-                      ${dernierLoyer ? formatCurrency(dernierLoyer.montantNet) : "—"}
+                      ${dernierLoyer ? formatCurrency(dernierLoyer.montantNet) : "-"}
                       ${dernierLoyer && dernierLoyer.couvertParBatiBid ? '<span class="dash-tx-badge dash-tx-badge--covered" style="font-size:0.7rem;"><i class="fas fa-shield-alt"></i> Couvert</span>' : ""}
                     </span>
                   </div>
                   <div class="dash-bien-stat">
                     <span class="dash-bien-stat-label">Bail</span>
-                    <span class="dash-bien-stat-value">${b.dateDebutBail || "Non défini"} → ${b.dateFinBail || "—"}</span>
+                    <span class="dash-bien-stat-value">${b.dateDebutBail || "Non défini"} → ${b.dateFinBail || "-"}</span>
                   </div>
                 </div>
 
@@ -301,7 +301,7 @@ function renderDashP1Biens(user) {
                     ${incidents.map(i => `
                       <div class="dash-incident-pill dash-incident-${i.statut === "Résolu" ? "ok" : "alert"}">
                         <i class="fas ${i.statut === "Résolu" ? "fa-check-circle" : "fa-tools"}"></i>
-                        ${i.categorie} — ${i.statut}
+                        ${i.categorie} - ${i.statut}
                       </div>
                     `).join("")}
                   </div>
@@ -425,7 +425,7 @@ function renderDashP1Finances(user) {
     <!-- PERFORMANCE FINANCIÈRE CARD (SVG LINE GRAPH) -->
     <div class="dash-card" style="margin-bottom: 2rem;">
       <div class="dash-card-header">
-        <h3><i class="fas fa-chart-line"></i> Performance Financière (Revenus Nets — 6 Derniers Mois)</h3>
+        <h3><i class="fas fa-chart-line"></i> Performance Financière (Revenus Nets - 6 Derniers Mois)</h3>
       </div>
       <div style="background-color: var(--white); border-radius: var(--radius-md); padding: 1rem 0; width:100%; overflow-x:auto;">
         <svg viewBox="0 0 600 220" style="width: 100%; height: auto; min-width: 550px; font-family: var(--font-family);">
@@ -520,9 +520,9 @@ function renderDashP1Finances(user) {
               return `
                 <tr>
                   <td><small class="dash-tx-ref">${t.id}</small></td>
-                  <td><small>${bien ? bien.address : "—"}</small></td>
+                  <td><small>${bien ? bien.address : "-"}</small></td>
                   <td>${t.mois}</td>
-                  <td>${t.methode || (t.couvertParBatiBid ? "Couvert BatiBid" : "—")}</td>
+                  <td>${t.methode || (t.couvertParBatiBid ? "Couvert BatiBid" : "-")}</td>
                   <td>${formatCurrency(t.montantBrut)}</td>
                   <td class="dash-tx-comm">−${formatCurrency(t.commission)}</td>
                   <td class="dash-tx-net"><strong>${formatCurrency(t.montantNet)}</strong></td>
@@ -572,7 +572,7 @@ function renderDashP1Rapports(user) {
           <div class="dash-rapport-row">
             <div class="dash-rapport-icon"><i class="fas fa-file-alt"></i></div>
             <div class="dash-rapport-info">
-              <strong>Rapport de gestion — ${m}</strong>
+              <strong>Rapport de gestion - ${m}</strong>
               <span>Revenus, commissions, incidents, taux d'occupation</span>
             </div>
             <div class="dash-rapport-actions">
@@ -651,7 +651,7 @@ function renderDashP1Profil(user) {
         <div class="dash-profil-form">
           <div class="form-group">
             <label class="form-label">Formule souscrite</label>
-            <input type="text" class="form-control" value="Gestion Intégrale — 10% / mois" readonly>
+            <input type="text" class="form-control" value="Gestion Intégrale - 10% / mois" readonly>
           </div>
           <div class="form-group">
             <label class="form-label">RIB / Compte de virement</label>
@@ -659,7 +659,7 @@ function renderDashP1Profil(user) {
           </div>
           <div class="form-group">
             <label class="form-label">Statut du compte</label>
-            <input type="text" class="form-control" value="✅ Actif — Vérifié" style="color: var(--success); font-weight:700;" readonly>
+            <input type="text" class="form-control" value="✅ Actif - Vérifié" style="color: var(--success); font-weight:700;" readonly>
           </div>
           <button class="btn btn-secondary" onclick="showAlert('info','Contrat','Votre contrat PDF sera téléchargeable en production.')">
             <i class="fas fa-download"></i> Télécharger mon contrat
@@ -794,10 +794,10 @@ function openRetraitModal() {
       <div class="form-group">
         <label class="form-label">Destination</label>
         <select class="form-control" id="retrait-dest">
-          <option>MTN MoMo — +229 01 97 50 22 33</option>
-          <option>Moov Flooz — +229 01 96 12 34 56</option>
-          <option>Celtiis Cash — +229 01 40 88 99 00</option>
-          <option>Virement Bancaire (Ecobank — BJ062010010098765432109)</option>
+          <option>MTN MoMo: +229 01 97 50 22 33</option>
+          <option>Moov Flooz: +229 01 96 12 34 56</option>
+          <option>Celtiis Cash: +229 01 40 88 99 00</option>
+          <option>Virement Bancaire (Ecobank: BJ062010010098765432109)</option>
         </select>
       </div>
 

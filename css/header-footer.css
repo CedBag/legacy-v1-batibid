@@ -38,7 +38,7 @@
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: 1.15rem;
 }
 
 .nav-link {
@@ -144,8 +144,8 @@
   color: var(--secondary);
 }
 
-/* Hide desktop nav, show hamburger below 960px */
-@media (max-width: 960px) {
+/* Hide desktop nav, show hamburger below 1200px */
+@media (max-width: 1200px) {
   .nav-menu {
     display: none;
   }
