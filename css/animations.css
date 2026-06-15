@@ -1,0 +1,249 @@
+/* ==========================================
+   BATIBID — SCROLL ANIMATIONS SYSTEM
+   Triggered via IntersectionObserver in app.js
+   ========================================== */
+
+/* ---- Base: hidden state ---- */
+.reveal,
+.reveal-left,
+.reveal-right,
+.reveal-scale {
+  opacity: 0;
+  transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.reveal       { transform: translateY(28px); }
+.reveal-left  { transform: translateX(-40px); }
+.reveal-right { transform: translateX(40px); }
+.reveal-scale { transform: scale(0.94) translateY(16px); }
+
+/* ---- Visible state ---- */
+.reveal.is-visible,
+.reveal-left.is-visible,
+.reveal-right.is-visible,
+.reveal-scale.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Stagger children (parent triggers, children animate) ---- */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.stagger-children > *.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Float animation: subtle levitation for hero badges/overlays ---- */
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0px);   }
+  50%       { transform: translateY(-8px);  }
+}
+
+.float-badge {
+  animation: floatBadge 3.5s ease-in-out infinite;
+}
+
+/* ---- Counter pulse: glow on stat numbers when visible ---- */
+@keyframes counterPulse {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+.counter-pulse.is-visible {
+  animation: counterPulse 0.6s ease-out 0.3s both;
+}
+
+/* ---- Shimmer line: decorative horizontal shimmer ---- */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+.shimmer-line {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--gray-200) 25%,
+    var(--primary-light) 50%,
+    var(--gray-200) 75%
+  );
+  background-size: 200% auto;
+  animation: shimmer 2.5s linear infinite;
+  border: none;
+  border-radius: var(--radius-full);
+  margin: 0 auto;
+}
+
+/* ---- Hero image: subtle zoom pulse ---- */
+@keyframes heroPulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.015); }
+}
+
+.premium-hero-image-box img {
+  animation: heroPulse 6s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+/* ---- Timeline steps sequential reveal ---- */
+.timeline-step {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.timeline-step.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Bento cards: pop-in on reveal ---- */
+.bento-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
+}
+
+.bento-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+}
+
+/* ---- Solution cards hover lift ---- */
+.solution-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.solution-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(164, 56, 2, 0.12);
+}
+
+/* ---- Pricing cards hover ---- */
+.pricing-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.1);
+}
+
+/* ---- Partner cards hover ---- */
+.partner-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.partner-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 36px rgba(164, 56, 2, 0.1);
+}
+
+/* ---- Workflow cards ---- */
+.workflow-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.workflow-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+}
+
+/* ---- Accordion smooth open ---- */
+.accordion-content {
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.3s ease,
+              opacity 0.3s ease;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 1.5rem;
+}
+
+.accordion-item.active .accordion-content {
+  opacity: 1;
+  max-height: 400px;
+  padding: 1rem 1.5rem 1.5rem;
+}
+
+.accordion-icon {
+  transition: transform 0.35s ease;
+}
+
+.accordion-item.active .accordion-icon {
+  transform: rotate(180deg);
+}
+
+/* ---- Gradient text animation for hero span highlights ---- */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.premium-hero-title span {
+  background: linear-gradient(135deg, var(--primary) 0%, #e87540 50%, var(--primary) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 4s ease infinite;
+}
+
+/* ---- Hero badge entrance ---- */
+.hero-badge {
+  animation: fadeInDown 0.6s ease 0.1s both;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Stat numbers: count-up glow ---- */
+.counter-num, .bento-stat-number, .mini-stat-number, .partner-stat-num {
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+/* ---- CTA banner gradient hover ---- */
+.cta-banner-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-banner-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+}
+
+/* ---- Reduce motion for accessibility ---- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-left, .reveal-right, .reveal-scale,
+  .stagger-children > *,
+  .float-badge,
+  .timeline-step,
+  .bento-card, .solution-card, .pricing-card,
+  .partner-card, .workflow-card {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .premium-hero-image-box img {
+    animation: none !important;
+  }
+  
+  .premium-hero-title span {
+    animation: none !important;
+    -webkit-text-fill-color: var(--primary);
+  }
+}

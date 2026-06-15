@@ -35,7 +35,7 @@ let state = {
 // CLIENT ROUTER & DYNAMIC PRELOADER
 // ==========================================
 async function loadAllPages() {
-  const pages = ['home', 'gerer', 'faire-louer', 'trouver', 'construire', 'partenariats', 'blog', 'contact', 'auth', 'dashboard', 'detail', 'pay', 'invoices', 'invoice-detail-view'];
+  const pages = ['home', 'gerer', 'faire-louer', 'trouver', 'construire', 'conseils-juridiques', 'partenariats', 'blog', 'contact', 'auth', 'dashboard', 'detail', 'pay', 'invoices', 'invoice-detail-view'];
   try {
     await Promise.all(pages.map(async page => {
       const res = await fetch(`pages/${page}.html`);
@@ -104,9 +104,17 @@ function handleRoute() {
 }
 
 function onViewLoad(hash) {
+  // Trigger scroll animations on all public pages
+  const publicPages = ['#home', '#gerer', '#faire-louer', '#trouver', '#construire', '#conseils-juridiques', '#partenariats', '#blog', '#contact'];
+  if (publicPages.some(p => hash.startsWith(p))) {
+    setTimeout(initScrollAnimations, 150);
+  }
+
   if (hash === "#home") {
     renderTestimonials();
     renderTestimonialsGrid();
+    setTimeout(initCounterUp, 300);
+  } else if (hash === "#conseils-juridiques") {
     setTimeout(initCounterUp, 300);
   } else if (hash === "#trouver") {
     showPropertySkeletons(6);
@@ -216,6 +224,57 @@ function initCounterUp() {
     });
   }, { threshold: 0.5 });
   counters.forEach(c => obs.observe(c));
+}
+
+// ==========================================
+// SCROLL ANIMATIONS (IntersectionObserver)
+// ==========================================
+let _scrollAnimObserver = null;
+
+function initScrollAnimations() {
+  // Disconnect previous observer to avoid leaks on SPA navigation
+  if (_scrollAnimObserver) {
+    _scrollAnimObserver.disconnect();
+  }
+
+  _scrollAnimObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+
+      // Stagger children: animate each child with an increasing delay
+      if (el.classList.contains('stagger-children')) {
+        Array.from(el.children).forEach((child, i) => {
+          setTimeout(() => {
+            child.classList.add('is-visible');
+          }, i * 100);
+        });
+        el.classList.add('is-visible');
+      } else {
+        el.classList.add('is-visible');
+      }
+
+      _scrollAnimObserver.unobserve(el);
+    });
+  }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+
+  // Observe all animatable elements in the current active view
+  const activeView = document.querySelector('.view-section.active');
+  if (!activeView) return;
+
+  const selectors = [
+    '.reveal', '.reveal-left', '.reveal-right', '.reveal-scale',
+    '.stagger-children', '.timeline-step'
+  ];
+
+  activeView.querySelectorAll(selectors.join(', ')).forEach(el => {
+    // Reset visibility for re-entry on SPA navigation
+    el.classList.remove('is-visible');
+    if (el.classList.contains('stagger-children')) {
+      Array.from(el.children).forEach(child => child.classList.remove('is-visible'));
+    }
+    _scrollAnimObserver.observe(el);
+  });
 }
 
 // ==========================================

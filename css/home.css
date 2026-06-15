@@ -106,6 +106,7 @@
   align-items: center;
   gap: 0.75rem;
   border-left: 4px solid var(--success);
+  animation: floatBadge 3.5s ease-in-out infinite;
 }
 
 .premium-hero-badge-overlay i {
