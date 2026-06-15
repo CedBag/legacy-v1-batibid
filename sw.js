@@ -1,4 +1,4 @@
-const CACHE_NAME = "batibid-cache-v1";
+﻿const CACHE_NAME = "batibid-cache-v2";
 const ASSETS = [
   "./",
   "./index.html",
@@ -14,11 +14,13 @@ const ASSETS = [
   "./js/dashboard-p4.js",
   "./css/variables.css",
   "./css/base.css",
+  "./css/animations.css",
   "./css/header-footer.css",
   "./css/home.css",
   "./css/gerer.css",
   "./css/trouver.css",
   "./css/construire.css",
+  "./css/conseils-juridiques.css",
   "./css/blog.css",
   "./css/contact.css",
   "./css/auth.css",
@@ -37,6 +39,7 @@ const ASSETS = [
   "./pages/faire-louer.html",
   "./pages/trouver.html",
   "./pages/construire.html",
+  "./pages/conseils-juridiques.html",
   "./pages/partenariats.html",
   "./pages/blog.html",
   "./pages/contact.html",
@@ -48,35 +51,37 @@ const ASSETS = [
   "./pages/invoice-detail-view.html"
 ];
 
-// Install Event
+// Install: precache all assets + skip waiting immediately
 self.addEventListener("install", (e) => {
   e.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS);
-    })
+    caches.open(CACHE_NAME)
+      .then((cache) => cache.addAll(ASSETS))
+      .then(() => self.skipWaiting())
   );
 });
 
-// Activate Event
+// Activate: delete ALL old caches + take control of all open tabs immediately
 self.addEventListener("activate", (e) => {
   e.waitUntil(
-    caches.keys().then((keys) => {
-      return Promise.all(
-        keys.map((key) => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
-          }
-        })
-      );
-    })
+    caches.keys()
+      .then((keys) => Promise.all(
+        keys.map((key) => key !== CACHE_NAME ? caches.delete(key) : null)
+      ))
+      .then(() => self.clients.claim())
   );
 });
 
-// Fetch Event (Network-First Fallback to Cache)
+// Fetch: Network-First strategy
+// Always tries the network. Falls back to cache only if offline.
 self.addEventListener("fetch", (e) => {
+  if (e.request.method !== "GET") return;
   e.respondWith(
-    fetch(e.request).catch(() => {
-      return caches.match(e.request);
-    })
+    fetch(e.request)
+      .then((networkResponse) => {
+        const clone = networkResponse.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(e.request, clone));
+        return networkResponse;
+      })
+      .catch(() => caches.match(e.request))
   );
 });
