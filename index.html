@@ -2,6 +2,18 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(regs) {
+        regs.forEach(function(reg) { reg.unregister(); });
+      });
+    }
+    if ('caches' in window) {
+      caches.keys().then(function(keys) {
+        keys.forEach(function(key) { caches.delete(key); });
+      });
+    }
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BatiBid - Refonte Digitale & Gestion Locative au Bénin</title>
   <meta name="description" content="Plateforme proptech de confiance au Bénin pour propriétaires, locataires et professionnels. Gérez vos biens, trouvez votre prochain logement ou menez à bien vos projets.">

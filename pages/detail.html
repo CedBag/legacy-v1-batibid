@@ -1,46 +1,111 @@
-﻿<div style="max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter);">
-  <div class="detail-property-layout">
-    <div>
-      <div class="panorama-360-container">
-        <canvas id="panorama-360" class="panorama-canvas"></canvas>
-        <div class="panorama-overlay-info">
-          <i class="fas fa-vr-cardboard"></i> Visite Virtuelle 360° Interactive BatiBid
-        </div>
-        <div class="panorama-control-tip">
-          <i class="fas fa-arrows-alt-h"></i> Cliquez et glissez pour tourner la caméra
-        </div>
-      </div>
-      
-      <h2 class="headline-lg" id="detail-title">Appartement de Standing</h2>
-      <div class="property-card-location" style="font-size: 1.1rem; margin: 1rem 0;" id="detail-location">
-        <i class="fas fa-map-marker-alt"></i> Cadjehoun, Cotonou
-      </div>
-      
-      <div class="detail-stats-container">
-        <div class="detail-stat-item">
-          <span class="detail-stat-label">Chambres</span>
-          <strong class="detail-stat-value" id="detail-beds">2</strong>
-        </div>
-        <div class="detail-stat-item">
-          <span class="detail-stat-label">Salles de bain</span>
-          <strong class="detail-stat-value" id="detail-baths">2</strong>
-        </div>
-        <div class="detail-stat-item">
-          <span class="detail-stat-label">Superficie</span>
-          <strong class="detail-stat-value"><span id="detail-surface">95</span> m²</strong>
-        </div>
-        <div class="detail-stat-item">
-          <span class="detail-stat-label">Type</span>
-          <strong class="detail-stat-value" id="detail-type">Appartement</strong>
-        </div>
-      </div>
-      
-      <h3 class="headline-md mb-4">Description</h3>
-      <p class="body-md" style="line-height: 1.7; color: var(--secondary-light); margin-bottom: 3rem;" id="detail-desc">
-        Description complète du logement...
-      </p>
+<div class="detail-page-wrapper">
+  <!-- Back button -->
+  <div class="detail-back-bar">
+    <button class="detail-back-btn" onclick="navigateTo('#trouver')">
+      <i class="fas fa-arrow-left"></i> Retour aux biens
+    </button>
+    <div id="detail-verified-badge" class="detail-verified-badge" style="display:none;">
+      <i class="fas fa-shield-check"></i> Bien Vérifié BatiBid
     </div>
-    
+  </div>
+
+  <div class="detail-property-layout">
+    <!-- ====== LEFT COLUMN ====== -->
+    <div class="detail-left-col">
+
+      <!-- MEDIA TABS -->
+      <div class="detail-media-tabs">
+        <button class="detail-tab-btn active" onclick="switchDetailTab('gallery', this)">
+          <i class="fas fa-images"></i> Photos
+        </button>
+        <button class="detail-tab-btn" onclick="switchDetailTab('panorama', this)">
+          <i class="fas fa-vr-cardboard"></i> Visite 360°
+        </button>
+        <button class="detail-tab-btn" id="detail-video-tab-btn" onclick="switchDetailTab('video', this)" style="display:none;">
+          <i class="fas fa-play-circle"></i> Vidéo
+        </button>
+      </div>
+
+      <!-- GALLERY PANEL -->
+      <div id="detail-panel-gallery" class="detail-media-panel active">
+        <div class="detail-gallery-main-wrapper">
+          <img id="detail-gallery-main-img" src="" alt="Photo principale" class="detail-gallery-main-img">
+          <div class="detail-gallery-nav">
+            <button class="detail-gallery-arrow" onclick="galleryPrev()"><i class="fas fa-chevron-left"></i></button>
+            <button class="detail-gallery-arrow" onclick="galleryNext()"><i class="fas fa-chevron-right"></i></button>
+          </div>
+          <div class="detail-gallery-counter" id="detail-gallery-counter">1 / 4</div>
+        </div>
+        <div class="detail-gallery-thumbs" id="detail-gallery-thumbs">
+          <!-- Thumbnails injected by JS -->
+        </div>
+      </div>
+
+      <!-- 360 PANORAMA PANEL -->
+      <div id="detail-panel-panorama" class="detail-media-panel">
+        <div class="panorama-360-container">
+          <canvas id="panorama-360" class="panorama-canvas"></canvas>
+          <div class="panorama-overlay-info">
+            <i class="fas fa-vr-cardboard"></i> Visite Virtuelle 360° Interactive BatiBid
+          </div>
+          <div class="panorama-control-tip">
+            <i class="fas fa-arrows-alt-h"></i> Cliquez et glissez pour tourner — Tactile supporté
+          </div>
+        </div>
+      </div>
+
+      <!-- VIDEO PANEL -->
+      <div id="detail-panel-video" class="detail-media-panel">
+        <div class="detail-video-wrapper">
+          <iframe 
+            id="detail-video-iframe" 
+            src="" 
+            class="detail-video-iframe"
+            title="Vidéo de présentation du bien" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p class="detail-video-caption">
+          <i class="fas fa-info-circle"></i> Vidéo de présentation du bien enregistrée par BatiBid
+        </p>
+      </div>
+
+      <!-- PROPERTY INFO -->
+      <div class="detail-info-section">
+        <h1 class="headline-lg" id="detail-title">Appartement de Standing</h1>
+        <div class="property-card-location detail-location-bar" id="detail-location">
+          <i class="fas fa-map-marker-alt"></i> Cadjehoun, Cotonou
+        </div>
+
+        <div class="detail-stats-container">
+          <div class="detail-stat-item">
+            <span class="detail-stat-label"><i class="fas fa-bed"></i> Chambres</span>
+            <strong class="detail-stat-value" id="detail-beds">2</strong>
+          </div>
+          <div class="detail-stat-item">
+            <span class="detail-stat-label"><i class="fas fa-bath"></i> Salles de bain</span>
+            <strong class="detail-stat-value" id="detail-baths">2</strong>
+          </div>
+          <div class="detail-stat-item">
+            <span class="detail-stat-label"><i class="fas fa-ruler-combined"></i> Superficie</span>
+            <strong class="detail-stat-value"><span id="detail-surface">95</span> m²</strong>
+          </div>
+          <div class="detail-stat-item">
+            <span class="detail-stat-label"><i class="fas fa-home"></i> Type</span>
+            <strong class="detail-stat-value" id="detail-type">Appartement</strong>
+          </div>
+        </div>
+
+        <h2 class="headline-md mb-4" style="margin-top:2rem;">Description du bien</h2>
+        <p class="body-md" style="line-height: 1.8; color: var(--secondary-light); margin-bottom: 3rem;" id="detail-desc">
+          Description complète du logement...
+        </p>
+      </div>
+    </div>
+
+    <!-- ====== RIGHT COLUMN: CTA ====== -->
     <div id="detail-cta-box">
       <!-- Dynamic CTA sidebar filled by app.js -->
     </div>

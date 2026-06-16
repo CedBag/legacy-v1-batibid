@@ -1053,7 +1053,6 @@ function calculateRentEstimate(event) {
       .format(val)
       .replace("XOF", "FCFA");
   };
-  
   const resValue = document.getElementById("est-result-value");
   const resContainer = document.getElementById("est-result-container");
   
@@ -1064,41 +1063,130 @@ function calculateRentEstimate(event) {
 }
 
 // ==========================================
-// PROPERTY DETAIL & 360 PANORAMA CANVAS
+// PROPERTY DETAIL - GALLERY, VIDEO, 360°
 // ==========================================
+let detailGalleryIndex = 0;
+let detailGalleryImages = [];
+
 function renderPropertyDetails() {
   const p = mockDb.properties.find(item => item.id === state.currentViewingPropertyId) || mockDb.properties[0];
-  
+  detailGalleryIndex = 0;
+  detailGalleryImages = p.images || [p.image];
+
   document.getElementById("detail-title").innerText = p.title;
-  document.getElementById("detail-location").innerText = `${p.address}, ${p.city}`;
+  document.getElementById("detail-location").innerHTML = `<i class="fas fa-map-marker-alt"></i> ${p.address}, ${p.city}`;
   document.getElementById("detail-desc").innerText = p.desc;
-  
   document.getElementById("detail-beds").innerText = p.bedrooms;
   document.getElementById("detail-baths").innerText = p.bathrooms;
   document.getElementById("detail-surface").innerText = p.surface;
   document.getElementById("detail-type").innerText = p.type.charAt(0).toUpperCase() + p.type.slice(1);
-  
+
+  // Verified badge
+  const badge = document.getElementById("detail-verified-badge");
+  if (badge) badge.style.display = p.verified ? "inline-flex" : "none";
+
+  // Video tab visibility
+  const videoTabBtn = document.getElementById("detail-video-tab-btn");
+  if (videoTabBtn) videoTabBtn.style.display = p.videoUrl ? "flex" : "none";
+
+  // Populate gallery
+  const mainImg = document.getElementById("detail-gallery-main-img");
+  if (mainImg) mainImg.src = detailGalleryImages[0];
+  updateGalleryCounter();
+  renderGalleryThumbs();
+
+  // CTA Box
   const ctaBox = document.getElementById("detail-cta-box");
   if (ctaBox) {
     ctaBox.innerHTML = `
       <div class="detail-cta-card">
         <h4 style="margin-bottom: 1rem;">Intéressé par ce bien ?</h4>
-        <div style="font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 1.5rem;">${formatCurrency(p.price)} / mois</div>
+        <div style="font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;">${formatCurrency(p.price)} <span style="font-size:1rem; font-weight:600; color:var(--gray-600);">/mois</span></div>
+        ${p.verified ? `<div class="detail-verified-badge" style="margin-bottom:1.25rem;"><i class="fas fa-shield-check"></i> Bien Vérifié BatiBid</div>` : ''}
         <p style="font-size: 0.85rem; color: var(--gray-600); margin-bottom: 1.5rem;">
           <i class="fas fa-shield-alt" style="color: var(--success); margin-right: 0.25rem;"></i> 
           Transactions sécurisées et garanties par BatiBid.
         </p>
-        <button class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;" onclick="startRentPayment(${p.id})">
+        <button class="btn btn-primary" style="width: 100%; margin-bottom: 0.75rem;" onclick="startRentPayment(${p.id})">
           <i class="fas fa-key" style="margin-right: 0.5rem;"></i> Louer maintenant
         </button>
-        <button class="btn btn-secondary" style="width: 100%;" onclick="navigateTo('#trouver')">
-          <i class="fas fa-arrow-left" style="margin-right: 0.5rem;"></i> Retour aux biens
+        <a href="https://wa.me/22997000000" class="btn btn-secondary" target="_blank" style="width: 100%; margin-bottom: 0.75rem; text-align:center; display:flex; align-items:center; justify-content:center; gap:0.5rem;">
+          <i class="fab fa-whatsapp" style="color:#25D366;"></i> Contacter un agent
+        </a>
+        <button class="btn btn-secondary" style="width: 100%; border:none; color:var(--gray-600); font-size:0.85rem;" onclick="navigateTo('#trouver')">
+          <i class="fas fa-arrow-left" style="margin-right:0.4rem;"></i> Retour aux biens
         </button>
       </div>
     `;
   }
-  
+
+  // Show gallery tab by default
+  switchDetailTab('gallery', document.querySelector('.detail-tab-btn'));
+
+  // Initialize 360
   init360Canvas(p.title);
+
+  // Set video URL
+  const iframe = document.getElementById("detail-video-iframe");
+  if (iframe && p.videoUrl) {
+    iframe.src = p.videoUrl;
+  } else if (iframe) {
+    iframe.src = "";
+  }
+}
+
+function renderGalleryThumbs() {
+  const container = document.getElementById("detail-gallery-thumbs");
+  if (!container) return;
+  container.innerHTML = detailGalleryImages.map((src, i) => `
+    <div class="detail-gallery-thumb ${i === detailGalleryIndex ? 'active' : ''}" onclick="galleryGoTo(${i})">
+      <img src="${src}" alt="Photo ${i + 1}">
+    </div>
+  `).join('');
+}
+
+function updateGalleryCounter() {
+  const counter = document.getElementById("detail-gallery-counter");
+  if (counter) counter.innerText = `${detailGalleryIndex + 1} / ${detailGalleryImages.length}`;
+}
+
+function galleryGoTo(idx) {
+  detailGalleryIndex = idx;
+  const mainImg = document.getElementById("detail-gallery-main-img");
+  if (mainImg) {
+    mainImg.style.opacity = '0';
+    setTimeout(() => {
+      mainImg.src = detailGalleryImages[idx];
+      mainImg.style.opacity = '1';
+    }, 180);
+  }
+  updateGalleryCounter();
+  renderGalleryThumbs();
+}
+
+function galleryPrev() {
+  const newIdx = (detailGalleryIndex - 1 + detailGalleryImages.length) % detailGalleryImages.length;
+  galleryGoTo(newIdx);
+}
+
+function galleryNext() {
+  const newIdx = (detailGalleryIndex + 1) % detailGalleryImages.length;
+  galleryGoTo(newIdx);
+}
+
+function switchDetailTab(tabName, btn) {
+  // Hide all panels
+  document.querySelectorAll('.detail-media-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.detail-tab-btn').forEach(b => b.classList.remove('active'));
+  // Show target panel
+  const panel = document.getElementById(`detail-panel-${tabName}`);
+  if (panel) panel.classList.add('active');
+  if (btn) btn.classList.add('active');
+  // Re-init 360 canvas if switching to panorama
+  if (tabName === 'panorama') {
+    const p = mockDb.properties.find(item => item.id === state.currentViewingPropertyId) || mockDb.properties[0];
+    setTimeout(() => init360Canvas(p.title), 50);
+  }
 }
 
 function init360Canvas(title) {
@@ -1179,15 +1267,9 @@ function init360Canvas(title) {
   
   drawRoom();
   
-  canvas.addEventListener("mousedown", (e) => {
-    state.isDraggingPanorama = true;
-    state.lastMouseX = e.clientX;
-  });
-  
-  window.addEventListener("mouseup", () => {
-    state.isDraggingPanorama = false;
-  });
-  
+  // Mouse drag
+  canvas.addEventListener("mousedown", (e) => { state.isDraggingPanorama = true; state.lastMouseX = e.clientX; });
+  window.addEventListener("mouseup", () => { state.isDraggingPanorama = false; });
   canvas.addEventListener("mousemove", (e) => {
     if (!state.isDraggingPanorama) return;
     const deltaX = e.clientX - state.lastMouseX;
@@ -1195,6 +1277,17 @@ function init360Canvas(title) {
     state.lastMouseX = e.clientX;
     drawRoom();
   });
+
+  // Touch support for mobile
+  canvas.addEventListener("touchstart", (e) => { state.isDraggingPanorama = true; state.lastMouseX = e.touches[0].clientX; }, { passive: true });
+  canvas.addEventListener("touchend", () => { state.isDraggingPanorama = false; });
+  canvas.addEventListener("touchmove", (e) => {
+    if (!state.isDraggingPanorama) return;
+    const deltaX = e.touches[0].clientX - state.lastMouseX;
+    state.panoramaYaw += deltaX * 1.5;
+    state.lastMouseX = e.touches[0].clientX;
+    drawRoom();
+  }, { passive: true });
 }
 
 // ==========================================
