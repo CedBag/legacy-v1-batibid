@@ -728,14 +728,14 @@ function updateHeaderAuth() {
       navMenu.innerHTML = `
         <a href="#gerer" class="nav-link">Gérer</a>
         <a href="#faire-louer" class="nav-link">Faire louer</a>
-        <a href="#trouver" class="nav-link">Trouver une location</a>
+        <a href="#construire" class="nav-link">Construire &amp; Rénover</a>
+        <a href="#conseils-juridiques" class="nav-link">Conseils Juridiques</a>
         <div class="dropdown">
           <a class="nav-link" style="display: flex; align-items: center; gap: 0.25rem;">
             Découvrir Plus <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i>
           </a>
           <div class="dropdown-menu">
             <a href="#partenariats"><i class="fas fa-handshake" style="margin-right: 0.5rem; color: var(--primary);"></i> Partenariats</a>
-            <a href="#construire"><i class="fas fa-hard-hat" style="margin-right: 0.5rem; color: var(--primary);"></i> Construire & Rénover</a>
             <a href="#blog"><i class="fas fa-newspaper" style="margin-right: 0.5rem; color: var(--primary);"></i> Blog</a>
             <a href="#contact"><i class="fas fa-envelope" style="margin-right: 0.5rem; color: var(--primary);"></i> Contact</a>
           </div>
@@ -749,7 +749,8 @@ function updateHeaderAuth() {
         <a href="#gerer" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-key"></i> Gérer</a>
         <a href="#faire-louer" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-bullhorn"></i> Faire louer</a>
         <a href="#trouver" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-search"></i> Trouver une location</a>
-        <a href="#construire" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-hard-hat"></i> Construire & Rénover</a>
+        <a href="#construire" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-hard-hat"></i> Construire &amp; Rénover</a>
+        <a href="#conseils-juridiques" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-balance-scale"></i> Conseils Juridiques</a>
         <div class="mobile-nav-divider"></div>
         <a href="#partenariats" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-handshake"></i> Partenariats</a>
         <a href="#blog" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-newspaper"></i> Blog</a>
