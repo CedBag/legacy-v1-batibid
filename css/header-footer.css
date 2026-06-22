@@ -135,6 +135,28 @@
   gap: 1.25rem;
 }
 
+.search-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--gray-100);
+  color: var(--secondary);
+  font-size: 1.05rem;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  border: 1px solid var(--gray-200);
+}
+
+.search-nav-btn:hover {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary);
+  transform: scale(1.05);
+}
+
 .mobile-menu-btn {
   display: none;
   background: none;
