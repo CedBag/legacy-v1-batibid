@@ -9,7 +9,7 @@
   width: 100%;
   height: calc(100vh - 72px);
   overflow: hidden;
-  background: #f5f6fa;
+  background: #e8ebf2;
   position: relative;
 }
 
@@ -24,7 +24,7 @@
   background: var(--white);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid var(--gray-100);
+  border: 1px solid var(--gray-200);
   box-shadow: 0 4px 12px rgba(0,0,0,0.04);
   transition: all var(--transition-fast);
 }

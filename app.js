@@ -19,11 +19,14 @@ let state = {
   authLocataireGere: false,
   currentFilter: {
     city: "",
+    radius: 5,
     types: ["appartement", "maison", "bureau"], // default checked
     minPrice: 0,
     maxPrice: 2000000,
     rooms: 1 // default active
   },
+  currentCoords: null,
+  catalogViewMode: 'list',
   currentViewingPropertyId: null,
   activeTestimonialIdx: 0,
   panoramaYaw: 0,
@@ -779,16 +782,31 @@ function updateHeaderAuth() {
 // ==========================================
 // SEARCH FILTERS & CATALOG
 // ==========================================
+let currentSortMode = "recent";
+let catalogMap = null;
+let catalogMapCircle = null;
+let catalogMapMarkers = [];
+
 function initSearchFilters() {
   const cityInput = document.getElementById("search-city-input");
   const budgetMin = document.getElementById("budget-min");
   const budgetMax = document.getElementById("budget-max");
+  const radiusInput = document.getElementById("search-radius-input");
+  const radiusDisplay = document.getElementById("radius-display");
   
   if (!cityInput) return;
   
   cityInput.value = state.currentFilter.city;
   budgetMin.value = state.currentFilter.minPrice || "";
   budgetMax.value = state.currentFilter.maxPrice || "";
+  
+  if (radiusInput) {
+    radiusInput.value = state.currentFilter.radius || 5;
+    if (radiusDisplay) {
+      radiusDisplay.textContent = radiusInput.value + " km";
+    }
+    updateRadiusSlider();
+  }
   
   document.querySelectorAll("input[name='type-bien']").forEach(cb => {
     cb.checked = state.currentFilter.types.includes(cb.value);
@@ -825,28 +843,238 @@ function applySearchFilters() {
   const activeRoomsBtn = document.querySelector(".rooms-btn.active");
   const roomsVal = activeRoomsBtn ? parseInt(activeRoomsBtn.innerText) : 1;
   
+  const radiusInput = document.getElementById("search-radius-input");
+  const radiusVal = radiusInput ? parseInt(radiusInput.value) : 5;
+  
   state.currentFilter = {
     city: document.getElementById("search-city-input").value.trim(),
+    radius: radiusVal,
     types: checkedTypes,
     minPrice: minPrice,
     maxPrice: maxPrice,
     rooms: roomsVal
   };
   
-  renderPropertyList();
+  updateGeocodingAndRender();
 }
 
 window.resetSearchFilters = function() {
   state.currentFilter = {
     city: "",
+    radius: 5,
     types: ["appartement", "maison", "bureau"],
     minPrice: 0,
     maxPrice: 2000000,
     rooms: 1
   };
+  state.currentCoords = null;
   initSearchFilters();
   applySearchFilters();
 };
+
+async function updateGeocodingAndRender() {
+  if (state.currentFilter.city) {
+    const coords = await getCoordinatesForQuery(state.currentFilter.city);
+    state.currentCoords = coords;
+  } else {
+    state.currentCoords = null;
+  }
+  
+  renderPropertyList();
+  
+  // If map container is visible, update Leaflet map
+  const mapContainer = document.getElementById("catalog-map-container");
+  if (mapContainer && mapContainer.style.display !== "none") {
+    initCatalogMap();
+  }
+}
+
+async function getCoordinatesForQuery(query) {
+  const mockCoords = {
+    "cotonou": { lat: 6.36, lng: 2.41 },
+    "calavi": { lat: 6.42, lng: 2.30 },
+    "abomey-calavi": { lat: 6.42, lng: 2.30 },
+    "haie vive": { lat: 6.362, lng: 2.397 },
+    "fidjrossè": { lat: 6.364, lng: 2.368 },
+    "ganhi": { lat: 6.353, lng: 2.433 },
+    "cadjehoun": { lat: 6.365, lng: 2.411 },
+    "cocotomey": { lat: 6.422, lng: 2.302 }
+  };
+  
+  const clean = query.toLowerCase().trim();
+  for (const key in mockCoords) {
+    if (clean.includes(key)) {
+      return mockCoords[key];
+    }
+  }
+  
+  try {
+    const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query + ', Benin')}`);
+    if (response.ok) {
+      const data = await response.json();
+      if (data && data.length > 0) {
+        return {
+          lat: parseFloat(data[0].lat),
+          lng: parseFloat(data[0].lon)
+        };
+      }
+    }
+  } catch (err) {
+    console.warn("Nominatim Geocoding API failed, using fallback.", err);
+  }
+  
+  return { lat: 6.36, lng: 2.41 };
+}
+
+function calculateDistance(lat1, lon1, lat2, lon2) {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  return R * c;
+}
+
+window.switchCatalogViewMode = function(mode) {
+  state.catalogViewMode = mode;
+  const listGrid = document.querySelector(".properties-list-grid");
+  const mapContainer = document.getElementById("catalog-map-container");
+  const listBtn = document.getElementById("view-mode-list-btn");
+  const mapBtn = document.getElementById("view-mode-map-btn");
+  
+  if (!listGrid || !mapContainer) return;
+  
+  if (mode === 'map') {
+    listGrid.style.display = 'none';
+    mapContainer.style.display = 'block';
+    if (listBtn) listBtn.classList.remove('active');
+    if (mapBtn) mapBtn.classList.add('active');
+    
+    setTimeout(() => {
+      initCatalogMap();
+    }, 100);
+  } else {
+    listGrid.style.display = 'grid';
+    mapContainer.style.display = 'none';
+    if (listBtn) listBtn.classList.add('active');
+    if (mapBtn) mapBtn.classList.remove('active');
+  }
+};
+
+window.sortCatalogProperties = function(sortVal) {
+  currentSortMode = sortVal;
+  renderPropertyList();
+};
+
+function initCatalogMap() {
+  const mapElement = document.getElementById("catalog-map");
+  if (!mapElement) return;
+  
+  if (catalogMap) {
+    catalogMap.invalidateSize();
+    updateCatalogMap();
+    return;
+  }
+  
+  const startLat = state.currentCoords ? state.currentCoords.lat : 6.36;
+  const startLng = state.currentCoords ? state.currentCoords.lng : 2.41;
+  
+  catalogMap = L.map('catalog-map').setView([startLat, startLng], 12);
+  
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(catalogMap);
+  
+  updateCatalogMap();
+}
+
+function updateCatalogMap() {
+  if (!catalogMap) return;
+  
+  catalogMapMarkers.forEach(m => catalogMap.removeLayer(m));
+  catalogMapMarkers = [];
+  
+  if (catalogMapCircle) {
+    catalogMap.removeLayer(catalogMapCircle);
+    catalogMapCircle = null;
+  }
+  
+  const filtered = mockDb.properties.filter(p => {
+    if (state.currentFilter.city) {
+      if (state.currentCoords && p.latitude && p.longitude) {
+        const dist = calculateDistance(state.currentCoords.lat, state.currentCoords.lng, p.latitude, p.longitude);
+        if (dist > state.currentFilter.radius) return false;
+      } else {
+        const cLower = state.currentFilter.city.toLowerCase();
+        if (!p.city.toLowerCase().includes(cLower) && !p.address.toLowerCase().includes(cLower)) return false;
+      }
+    }
+    if (state.currentFilter.types.length > 0 && !state.currentFilter.types.includes(p.type)) return false;
+    if (p.price < state.currentFilter.minPrice || p.price > state.currentFilter.maxPrice) return false;
+    if (p.bedrooms < state.currentFilter.rooms && p.type !== "bureau") return false;
+    return true;
+  });
+  
+  if (state.currentCoords) {
+    const center = [state.currentCoords.lat, state.currentCoords.lng];
+    catalogMap.setView(center, getZoomLevelForRadius(state.currentFilter.radius));
+    
+    catalogMapCircle = L.circle(center, {
+      color: '#D95E2B',
+      fillColor: '#D95E2B',
+      fillOpacity: 0.15,
+      radius: state.currentFilter.radius * 1000
+    }).addTo(catalogMap);
+    
+    const centerMarker = L.marker(center, {
+      icon: L.divIcon({
+        className: 'center-marker',
+        html: '<div style="background-color: var(--secondary); color: var(--white); padding: 5px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; border: 1px solid var(--primary);box-shadow: 0 2px 10px rgba(0,0,0,0.15);"><i class="fas fa-search-location"></i> Centre</div>',
+        iconSize: [60, 25],
+        iconAnchor: [30, 12]
+      })
+    }).addTo(catalogMap);
+    catalogMapMarkers.push(centerMarker);
+  }
+  
+  filtered.forEach(p => {
+    if (p.latitude && p.longitude) {
+      const marker = L.marker([p.latitude, p.longitude]).addTo(catalogMap);
+      
+      const popupContent = `
+        <div style="font-family: var(--font-family); width: 200px; padding: 5px;">
+          <img src="${p.image}" style="width: 100%; height: 100px; object-fit: cover; border-radius: 4px; margin-bottom: 0.5rem;" />
+          <h4 style="margin: 0 0 0.25rem 0; font-size: 0.95rem; font-weight: 700; color: var(--secondary);">${p.title}</h4>
+          <p style="margin: 0 0 0.5rem 0; font-size: 0.85rem; color: var(--primary); font-weight: 700;">${formatCurrency(p.price)}/mois</p>
+          <p style="margin: 0 0 0.5rem 0; font-size: 0.75rem; color: var(--gray-600);"><i class="fas fa-map-marker-alt"></i> ${p.address}</p>
+          <button class="btn btn-primary" style="padding: 0.35rem 0.75rem; font-size: 0.75rem; width: 100%;" onclick="viewPropertyDetails(${p.id})">Voir détails</button>
+        </div>
+      `;
+      
+      marker.bindPopup(popupContent);
+      catalogMapMarkers.push(marker);
+    }
+  });
+  
+  if (!state.currentCoords && catalogMapMarkers.length > 0) {
+    const validMarkers = catalogMapMarkers.filter(m => m.getLatLng && typeof m.getLatLng === 'function');
+    if (validMarkers.length > 0) {
+      const group = new L.featureGroup(validMarkers);
+      catalogMap.fitBounds(group.getBounds());
+    }
+  }
+}
+
+function getZoomLevelForRadius(radiusKm) {
+  if (radiusKm <= 2) return 14;
+  if (radiusKm <= 5) return 13;
+  if (radiusKm <= 10) return 12;
+  if (radiusKm <= 25) return 11;
+  return 10;
+}
 
 function renderPropertyList() {
   const listContainer = document.querySelector(".properties-list-grid");
@@ -854,12 +1082,23 @@ function renderPropertyList() {
   
   listContainer.innerHTML = "";
   
-  const filtered = mockDb.properties.filter(p => {
+  let filtered = mockDb.properties.filter(p => {
     if (state.currentFilter.city) {
-      const cLower = state.currentFilter.city.toLowerCase();
-      const matchCity = p.city.toLowerCase().includes(cLower);
-      const matchAddr = p.address.toLowerCase().includes(cLower);
-      if (!matchCity && !matchAddr) return false;
+      if (state.currentCoords && p.latitude && p.longitude) {
+        const dist = calculateDistance(state.currentCoords.lat, state.currentCoords.lng, p.latitude, p.longitude);
+        p.currentDistance = dist;
+        if (dist > state.currentFilter.radius) {
+          return false;
+        }
+      } else {
+        const cLower = state.currentFilter.city.toLowerCase();
+        const matchCity = p.city.toLowerCase().includes(cLower);
+        const matchAddr = p.address.toLowerCase().includes(cLower);
+        if (!matchCity && !matchAddr) return false;
+        p.currentDistance = null;
+      }
+    } else {
+      p.currentDistance = null;
     }
     
     if (state.currentFilter.types.length > 0 && !state.currentFilter.types.includes(p.type)) {
@@ -876,6 +1115,15 @@ function renderPropertyList() {
     
     return true;
   });
+  
+  // Sorting logic
+  if (currentSortMode === "price-asc") {
+    filtered.sort((a, b) => a.price - b.price);
+  } else if (currentSortMode === "price-desc") {
+    filtered.sort((a, b) => b.price - a.price);
+  } else {
+    filtered.sort((a, b) => b.id - a.id);
+  }
   
   const badgeCount = document.getElementById("catalog-count-badge");
   if (badgeCount) {
@@ -911,7 +1159,10 @@ function renderPropertyList() {
       <div class="property-card-content">
         <div class="property-card-price">${formatCurrency(p.price)}<span>/mois</span></div>
         <h3 class="property-card-title">${p.title}</h3>
-        <div class="property-card-location"><i class="fas fa-map-marker-alt"></i> ${p.address}, ${p.city}</div>
+        <div class="property-card-location">
+          <i class="fas fa-map-marker-alt"></i> ${p.address}, ${p.city}
+          ${p.currentDistance !== undefined && p.currentDistance !== null ? `<span style="margin-left: 0.5rem; color: var(--primary); font-weight: 700;">(${p.currentDistance.toFixed(1)} km)</span>` : ''}
+        </div>
         <div class="property-card-details">
           <span><i class="fas fa-ruler-combined"></i> ${p.surface}m²</span>
           <span><i class="fas fa-bed"></i> ${p.bedrooms} ch.</span>

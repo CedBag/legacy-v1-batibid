@@ -306,6 +306,8 @@ const mockDb = {
       images: ["./apt_kitchen.png", "./duplex_villa.png", "./office_space.png", "./apt_kitchen.png"],
       videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
       verified: true, 
+      latitude: 6.362,
+      longitude: 2.397,
       desc: "Superbe appartement F3 moderne situé en plein cœur de la Haï e Vive. Entièrement climatisé avec finitions haut de gamme, cuisine équipée et balcon spacieux." 
     },
     { 
@@ -323,6 +325,8 @@ const mockDb = {
       images: ["./duplex_villa.png", "./apt_kitchen.png", "./office_space.png", "./duplex_villa.png"],
       videoUrl: null,
       verified: false, 
+      latitude: 6.364,
+      longitude: 2.368,
       desc: "Magnifique villa duplex contemporaine avec piscine privée à Fidjrossè. Grand salon lumineux, cuisine américaine, 4 chambres spacieuses, garage." 
     },
     { 
@@ -340,6 +344,8 @@ const mockDb = {
       images: ["./office_space.png", "./apt_kitchen.png", "./duplex_villa.png", "./office_space.png"],
       videoUrl: null,
       verified: true, 
+      latitude: 6.353,
+      longitude: 2.433,
       desc: "Plateau de bureaux professionnels en open space au cœur du centre d'affaires de Ganhi. Climatisé, fibre optique, parkings." 
     },
     { 
@@ -357,6 +363,8 @@ const mockDb = {
       images: ["./apt_kitchen.png", "./duplex_villa.png", "./office_space.png", "./apt_kitchen.png"],
       videoUrl: null,
       verified: true, 
+      latitude: 6.365,
+      longitude: 2.411,
       desc: "Studio meublé de charme à Cadjehoun. Connexion Wifi haut débit, climatisation, parking intérieur." 
     },
     { 
@@ -374,6 +382,8 @@ const mockDb = {
       images: ["./duplex_villa.png", "./apt_kitchen.png", "./office_space.png", "./duplex_villa.png"],
       videoUrl: null,
       verified: false, 
+      latitude: 6.422,
+      longitude: 2.302,
       desc: "Maison neuve de 3 chambres avec cour arrière et garage. Secteur calme et recherché de Calavi." 
     }
   ],

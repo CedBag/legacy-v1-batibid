@@ -1,4 +1,4 @@
-﻿<div class="catalog-layout">
+<div class="catalog-layout">
   
   <!-- Left filter sidebar -->
   <aside class="filter-sidebar">
@@ -84,16 +84,21 @@
       
       <div class="catalog-controls">
         <div class="view-mode-toggle">
-          <button class="view-mode-btn active"><i class="fas fa-th-large"></i> Liste</button>
-          <button class="view-mode-btn" onclick="showAlert('info', 'Carte', 'Simulation : affichage sur carte géographique de Cotonou.')"><i class="fas fa-map"></i> Carte</button>
+          <button type="button" class="view-mode-btn active" id="view-mode-list-btn" onclick="switchCatalogViewMode('list')"><i class="fas fa-th-large"></i> Liste</button>
+          <button type="button" class="view-mode-btn" id="view-mode-map-btn" onclick="switchCatalogViewMode('map')"><i class="fas fa-map"></i> Carte</button>
         </div>
         
-        <select class="form-control" style="padding: 0.5rem 1rem; font-size: 0.85rem;">
+        <select class="form-control" style="padding: 0.5rem 1rem; font-size: 0.85rem;" onchange="sortCatalogProperties && sortCatalogProperties(this.value)">
           <option value="recent">Plus récent</option>
           <option value="price-asc">Prix croissant</option>
           <option value="price-desc">Prix décroissant</option>
         </select>
       </div>
+    </div>
+    
+    <!-- Map Container -->
+    <div id="catalog-map-container" style="display: none; height: 500px; border-radius: var(--radius-xl); margin-bottom: 2rem; border: 1px solid var(--gray-300); overflow: hidden; box-shadow: var(--shadow-soft);">
+      <div id="catalog-map" style="width: 100%; height: 100%; z-index: 1;"></div>
     </div>
     
     <div class="properties-list-grid">
@@ -105,7 +110,7 @@
       <i class="fas fa-search-plus" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem; display: block;"></i>
       <h4 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">Vous ne trouvez pas votre logement idéal ?</h4>
       <p class="body-md" style="margin-bottom: 1.5rem;">Décrivez-nous ce que vous cherchez quartier, budget, type de bien et un agent BatiBid trouve pour vous sous 12h. Zéro déplacement.</p>
-      <button class="btn btn-primary" onclick="openCustomSearchModal()"><i class="fas fa-magic" style="margin-right: 0.5rem;"></i> Lancer ma recherche personnalisée</button>
+      <button class="btn btn-primary" onclick="openCustomSearchModal()"><i class="fas fa-magic" style="margin-right: 0.5rem;"></i> Confier ma recherche à un conseiller (Gratuit)</button>
     </div>
   </div>
   

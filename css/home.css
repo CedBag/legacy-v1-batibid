@@ -271,6 +271,21 @@
   gap: 0.75rem;
 }
 
+.accordion-wrapper.accordion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+  max-width: var(--container-max);
+}
+
+@media (max-width: 768px) {
+  .accordion-wrapper.accordion-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 .accordion-item {
   background: var(--white);
   border: 1px solid var(--gray-200);
@@ -722,6 +737,51 @@
   transform: translateX(0);
 }
 
+.contact-fab {
+  position: fixed;
+  bottom: 6.5rem;
+  right: 2rem;
+  width: 56px;
+  height: 56px;
+  background: var(--primary);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 20px rgba(217, 94, 43, 0.4);
+  z-index: 1500;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+}
+
+.contact-fab:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(217, 94, 43, 0.55);
+}
+
+.contact-fab-tooltip {
+  position: absolute;
+  right: 68px;
+  background: var(--secondary);
+  color: var(--white);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+  transform: translateX(5px);
+}
+
+.contact-fab:hover .contact-fab-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 /* ==========================================
    MOBILE STICKY CTA BAR (Visitor only)
    ========================================== */
@@ -743,13 +803,20 @@
   .mobile-sticky-cta {
     display: flex;
   }
-  /* Adjust WhatsApp FAB position on mobile to avoid overlap with sticky CTA */
+  /* Adjust WhatsApp & Contact FAB positions on mobile to avoid overlap with sticky CTA */
   .whatsapp-fab {
     bottom: 5.5rem;
     right: 1rem;
     width: 48px;
     height: 48px;
     font-size: 1.4rem;
+  }
+  .contact-fab {
+    bottom: 9.5rem;
+    right: 1rem;
+    width: 48px;
+    height: 48px;
+    font-size: 1.3rem;
   }
   /* Counters wrap */
   .hero-counter-strip {
@@ -826,16 +893,18 @@
    LOCATAIRE CTA BANNER & RESPONSIVE HOME
    ========================================== */
 .locataire-cta-section {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
   padding-top: 1rem;
   padding-bottom: 4rem;
-  width: 100%;
 }
 
 .locataire-cta-banner {
   background: linear-gradient(135deg, var(--secondary) 0%, #252525 100%);
   color: var(--white);
   padding: 3rem;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   display: flex;
   justify-content: space-between;
   align-items: center;
