@@ -15,6 +15,27 @@
           <i class="fas fa-search" style="position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--gray-500);"></i>
         </div>
       </div>
+      
+      <div class="filter-group">
+        <label class="filter-label"><i class="fas fa-map-marker-alt"></i> Point de repère / Carrefour</label>
+        <select id="filter-carrefour" class="form-control" onchange="selectCarrefourCenter(this.value)" style="width: 100%; border: 1px solid var(--gray-300); border-radius: var(--radius-md); padding: 0.65rem 0.75rem; font-size: 0.88rem; background: var(--white); cursor: pointer;">
+          <option value="">-- Choisir un carrefour --</option>
+          <optgroup label="Cotonou">
+            <option value="etoile">Étoile Rouge</option>
+            <option value="toyota">Carrefour Toyota</option>
+            <option value="cadjehoun">Carrefour Cadjehoun</option>
+            <option value="fidjrosse">Carrefour Fidjrossè</option>
+            <option value="sacre_coeur">Carrefour Sacré-Cœur</option>
+            <option value="ganhi">Ganhi (Trois Banques)</option>
+          </optgroup>
+          <optgroup label="Calavi / Cocotomey">
+            <option value="arconville">Carrefour Arconville</option>
+            <option value="kpota">Carrefour Kpota</option>
+            <option value="iita">Carrefour IITA</option>
+            <option value="cocotomey">Carrefour Cocotomey</option>
+          </optgroup>
+        </select>
+      </div>
 
       <div class="filter-group">
         <label class="filter-label" style="display: flex; justify-content: space-between; align-items: center;">
@@ -79,8 +100,10 @@
   <!-- Main list area -->
   <div class="catalog-main">
     <div class="catalog-header reveal">
-      <h2>Logements vérifiés <span id="catalog-count-badge">124 résultats</span></h2>
-      <p style="font-size: 0.85rem; color: var(--gray-600); margin-top: 0.25rem; margin-bottom: 0;">Chaque annonce a été validée par notre équipe. Zéro appartement fantôme, zéro arnaque.</p>
+      <div>
+        <h2>Logements vérifiés <span id="catalog-count-badge">124 résultats</span></h2>
+        <p style="font-size: 0.85rem; color: var(--gray-600); margin-top: 0.25rem; margin-bottom: 0;">Chaque annonce a été validée par notre équipe. Zéro appartement fantôme, zéro arnaque.</p>
+      </div>
       
       <div class="catalog-controls">
         <div class="view-mode-toggle">
@@ -106,10 +129,12 @@
     </div>
     
     <!-- Flying Custom Search trigger block -->
-    <div class="custom-search-promo-card reveal">
-      <i class="fas fa-search-plus" style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem; display: block;"></i>
-      <h4 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem;">Vous ne trouvez pas votre logement idéal ?</h4>
-      <p class="body-md" style="margin-bottom: 1.5rem;">Décrivez-nous ce que vous cherchez quartier, budget, type de bien et un agent BatiBid trouve pour vous sous 12h. Zéro déplacement.</p>
+    <div class="custom-search-promo-card reveal" style="background: linear-gradient(135deg, rgba(217, 94, 43, 0.02) 0%, var(--white) 100%); border: 1px solid var(--primary-light); border-radius: var(--radius-lg); padding: 3rem 2.5rem; text-align: center; margin-top: 3rem; box-shadow: var(--shadow-soft); transition: transform var(--transition-fast), box-shadow var(--transition-fast);">
+      <div style="background-color: var(--primary-light); color: var(--primary); width: 56px; height: 56px; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; font-size: 1.35rem; margin: 0 auto 1.25rem;">
+        <i class="fas fa-search-plus"></i>
+      </div>
+      <h4 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.75rem; color: var(--secondary);">Vous ne trouvez pas votre logement idéal ?</h4>
+      <p class="body-md" style="margin-bottom: 1.75rem; max-width: 580px; margin-left: auto; margin-right: auto; color: var(--gray-600);">Décrivez-nous ce que vous cherchez (quartier, budget, type de bien) et un conseiller BatiBid effectuera une recherche personnalisée pour vous sous 12h, sans frais.</p>
       <button class="btn btn-primary" onclick="openCustomSearchModal()"><i class="fas fa-magic" style="margin-right: 0.5rem;"></i> Confier ma recherche à un conseiller (Gratuit)</button>
     </div>
   </div>

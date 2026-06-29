@@ -988,6 +988,10 @@ function initCatalogMap() {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(catalogMap);
   
+  catalogMap.on('click', function(e) {
+    updateSearchCenterByCoords(e.latlng.lat, e.latlng.lng, "Point sélectionné sur la carte");
+  });
+  
   updateCatalogMap();
 }
 
@@ -1001,22 +1005,6 @@ function updateCatalogMap() {
     catalogMap.removeLayer(catalogMapCircle);
     catalogMapCircle = null;
   }
-  
-  const filtered = mockDb.properties.filter(p => {
-    if (state.currentFilter.city) {
-      if (state.currentCoords && p.latitude && p.longitude) {
-        const dist = calculateDistance(state.currentCoords.lat, state.currentCoords.lng, p.latitude, p.longitude);
-        if (dist > state.currentFilter.radius) return false;
-      } else {
-        const cLower = state.currentFilter.city.toLowerCase();
-        if (!p.city.toLowerCase().includes(cLower) && !p.address.toLowerCase().includes(cLower)) return false;
-      }
-    }
-    if (state.currentFilter.types.length > 0 && !state.currentFilter.types.includes(p.type)) return false;
-    if (p.price < state.currentFilter.minPrice || p.price > state.currentFilter.maxPrice) return false;
-    if (p.bedrooms < state.currentFilter.rooms && p.type !== "bureau") return false;
-    return true;
-  });
   
   if (state.currentCoords) {
     const center = [state.currentCoords.lat, state.currentCoords.lng];
@@ -1039,34 +1027,57 @@ function updateCatalogMap() {
     }).addTo(catalogMap);
     catalogMapMarkers.push(centerMarker);
   }
+}
+
+window.selectCarrefourCenter = function(value) {
+  const coordsMap = {
+    etoile: { lat: 6.3776, lng: 2.4243, label: "Étoile Rouge" },
+    toyota: { lat: 6.3685, lng: 2.3995, label: "Carrefour Toyota" },
+    cadjehoun: { lat: 6.3552, lng: 2.3942, label: "Carrefour Cadjehoun" },
+    fidjrosse: { lat: 6.3631, lng: 2.3614, label: "Carrefour Fidjrossè" },
+    sacre_coeur: { lat: 6.3664, lng: 2.4112, label: "Carrefour Sacré-Cœur" },
+    ganhi: { lat: 6.3533, lng: 2.4355, label: "Ganhi (Trois Banques)" },
+    arconville: { lat: 6.4384, lng: 2.3482, label: "Carrefour Arconville" },
+    kpota: { lat: 6.4258, lng: 2.3551, label: "Carrefour Kpota" },
+    iita: { lat: 6.4187, lng: 2.3361, label: "Carrefour IITA" },
+    cocotomey: { lat: 6.4011, lng: 2.2789, label: "Carrefour Cocotomey" }
+  };
+
+  if (!value || !coordsMap[value]) {
+    return;
+  }
+
+  const target = coordsMap[value];
+  updateSearchCenterByCoords(target.lat, target.lng, target.label);
+};
+
+window.updateSearchCenterByCoords = function(lat, lng, label) {
+  state.currentCoords = { lat, lng };
+  state.currentFilter.city = label;
   
-  filtered.forEach(p => {
-    if (p.latitude && p.longitude) {
-      const marker = L.marker([p.latitude, p.longitude]).addTo(catalogMap);
-      
-      const popupContent = `
-        <div style="font-family: var(--font-family); width: 200px; padding: 5px;">
-          <img src="${p.image}" style="width: 100%; height: 100px; object-fit: cover; border-radius: 4px; margin-bottom: 0.5rem;" />
-          <h4 style="margin: 0 0 0.25rem 0; font-size: 0.95rem; font-weight: 700; color: var(--secondary);">${p.title}</h4>
-          <p style="margin: 0 0 0.5rem 0; font-size: 0.85rem; color: var(--primary); font-weight: 700;">${formatCurrency(p.price)}/mois</p>
-          <p style="margin: 0 0 0.5rem 0; font-size: 0.75rem; color: var(--gray-600);"><i class="fas fa-map-marker-alt"></i> ${p.address}</p>
-          <button class="btn btn-primary" style="padding: 0.35rem 0.75rem; font-size: 0.75rem; width: 100%;" onclick="viewPropertyDetails(${p.id})">Voir détails</button>
-        </div>
-      `;
-      
-      marker.bindPopup(popupContent);
-      catalogMapMarkers.push(marker);
+  const input = document.getElementById("search-city-input");
+  if (input) {
+    input.value = label;
+  }
+  
+  const select = document.getElementById("filter-carrefour");
+  if (select) {
+    let found = false;
+    for (let i = 0; i < select.options.length; i++) {
+      if (select.options[i].value && select.options[i].text.includes(label)) {
+        select.value = select.options[i].value;
+        found = true;
+        break;
+      }
     }
-  });
-  
-  if (!state.currentCoords && catalogMapMarkers.length > 0) {
-    const validMarkers = catalogMapMarkers.filter(m => m.getLatLng && typeof m.getLatLng === 'function');
-    if (validMarkers.length > 0) {
-      const group = new L.featureGroup(validMarkers);
-      catalogMap.fitBounds(group.getBounds());
+    if (!found) {
+      select.value = "";
     }
   }
-}
+  
+  updateCatalogMap();
+  renderPropertyList();
+};
 
 function getZoomLevelForRadius(radiusKm) {
   if (radiusKm <= 2) return 14;

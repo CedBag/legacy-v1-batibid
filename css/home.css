@@ -1143,3 +1143,16 @@
     margin-left: 0;
   }
 }
+
+/* Responsive Pricing & Simulator */
+@media (max-width: 768px) {
+  .pricing-tabs-content > .pricing-tab-pane > div {
+    grid-template-columns: 1fr !important;
+  }
+  .pricing-card {
+    padding: 1.75rem 1.25rem !important;
+  }
+  .legal-simulator-wrap {
+    padding: 1.5rem !important;
+  }
+}

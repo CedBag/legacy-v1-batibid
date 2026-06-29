@@ -6,7 +6,7 @@
   grid-template-columns: 280px 1fr;
   gap: 2.5rem;
   max-width: var(--container-max);
-  margin: 0 auto;
+  margin: 3.5rem auto 5.5rem;
   padding: 0 var(--gutter);
 }
 
@@ -194,13 +194,12 @@
 
 /* Custom Search Banner Card in Trouver view */
 .custom-search-promo-card {
-  background: linear-gradient(135deg, var(--white) 0%, var(--gray-100) 100%);
-  border: 2px dashed var(--primary);
-  border-radius: var(--radius-lg);
-  padding: 2.5rem;
-  text-align: center;
-  margin-top: 3rem;
-  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast) !important;
+}
+
+.custom-search-promo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover) !important;
 }
 
 /* Properties List Grid */
