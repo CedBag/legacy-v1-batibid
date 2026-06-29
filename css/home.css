@@ -502,96 +502,228 @@
 /* ==========================================
    COMPARISON TABLE
    ========================================== */
-.comparison-table-wrap {
-  max-width: var(--container-max);
-  margin: 0 auto;
+/* ==========================================
+   PRICING TABS & CARDS LAYOUT
+   ========================================== */
+.pricing-tabs-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
   padding: 0 var(--gutter);
-  overflow-x: auto;
 }
 
-.comparison-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
+.pricing-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--gray-600);
+  background: var(--gray-100);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.pricing-tab-btn:hover {
+  color: var(--secondary);
+  background: var(--gray-200);
+  transform: translateY(-1px);
+}
+
+.pricing-tab-btn.active {
+  color: var(--white);
+  background: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0px 6px 15px rgba(217, 94, 43, 0.25);
+}
+
+.pricing-tab-pane {
+  display: none;
+}
+
+.pricing-tab-pane.active {
+  display: block;
+  animation: slideInTab 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInTab {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pricing Cards */
+.pricing-card {
   background: var(--white);
   border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
   border: 1px solid var(--gray-200);
+  padding: 2.25rem 2rem;
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  display: flex;
+  flex-direction: column;
 }
 
-.comparison-table th {
-  background: var(--gray-100);
-  padding: 1.25rem 1.5rem;
-  text-align: center;
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--secondary);
-  border-bottom: 2px solid var(--gray-200);
+.pricing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  border-color: var(--primary-light);
 }
 
-.comparison-table th span {
-  display: block;
-  font-weight: 500;
-  font-size: 0.8rem;
-  color: var(--gray-600);
-  margin-top: 0.2rem;
+.pricing-card.highlighted {
+  border: 2px solid var(--primary);
+  position: relative;
+  box-shadow: 0 10px 25px rgba(217, 94, 43, 0.1);
 }
 
-.comparison-table th.feature-col {
-  text-align: left;
-  background: var(--secondary);
-  color: var(--white);
-  font-size: 0.82rem;
+.pricing-card.highlighted:hover {
+  box-shadow: 0 15px 35px rgba(217, 94, 43, 0.18);
+}
+
+.pricing-card-badge {
+  display: inline-flex;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--primary);
+  background-color: var(--primary-light);
+  border-radius: var(--radius-full);
+  margin-bottom: 1.25rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  align-self: flex-start;
 }
 
-.comparison-table th.highlighted-col,
-.comparison-table td.highlighted-col {
-  background: var(--primary-light);
-  border-left: 2px solid var(--primary);
-  border-right: 2px solid var(--primary);
-}
-
-.comparison-table th.highlighted-col {
-  background: var(--primary);
+.pricing-card-badge.highlighted {
   color: var(--white);
-  position: relative;
+  background-color: var(--primary);
 }
 
-.comparison-table th.highlighted-col span {
-  color: rgba(255,255,255,0.8);
-}
-
-.comparison-table td {
-  padding: 0.95rem 1.5rem;
-  font-size: 0.9rem;
-  color: var(--gray-600);
-  border-bottom: 1px solid var(--gray-100);
-  text-align: center;
-}
-
-.comparison-table td:first-child {
-  text-align: left;
+.pricing-card h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
   color: var(--secondary);
+  margin-bottom: 0.5rem;
+}
+
+.pricing-price {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--secondary);
+  margin: 1rem 0;
+}
+
+.pricing-price span {
+  font-size: 0.9rem;
   font-weight: 500;
+  color: var(--gray-500);
 }
 
-.comparison-table tr:last-child td {
-  border-bottom: none;
+.pricing-card-header p {
+  font-size: 0.88rem;
+  color: var(--gray-600);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
 }
 
-.comparison-table tr:hover td {
+.pricing-card-body {
+  flex: 1;
+  min-height: 180px;
+}
+
+.pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.pricing-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.88rem;
+  color: var(--secondary);
+  line-height: 1.4;
+}
+
+.pricing-features li i {
+  color: var(--success);
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.pricing-card-footer {
+  margin-top: 2rem;
+}
+
+/* Management Toggle sub-formulas */
+.management-toggle-btn {
+  border: none;
+  background: none;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  color: var(--gray-600);
+  transition: all var(--transition-fast);
+}
+
+.management-toggle-btn:hover {
+  color: var(--secondary);
+}
+
+.management-toggle-btn.active {
+  background: var(--white);
+  color: var(--primary);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Construction Banner Card */
+.pricing-banner-card {
+  border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Legal Coverage tags */
+.coverage-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  margin-top: 0.5rem;
+}
+
+.coverage-tag.tag-included {
+  background-color: var(--success-light);
+  color: var(--success);
+}
+
+.coverage-tag.tag-premium {
+  background-color: rgba(255, 179, 138, 0.2);
+  color: var(--primary);
+}
+
+.coverage-tag.tag-none {
   background-color: var(--gray-100);
+  color: var(--gray-600);
 }
-
-.comparison-table tr:hover td.highlighted-col {
-  background-color: #fde8d8;
-}
-
-.ct-yes { color: var(--success); font-size: 1.05rem; }
-.ct-no  { color: var(--gray-400); font-size: 1.05rem; }
 
 .ct-action-row td {
   padding: 1.25rem 1.5rem;

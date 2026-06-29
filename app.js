@@ -2048,6 +2048,167 @@ function formatCurrency(val) {
     .replace("XOF", "FCFA");
 }
 
+// Pricing tab switching
+window.switchPricingTab = function(tabName) {
+  // Update active state on tab buttons
+  document.querySelectorAll('.pricing-tab-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  const activeBtn = document.getElementById(`tab-btn-${tabName}`);
+  if (activeBtn) activeBtn.classList.add('active');
+
+  // Update visibility of pricing panes
+  document.querySelectorAll('.pricing-tab-pane').forEach(pane => {
+    pane.classList.remove('active');
+    pane.style.display = 'none';
+  });
+  const activePane = document.getElementById(`pane-${tabName}`);
+  if (activePane) {
+    activePane.style.display = 'block';
+    // Small delay to trigger animation
+    setTimeout(() => {
+      activePane.classList.add('active');
+    }, 10);
+  }
+};
+
+// Toggle management sub-formula (Standard vs Premium)
+window.toggleManagementPrice = function(mode) {
+  const toggleBtnStandard = document.getElementById('m-toggle-standard');
+  const toggleBtnPremium = document.getElementById('m-toggle-premium');
+  const priceDisplay = document.getElementById('m-price-display');
+  const descDisplay = document.getElementById('m-desc-display');
+  const featuresList = document.getElementById('m-features-list');
+
+  if (!toggleBtnStandard || !toggleBtnPremium || !priceDisplay || !descDisplay || !featuresList) return;
+
+  if (mode === 'standard') {
+    toggleBtnStandard.classList.add('active');
+    toggleBtnPremium.classList.remove('active');
+    priceDisplay.innerHTML = '8%<span> du loyer / mois</span>';
+    descDisplay.innerText = 'Sécurisation courante de vos loyers et gestion technique de base.';
+    featuresList.innerHTML = `
+      <li><i class="fas fa-check-circle"></i> Collecte automatique des loyers par Mobile Money</li>
+      <li><i class="fas fa-check-circle"></i> Suivi des paiements en temps réel</li>
+      <li><i class="fas fa-check-circle"></i> Accès complet aux rapports financiers</li>
+      <li><i class="fas fa-check-circle"></i> Support client standard</li>
+      <li><i class="fas fa-check-circle"></i> Notifications par e-mail</li>
+    `;
+  } else {
+    toggleBtnStandard.classList.remove('active');
+    toggleBtnPremium.classList.add('active');
+    priceDisplay.innerHTML = '10%<span> du loyer / mois</span>';
+    descDisplay.innerText = 'Gestion locative intégrale avec assistance 24/7 et suivi fiscal complet.';
+    featuresList.innerHTML = `
+      <li><i class="fas fa-check-circle"></i> Toutes les fonctionnalités de l'offre Standard</li>
+      <li><i class="fas fa-check-circle"></i> Assistance prioritaire et technique 24/7</li>
+      <li><i class="fas fa-check-circle"></i> Rédaction et renouvellement des baux inclus</li>
+      <li><i class="fas fa-check-circle"></i> Optimisation fiscale immobilière annuelle</li>
+      <li><i class="fas fa-check-circle"></i> Notifications e-mail et SMS prioritaires</li>
+    `;
+  }
+};
+
+// Check legal services coverage simulator
+window.checkLegalCoverage = function(issue) {
+  const resultDiv = document.getElementById("legal-simulator-result");
+  if (!resultDiv) return;
+
+  if (!issue) {
+    resultDiv.style.display = "none";
+    return;
+  }
+
+  let title = "";
+  let price = "";
+  let statusClass = ""; // tag-included, tag-premium, tag-none
+  let statusText = "";
+  let description = "";
+  let borderColor = "";
+
+  switch (issue) {
+    case "expulsion":
+    case "recouvrement":
+      title = "Procédure d'Expulsion et de Recouvrement";
+      price = "100 000 - 300 000 XOF + 10% des sommes recouvrées";
+      statusClass = "tag-included";
+      statusText = "Totalement Inclus (Gratuit)";
+      borderColor = "#2e7d32"; // green
+      description = "Ce service est entièrement pris en charge par BatiBid dans le cadre de nos contrats de Gestion Locative Standard (8%) et Premium (10%). Vous n'avez aucun honoraire supplémentaire à payer à nos juristes.";
+      break;
+    case "strategie":
+      title = "Plan d'Action Juridique / Stratégie Contentieuse";
+      price = "50 000 - 100 000 XOF (Analyse initiale)";
+      statusClass = "tag-included";
+      statusText = "Totalement Inclus (Gratuit)";
+      borderColor = "#2e7d32"; // green
+      description = "Ce service est entièrement pris en charge dans le cadre de nos contrats de Gestion Locative Standard (8%) et Premium (10%). Nos experts analysent les pièces et élaborent la stratégie pour vous défendre.";
+      break;
+    case "fiscalite":
+      title = "Optimisation Fiscale Immobilière";
+      price = "75 000 - 200 000 XOF";
+      statusClass = "tag-premium";
+      statusText = "Inclus dans l'offre Premium (10%)";
+      borderColor = "#d95e2b"; // orange
+      description = "Ce service est couvert pour les propriétaires ayant souscrit à l'offre de Gestion Locative Premium (10%). Pour les clients de l'offre Standard (8%) ou hors gestion, ce service est disponible sous forme de forfait à la carte.";
+      break;
+    case "transaction":
+      title = "Transaction Immobilière Sécurisée";
+      price = "80 000 - 150 000 XOF (Conseil initial) + Commission";
+      statusClass = "tag-none";
+      statusText = "Non Couvert (Service à la carte)";
+      borderColor = "#606060"; // grey
+      description = "Ce service concerne l'achat ou la vente de biens immobiliers. Il est exclu des formules de gestion locative classique. Nos juristes vous accompagnent de manière indépendante pour sécuriser votre investissement.";
+      break;
+    case "bail":
+      title = "Forfait Contrat de Location Sécurisé";
+      price = "50 000 - 100 000 XOF";
+      statusClass = "tag-none";
+      statusText = "Service à la carte (Inclus lors de la mise en location)";
+      borderColor = "#606060"; // grey
+      description = "La rédaction du bail est offerte lors de la signature d'une formule de gestion locative ou d'une offre découverte. En dehors de ces cadres, la rédaction ou négociation d'un contrat de bail de manière isolée est facturée au tarif forfaitaire indiqué.";
+      break;
+    case "mediation":
+      title = "Accords contradictoires de Règlement Amiable / Médiation";
+      price = "50 000 - 200 000 XOF";
+      statusClass = "tag-none";
+      statusText = "Service à la carte";
+      borderColor = "#606060";
+      description = "Ce service permet d'intervenir en médiateur pour sceller un accord officiel écrit et éviter le tribunal. Disponible en prestation autonome pour tout propriétaire ou locataire hors gestion.";
+      break;
+    case "contrat":
+      title = "Sécurisation de vos Contrats d'Affaires";
+      price = "50 000 - 200 000 XOF";
+      statusClass = "tag-none";
+      statusText = "Service à la carte";
+      borderColor = "#606060";
+      description = "Rédaction et sécurisation juridique de vos contrats de construction, rénovation ou contrats d'artisans. Service à la carte indépendant.";
+      break;
+    case "precontentieux":
+      title = "Acte de procédure préalable à la saisine (Précontentieux locatif)";
+      price = "20 000 - 50 000 XOF";
+      statusClass = "tag-none";
+      statusText = "Service à la carte";
+      borderColor = "#606060";
+      description = "Préparation et envoi des mises en demeure formelles aux locataires avant toute saisine des juridictions. Service autonome à la carte.";
+      break;
+    default:
+      resultDiv.style.display = "none";
+      return;
+  }
+
+  resultDiv.innerHTML = `
+    <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--secondary); margin-bottom: 0.5rem;">${title}</h4>
+    <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem; align-items: center;">
+      <span class="coverage-tag ${statusClass}" style="margin: 0;"><i class="fas ${statusClass === 'tag-included' ? 'fa-check-double' : statusClass === 'tag-premium' ? 'fa-star' : 'fa-info-circle'}"></i> ${statusText}</span>
+      <span style="font-size: 0.85rem; font-weight: 700; color: var(--gray-600);"><i class="fas fa-tag"></i> Tarif de base : ${price}</span>
+    </div>
+    <p class="body-sm" style="color: var(--gray-600); margin: 0; line-height: 1.5;">${description}</p>
+  `;
+  resultDiv.style.borderColor = borderColor;
+  resultDiv.style.display = "block";
+};
+
 function getTodayDateString() {
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
   return new Date().toLocaleDateString('fr-FR', options);

@@ -124,81 +124,193 @@
   </div>
 </div>
 
-<!-- ===== OFFRE COMPARISON TABLE ===== -->
+<!-- ===== OFFRES ET FORMULES ===== -->
 <div class="premium-section">
   <div class="premium-section-header">
-    <span class="hero-badge" style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 1rem;">TARIFICATION</span>
-    <h2 class="headline-lg">Choisissez votre niveau d'implication</h2>
-    <p class="body-md">De la simple annonce à la gestion totale des formules transparentes, sans frais cachés, adaptées à chaque propriétaire.</p>
+    <span class="hero-badge" style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 1rem; align-items: center; gap: 0.4rem; display: inline-flex;"><i class="fas fa-tags"></i> NOS SOLUTIONS ET TARIFS</span>
+    <h2 class="headline-lg">Des formules claires pour chaque besoin</h2>
+    <p class="body-md">Découvrez nos solutions sur-mesure pour sécuriser, valoriser et gérer vos biens immobiliers au Bénin.</p>
   </div>
 
-  <div class="comparison-table-wrap">
-    <table class="comparison-table">
-      <thead>
-        <tr>
-          <th class="feature-col">Fonctionnalités</th>
-          <th>Faire Louer<br><span>Standard 6 000 XOF</span></th>
-          <th>Faire Louer<br><span>Premium 10 000 XOF</span></th>
-          <th class="highlighted-col">Gestion Locative<br><span>Dès 8% du loyer/mois</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Publication de l'annonce</td>
-          <td><i class="fas fa-check ct-yes"></i></td>
-          <td><i class="fas fa-check ct-yes"></i></td>
-          <td class="highlighted-col"><i class="fas fa-check ct-yes"></i></td>
-        </tr>
-        <tr>
-          <td>Mise en avant sur les réseaux sociaux</td>
-          <td><i class="fas fa-times ct-no"></i></td>
-          <td><i class="fas fa-check ct-yes"></i></td>
-          <td class="highlighted-col"><i class="fas fa-check ct-yes"></i></td>
-        </tr>
-        <tr>
-          <td>Campagne de boostage publicitaire</td>
-          <td><i class="fas fa-times ct-no"></i></td>
-          <td><i class="fas fa-check ct-yes"></i></td>
-          <td class="highlighted-col"><i class="fas fa-check ct-yes"></i></td>
-        </tr>
-        <tr>
-          <td>Collecte automatique des loyers</td>
-          <td><i class="fas fa-times ct-no"></i></td>
-          <td><i class="fas fa-times ct-no"></i></td>
-          <td class="highlighted-col"><i class="fas fa-check ct-yes"></i></td>
-        </tr>
-        <tr>
-          <td>Suivi technique & maintenance</td>
-          <td><i class="fas fa-times ct-no"></i></td>
-          <td><i class="fas fa-times ct-no"></i></td>
-          <td class="highlighted-col"><i class="fas fa-check ct-yes"></i></td>
-        </tr>
-        <tr>
-          <td>Tableau de bord propriétaire</td>
-          <td><i class="fas fa-times ct-no"></i></td>
-          <td><i class="fas fa-times ct-no"></i></td>
-          <td class="highlighted-col"><i class="fas fa-check ct-yes"></i></td>
-        </tr>
-        <tr>
-          <td>Rapports financiers mensuels</td>
-          <td><i class="fas fa-times ct-no"></i></td>
-          <td><i class="fas fa-times ct-no"></i></td>
-          <td class="highlighted-col"><i class="fas fa-check ct-yes"></i></td>
-        </tr>
-        <tr>
-          <td>Assistance prioritaire 24/7</td>
-          <td><i class="fas fa-times ct-no"></i></td>
-          <td><i class="fas fa-times ct-no"></i></td>
-          <td class="highlighted-col"><i class="fas fa-check ct-yes"></i></td>
-        </tr>
-        <tr class="ct-action-row">
-          <td></td>
-          <td><a href="#faire-louer" class="btn btn-secondary" style="width: 100%; font-size: 0.85rem;">Choisir</a></td>
-          <td><a href="#faire-louer" class="btn btn-secondary" style="width: 100%; font-size: 0.85rem;">Choisir</a></td>
-          <td class="highlighted-col"><a href="#gerer" class="btn btn-primary" style="width: 100%; font-size: 0.85rem;">Choisir</a></td>
-        </tr>
-      </tbody>
-    </table>
+  <!-- Tabs Navigation -->
+  <div class="pricing-tabs-nav" style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; padding: 0 var(--gutter);">
+    <button type="button" class="pricing-tab-btn active" id="tab-btn-management" onclick="switchPricingTab('management')">
+      <i class="fas fa-key"></i> Gestion Locative
+    </button>
+    <button type="button" class="pricing-tab-btn" id="tab-btn-construction" onclick="switchPricingTab('construction')">
+      <i class="fas fa-building"></i> Valorisation du Patrimoine
+    </button>
+    <button type="button" class="pricing-tab-btn" id="tab-btn-legal" onclick="switchPricingTab('legal')">
+      <i class="fas fa-balance-scale"></i> Services Juridiques
+    </button>
+  </div>
+
+  <!-- Tabs Content Containers -->
+  <div class="pricing-tabs-content" style="max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter);">
+    
+    <!-- Tab 1: Gestion Locative -->
+    <div class="pricing-tab-pane active" id="pane-management">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+        
+        <!-- Card A: Offre Découverte -->
+        <div class="pricing-card">
+          <div class="pricing-card-header">
+            <span class="pricing-card-badge">Mise en relation</span>
+            <h3>Offre Découverte</h3>
+            <div class="pricing-price">1 mois<span> de loyer (unique)</span></div>
+            <p>Idéal pour trouver rapidement un locataire fiable, sans gestion mensuelle.</p>
+          </div>
+          <div class="pricing-card-body">
+            <ul class="pricing-features">
+              <li><i class="fas fa-check-circle"></i> Diffusion de l'annonce sur nos canaux</li>
+              <li><i class="fas fa-check-circle"></i> Sélection et visites des locataires</li>
+              <li><i class="fas fa-check-circle"></i> Vérification rigoureuse d'identité &amp; revenus</li>
+              <li><i class="fas fa-check-circle"></i> Rédaction du bail officiel conforme</li>
+            </ul>
+          </div>
+          <div class="pricing-card-footer">
+            <a href="#faire-louer" class="btn btn-secondary" style="width: 100%;">Trouver un locataire</a>
+          </div>
+        </div>
+
+        <!-- Card B: Gestion Mensuelle (Standard / Premium) -->
+        <div class="pricing-card highlighted">
+          <div class="pricing-card-header">
+            <span class="pricing-card-badge highlighted">Gestion Locative Complète</span>
+            <h3>Gestion Mensuelle</h3>
+            
+            <!-- Toggle sub-formula standard vs premium -->
+            <div class="management-toggle-container" style="display: flex; background: #e2e2e2; padding: 4px; border-radius: var(--radius-full); width: fit-content; margin: 1rem auto;">
+              <button type="button" class="management-toggle-btn active" id="m-toggle-standard" onclick="toggleManagementPrice('standard')" style="border: none; background: none; padding: 0.5rem 1.25rem; font-size: 0.85rem; font-weight: 700; border-radius: var(--radius-full); cursor: pointer; transition: all var(--transition-fast);">Standard</button>
+              <button type="button" class="management-toggle-btn" id="m-toggle-premium" onclick="toggleManagementPrice('premium')" style="border: none; background: none; padding: 0.5rem 1.25rem; font-size: 0.85rem; font-weight: 700; border-radius: var(--radius-full); cursor: pointer; transition: all var(--transition-fast);">Premium</button>
+            </div>
+            
+            <!-- Dynamic price display -->
+            <div class="pricing-price" id="m-price-display">8%<span> du loyer / mois</span></div>
+            <p id="m-desc-display">Sécurisation courante de vos loyers et gestion technique de base.</p>
+          </div>
+          <div class="pricing-card-body">
+            <ul class="pricing-features" id="m-features-list">
+              <li><i class="fas fa-check-circle"></i> Collecte automatique des loyers par Mobile Money</li>
+              <li><i class="fas fa-check-circle"></i> Suivi des paiements en temps réel</li>
+              <li><i class="fas fa-check-circle"></i> Accès complet aux rapports financiers</li>
+              <li><i class="fas fa-check-circle"></i> Support client standard</li>
+              <li><i class="fas fa-check-circle"></i> Notifications par e-mail</li>
+            </ul>
+          </div>
+          <div class="pricing-card-footer">
+            <a href="#gerer" class="btn btn-primary" style="width: 100%;">Confier mon bien en gestion</a>
+          </div>
+        </div>
+
+        <!-- Card C: Annonces & Visibilité -->
+        <div class="pricing-card">
+          <div class="pricing-card-header">
+            <span class="pricing-card-badge">Autogestion</span>
+            <h3>Annonces &amp; Visibilité</h3>
+            <div class="pricing-price">6 000 XOF<span> / annonce (Standard)</span></div>
+            <p>Idéal pour publier vos biens vous-même et obtenir un maximum de visibilité.</p>
+          </div>
+          <div class="pricing-card-body">
+            <ul class="pricing-features">
+              <li><i class="fas fa-check-circle"></i> Publication prioritaire sur BatiBid</li>
+              <li><i class="fas fa-check-circle"></i> Partage sur nos canaux de communication</li>
+              <li><i class="fas fa-check-circle"></i> Accès direct aux demandes de recherche</li>
+              <li><i class="fas fa-check-circle"></i> Option Premium boostée (10 000 XOF) disponible</li>
+            </ul>
+          </div>
+          <div class="pricing-card-footer">
+            <a href="#faire-louer" class="btn btn-secondary" style="width: 100%;">Publier une annonce</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Tab 2: Valorisation du Patrimoine -->
+    <div class="pricing-tab-pane" id="pane-construction" style="display: none;">
+      <div class="pricing-banner-card" style="background: linear-gradient(135deg, #1A1A1A 0%, #2D2D2D 100%); color: var(--white); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-dark); display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; border: 1px solid var(--gray-300);">
+        <div style="padding: 4rem;">
+          <span class="pricing-card-badge" style="background-color: rgba(255,255,255,0.15); color: var(--white); border: 1px solid rgba(255,255,255,0.25); margin-bottom: 1.5rem; display: inline-block;">Construction &amp; Rénovation</span>
+          <h3 class="headline-lg" style="color: var(--white); margin-bottom: 1rem;">Votre projet chiffré et suivi à distance</h3>
+          <p class="body-lg" style="color: var(--gray-400); margin-bottom: 2.5rem; max-width: 540px;">
+            Diaspora ou propriétaire occupé, BatiBid est votre tiers de confiance. Devis sous 24h, artisans vérifiés, et comptes-rendus hebdomadaires sur votre espace client.
+          </p>
+          <ul class="pricing-features" style="margin-bottom: 3rem; color: var(--white);">
+            <li><i class="fas fa-check-circle" style="color: var(--primary);"></i> Rapports réguliers avec photos &amp; vidéos</li>
+            <li><i class="fas fa-check-circle" style="color: var(--primary);"></i> Sélection stricte d'artisans certifiés</li>
+            <li><i class="fas fa-check-circle" style="color: var(--primary);"></i> Devis gratuit et détaillé sous 24h</li>
+          </ul>
+          <a href="#construire" class="btn btn-primary">Estimer mon projet / Demander un devis</a>
+        </div>
+        <div style="height: 100%; min-height: 350px; background-image: url('./hero_building.png'); background-size: cover; background-position: center; border-left: 1px solid rgba(255,255,255,0.08);">
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 3: Services Juridiques -->
+    <div class="pricing-tab-pane" id="pane-legal" style="display: none;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+        
+        <!-- Service Juridique 1 -->
+        <div class="pricing-card">
+          <div class="pricing-card-header" style="border-bottom: 1px solid var(--gray-200); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+            <div style="background-color: var(--primary-light); color: var(--primary); width: 44px; height: 44px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1rem;"><i class="fas fa-gavel"></i></div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.25rem;">Procédure d'Expulsion &amp; Recouvrement</h4>
+            <div class="pricing-price" style="font-size: 1.15rem; margin: 0.5rem 0;">100k - 300k XOF <span>/ forfait de base</span></div>
+            <span class="coverage-tag tag-included"><i class="fas fa-check-double"></i> 100% Inclus en Gestion (8% &amp; 10%)</span>
+          </div>
+          <div class="pricing-card-body" style="padding: 0; min-height: auto;">
+            <p class="body-sm" style="color: var(--gray-600); margin: 0;">Prise en charge complète des procédures de recouvrement forcé et d'expulsion de locataires indélicats.</p>
+          </div>
+        </div>
+
+        <!-- Service Juridique 2 -->
+        <div class="pricing-card">
+          <div class="pricing-card-header" style="border-bottom: 1px solid var(--gray-200); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+            <div style="background-color: var(--primary-light); color: var(--primary); width: 44px; height: 44px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1rem;"><i class="fas fa-shield-alt"></i></div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.25rem;">Plan d'Action / Stratégie Contentieuse</h4>
+            <div class="pricing-price" style="font-size: 1.15rem; margin: 0.5rem 0;">50k - 100k XOF <span>/ analyse initiale</span></div>
+            <span class="coverage-tag tag-included"><i class="fas fa-check-double"></i> 100% Inclus en Gestion (8% &amp; 10%)</span>
+          </div>
+          <div class="pricing-card-body" style="padding: 0; min-height: auto;">
+            <p class="body-sm" style="color: var(--gray-600); margin: 0;">Analyse initiale et élaboration d'une stratégie juridique personnalisée pour résoudre vos litiges immobiliers complexes.</p>
+          </div>
+        </div>
+
+        <!-- Service Juridique 3 -->
+        <div class="pricing-card">
+          <div class="pricing-card-header" style="border-bottom: 1px solid var(--gray-200); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+            <div style="background-color: var(--primary-light); color: var(--primary); width: 44px; height: 44px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1rem;"><i class="fas fa-file-invoice-dollar"></i></div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.25rem;">Optimisation Fiscale Immobilière</h4>
+            <div class="pricing-price" style="font-size: 1.15rem; margin: 0.5rem 0;">75k - 200k XOF <span>/ forfait fiscal</span></div>
+            <span class="coverage-tag tag-premium"><i class="fas fa-star"></i> Inclus formule Premium (10%)</span>
+          </div>
+          <div class="pricing-card-body" style="padding: 0; min-height: auto;">
+            <p class="body-sm" style="color: var(--gray-600); margin: 0;">Suivi fiscal, déclarations et optimisation légale de vos impôts fonciers pour préserver votre rentabilité.</p>
+          </div>
+        </div>
+
+        <!-- Service Juridique 4 -->
+        <div class="pricing-card">
+          <div class="pricing-card-header" style="border-bottom: 1px solid var(--gray-200); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+            <div style="background-color: var(--primary-light); color: var(--primary); width: 44px; height: 44px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1rem;"><i class="fas fa-handshake"></i></div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.25rem;">Transaction Immobilière Sécurisée</h4>
+            <div class="pricing-price" style="font-size: 1.15rem; margin: 0.5rem 0;">80k - 150k XOF <span>/ conseil initial</span></div>
+            <span class="coverage-tag tag-none"><i class="fas fa-ban"></i> Service à la carte (Non couvert)</span>
+          </div>
+          <div class="pricing-card-body" style="padding: 0; min-height: auto;">
+            <p class="body-sm" style="color: var(--gray-600); margin: 0;">Accompagnement, vérification cadastrale et sécurisation juridique complète lors de l'acquisition ou vente de vos terrains et bâtisses.</p>
+          </div>
+        </div>
+
+      </div>
+      
+      <div style="text-align: center;">
+        <a href="#conseils-juridiques" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem;"><i class="fas fa-balance-scale"></i> Consulter la grille complète des 10 services</a>
+      </div>
+    </div>
+
   </div>
 </div>
 
