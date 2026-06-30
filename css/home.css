@@ -1155,6 +1155,9 @@
   .legal-simulator-wrap {
     padding: 1.5rem !important;
   }
+  .btn {
+    white-space: normal !important;
+  }
 }
 
 /* Stacking pricing banner card on tablet & mobile */
