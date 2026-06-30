@@ -159,11 +159,28 @@
 
 .mobile-menu-btn {
   display: none;
-  background: none;
-  border: none;
-  font-size: 1.35rem;
+  background: var(--white);
+  border: 1px solid var(--gray-300);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   cursor: pointer;
   color: var(--secondary);
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-soft);
+}
+
+.mobile-menu-btn:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  border-color: var(--primary);
+  transform: scale(1.05);
+}
+
+.mobile-menu-btn i {
+  font-size: 1.2rem;
 }
 
 /* Hide desktop nav, show hamburger below 1200px */
@@ -172,7 +189,7 @@
     display: none;
   }
   .mobile-menu-btn {
-    display: block;
+    display: flex;
   }
 }
 
