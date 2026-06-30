@@ -1172,4 +1172,8 @@
     border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
     order: -1;
   }
+  .pricing-banner-card .btn {
+    white-space: normal !important;
+    text-align: center;
+  }
 }
