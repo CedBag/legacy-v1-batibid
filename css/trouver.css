@@ -171,6 +171,11 @@
   align-items: center;
 }
 
+.catalog-controls select {
+  width: 150px !important;
+  min-width: 150px !important;
+}
+
 .view-mode-toggle {
   display: flex;
   border: 1px solid var(--gray-300);
