@@ -1156,3 +1156,20 @@
     padding: 1.5rem !important;
   }
 }
+
+/* Stacking pricing banner card on tablet & mobile */
+@media (max-width: 900px) {
+  .pricing-banner-card {
+    grid-template-columns: 1fr !important;
+  }
+  .pricing-banner-card > div:first-child {
+    padding: 2rem 1.5rem !important;
+  }
+  .pricing-banner-card > div:last-child {
+    height: 250px !important;
+    min-height: 250px !important;
+    border-left: none !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    order: -1;
+  }
+}
