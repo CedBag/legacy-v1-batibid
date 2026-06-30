@@ -85,3 +85,25 @@
   font-size: 0.9rem;
   color: var(--gray-600);
 }
+
+/* Responsive adjustments for Contact page */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  .contact-form-panel {
+    padding: 1.5rem !important;
+  }
+  
+  .cp-step-label {
+    display: none !important;
+  }
+  
+  .contact-whatsapp-btn {
+    white-space: normal !important;
+    text-align: center;
+    width: 100%;
+  }
+}
