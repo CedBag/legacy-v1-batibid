@@ -2419,13 +2419,15 @@ function initHeaderSearch() {
     if (!input || !btn) return;
 
     btn.addEventListener("click", (e) => {
+      e.preventDefault();
       const query = input.value.trim();
       if (query) {
-        e.preventDefault();
         state.currentFilter.city = query;
         updateGeocodingAndRender();
         window.location.hash = "#trouver";
         input.value = "";
+      } else {
+        window.location.hash = "#trouver";
       }
     });
 
