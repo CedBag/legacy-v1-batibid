@@ -32,7 +32,7 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   
   <!-- Custom Design System styles -->
-  <link rel="stylesheet" href="style.css?v=2.8">
+  <link rel="stylesheet" href="style.css?v=3.0">
 </head>
 <body>
 
@@ -72,17 +72,23 @@
       
       <div class="header-actions">
         <div id="header-visitor-actions" style="display: flex; gap: 0.75rem; align-items: center;">
-          <a href="#trouver" class="search-nav-btn" title="Trouver une location">
-            <i class="fas fa-search"></i>
-          </a>
+          <div class="header-search-container">
+            <input type="text" class="header-search-input" placeholder="Rechercher une location">
+            <button class="search-nav-btn" title="Trouver une location">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
           <a href="#contact" class="btn btn-primary btn-header-cta" style="border-radius: var(--radius-sm);"><i class="fas fa-calendar-alt" style="margin-right: 0.5rem;"></i> Prendre RDV</a>
           <a href="#auth" class="btn btn-outline" style="border-radius: var(--radius-sm);"><i class="fas fa-user" style="margin-right: 0.5rem;"></i> S'identifier</a>
         </div>
         
         <div id="header-user-actions" style="display: none; align-items: center; gap: 1rem;">
-          <a href="#trouver" class="search-nav-btn" title="Trouver une location">
-            <i class="fas fa-search"></i>
-          </a>
+          <div class="header-search-container">
+            <input type="text" class="header-search-input" placeholder="Rechercher une location">
+            <button class="search-nav-btn" title="Trouver une location">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
           <span style="font-size: 0.95rem; font-weight: 600;">
             <i class="fas fa-user-circle" style="color: var(--primary); margin-right: 0.25rem;"></i>
             <span id="header-username">Utilisateur</span>
@@ -412,6 +418,6 @@
   <script src="js/dashboard-p3.js?v=2.8"></script>
   
   <!-- Main JavaScript App Logic -->
-  <script src="app.js?v=2.8"></script>
+  <script src="app.js?v=3.0"></script>
 </body>
 </html>

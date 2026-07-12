@@ -118,6 +118,11 @@ function onViewLoad(hash) {
     renderTestimonials();
     renderTestimonialsGrid();
     setTimeout(initCounterUp, 300);
+    // Initialize interactive tabs and team workflow simulator
+    setTimeout(() => {
+      initExpertiseTabs();
+      initWorkflowSimulator();
+    }, 100);
   } else if (hash === "#conseils-juridiques") {
     setTimeout(initCounterUp, 300);
   } else if (hash === "#trouver") {
@@ -2252,6 +2257,157 @@ function closeAlert() {
   document.getElementById("alert-modal").classList.remove("active");
 }
 
+function initExpertiseTabs() {
+  const tabs = document.querySelectorAll(".expertise-tab");
+  const panes = document.querySelectorAll(".expertise-pane");
+  if (!tabs.length || !panes.length) return;
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      const targetIdx = tab.getAttribute("data-index");
+
+      // Deactivate all tabs & panes
+      tabs.forEach(t => t.classList.remove("active"));
+      panes.forEach(p => p.classList.remove("active"));
+
+      // Activate clicked tab & its pane
+      tab.classList.add("active");
+      const targetPane = document.getElementById(`ext-pane-${targetIdx}`);
+      if (targetPane) {
+        targetPane.classList.add("active");
+      }
+    });
+  });
+}
+
+function initWorkflowSimulator() {
+  const scenarioBtns = document.querySelectorAll(".scenario-btn");
+  if (!scenarioBtns.length) return;
+
+  const WORKFLOW_SCENARIOS = {
+    leak: {
+      progress: "100%",
+      highlightCount: 4,
+      steps: [
+        "<strong>Alerte reçue !</strong> Le gestionnaire prend en charge l'incident sous 10min et alerte le propriétaire sur son dashboard.",
+        "Un artisan plombier partenaire qualifié intervient sous 24h à 48h avec devis validé.",
+        "Validation de l'imputation de charge de réparation entre bailleur et locataire selon le Code du foncier béninois.",
+        "Le conseiller se rend sur place pour valider la conformité des travaux et clore le ticket d'incident."
+      ]
+    },
+    delay: {
+      progress: "66.6%",
+      highlightCount: 3,
+      steps: [
+        "<strong>Loyer impayé le 5 !</strong> Le gestionnaire lance des rappels amiables automatisés par SMS et e-mail le 6 du mois.",
+        "<strong>Relance infructueuse ?</strong> Notre juriste rédige et envoie une mise en demeure formelle sous 48h.",
+        "<strong>Procédure enclenchée :</strong> Le juriste gère 100% de la procédure de recouvrement forcée ou conciliation.",
+        "<em>Étape finale non requise.</em> La Garantie Loyers Impayés (GLI) BatiBid prend le relais pour couvrir le propriétaire."
+      ]
+    },
+    tenant: {
+      progress: "100%",
+      highlightCount: 4,
+      steps: [
+        "Le conseiller terrain effectue les visites et réalise l'état des lieux certifié de sortie/entrée sur tablette.",
+        "Le gestionnaire vérifie la solvabilité des dossiers locataires sous 24h et les présente au propriétaire.",
+        "Le juriste rédige le contrat de bail sécurisé en conformité avec le Code du foncier béninois.",
+        "Le gestionnaire BatiBid valide les garanties de loyer (Mobile Money ou banque) et installe officiellement le locataire."
+      ]
+    }
+  };
+
+  function applyScenario(scenarioKey) {
+    const config = WORKFLOW_SCENARIOS[scenarioKey];
+    if (!config) return;
+
+    // Update text content of tooltips
+    for (let i = 0; i < 4; i++) {
+      const tooltip = document.getElementById(`wf-text-${i}`);
+      if (tooltip) {
+        tooltip.innerHTML = config.steps[i];
+      }
+    }
+
+    // Animate line & highlight active steps
+    const progressLine = document.getElementById("wf-progress-line");
+    if (progressLine) {
+      const isMobile = window.innerWidth <= 992;
+      if (isMobile) {
+        progressLine.style.width = "100%";
+        progressLine.style.height = config.progress;
+      } else {
+        progressLine.style.height = "100%";
+        progressLine.style.width = config.progress;
+      }
+    }
+
+    const steps = document.querySelectorAll(".workflow-step");
+    steps.forEach(step => {
+      const stepIdx = parseInt(step.getAttribute("data-step"), 10);
+      if (stepIdx < config.highlightCount) {
+        step.classList.add("active");
+      } else {
+        step.classList.remove("active");
+      }
+    });
+  }
+
+  // Bind click handlers to scenario buttons
+  scenarioBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      scenarioBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      const scenarioKey = btn.getAttribute("data-scenario");
+      applyScenario(scenarioKey);
+    });
+  });
+
+  // Handle window resize to adjust progress line direction
+  window.addEventListener("resize", () => {
+    const activeBtn = document.querySelector(".scenario-btn.active");
+    if (activeBtn) {
+      const scenarioKey = activeBtn.getAttribute("data-scenario");
+      applyScenario(scenarioKey);
+    }
+  });
+
+  // Initialize with default scenario
+  applyScenario("leak");
+}
+
+function initHeaderSearch() {
+  const containers = document.querySelectorAll(".header-search-container");
+  containers.forEach(container => {
+    const input = container.querySelector(".header-search-input");
+    const btn = container.querySelector(".search-nav-btn");
+    if (!input || !btn) return;
+
+    btn.addEventListener("click", (e) => {
+      const query = input.value.trim();
+      if (query) {
+        e.preventDefault();
+        state.currentFilter.city = query;
+        updateGeocodingAndRender();
+        window.location.hash = "#trouver";
+        input.value = "";
+      }
+    });
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const query = input.value.trim();
+        if (query) {
+          state.currentFilter.city = query;
+          updateGeocodingAndRender();
+          window.location.hash = "#trouver";
+          input.value = "";
+        }
+      }
+    });
+  });
+}
+
 // Initialize on execution after pages are loaded
 document.addEventListener("DOMContentLoaded", async () => {
   const storedUser = localStorage.getItem("currentUser");
@@ -2265,6 +2421,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   await loadAllPages();
   initRouter();
   updateHeaderAuth();
+  initHeaderSearch();
 });
 
 // Unregister all active Service Workers to avoid cache-poisoning/stale content bugs
