@@ -80,7 +80,7 @@ function renderDashboardProprietaireIntegral(user) {
             <strong>Support BatiBid</strong>
             <span>Disponible 24h/7j</span>
           </div>
-          <a href="https://wa.me/22997000000" target="_blank" class="dash-whatsapp-btn">
+          <a href="https://wa.me/2290142484848?text=Bonjour%20BatiBid%2C%20je%20suis%20un%20utilisateur%20de%20l%27application%20et%20j%27ai%20une%20question." target="_blank" class="dash-whatsapp-btn">
             <i class="fab fa-whatsapp"></i>
           </a>
         </div>

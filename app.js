@@ -60,14 +60,34 @@ function initRouter() {
 
 function handleRoute() {
   const hash = window.location.hash || "#home";
-  state.activeView = hash;
+  
+  // Parse query parameters from hash (e.g. #detail?id=3)
+  let viewId = hash;
+  let queryParams = {};
+  if (hash.includes("?")) {
+    const parts = hash.split("?");
+    viewId = parts[0];
+    const queryStr = parts[1];
+    queryStr.split("&").forEach(param => {
+      if (!param) return;
+      const kv = param.split("=");
+      queryParams[kv[0]] = decodeURIComponent(kv[1] || "");
+    });
+  }
+
+  // If there's an id in query params and the view is #detail, load that property
+  if (viewId === "#detail" && queryParams.id) {
+    state.currentViewingPropertyId = parseInt(queryParams.id, 10);
+  }
+
+  state.activeView = viewId;
   
   // Update UI sections visibility
   document.querySelectorAll(".view-section").forEach(sec => {
     sec.classList.remove("active");
   });
   
-  let targetView = document.querySelector(hash);
+  let targetView = document.querySelector(viewId);
   if (!targetView) {
     targetView = document.querySelector("#home");
     state.activeView = "#home";
@@ -77,7 +97,7 @@ function handleRoute() {
   
   // Highlight active link in header
   document.querySelectorAll(".nav-link").forEach(link => {
-    if (link.getAttribute("href") === hash) {
+    if (link.getAttribute("href") === viewId) {
       link.classList.add("active");
     } else {
       link.classList.remove("active");
@@ -346,14 +366,25 @@ function showContactStep(step) {
 
 function submitContactForm(e) {
   e.preventDefault();
+  const name = document.getElementById("contact-name") ? document.getElementById("contact-name").value.trim() : "";
+  const email = document.getElementById("contact-email") ? document.getElementById("contact-email").value.trim() : "";
   const msg = document.getElementById("contact-msg");
   if (msg && !msg.value.trim()) { msg.focus(); return; }
+  const messageVal = msg ? msg.value.trim() : "";
+
+  // Construct mailto url and trigger it
+  const subject = encodeURIComponent(`Demande de contact — ${name}`);
+  const body = encodeURIComponent(`Nom : ${name}\nEmail : ${email}\n\nMessage :\n${messageVal}`);
+  const mailtoUrl = `mailto:contact@batibid.com?subject=${subject}&body=${body}`;
+  window.open(mailtoUrl, '_self');
+
   // Mark step 3 as done
   const stepEl = document.getElementById("cp-step-3");
   if (stepEl) { stepEl.classList.remove("active"); stepEl.classList.add("done"); }
   const fill = document.getElementById("cp-progress-fill");
   if (fill) fill.style.width = "100%";
-  showAlert("success", "Message envoyé !", "Notre équipe reviendra vers vous sous 24 heures.");
+  
+  showAlert("success", "Message préparé !", "Votre client de messagerie a été ouvert pour envoyer votre message à contact@batibid.com.");
 }
 
 // ==========================================
@@ -1366,6 +1397,10 @@ function renderPropertyDetails() {
   // CTA Box
   const ctaBox = document.getElementById("detail-cta-box");
   if (ctaBox) {
+    const shareUrl = `${window.location.origin}${window.location.pathname}#detail?id=${p.id}`;
+    const whatsappText = `Bonsoir l’agent de BatiBid. Je suis intéressé par ce bien : « ${shareUrl} »`;
+    const whatsappUrl = `https://wa.me/2290142484848?text=${encodeURIComponent(whatsappText)}`;
+
     ctaBox.innerHTML = `
       <div class="detail-cta-card">
         <h4 style="margin-bottom: 1rem;">Intéressé par ce bien ?</h4>
@@ -1378,7 +1413,7 @@ function renderPropertyDetails() {
         <button class="btn btn-primary" style="width: 100%; margin-bottom: 0.75rem;" onclick="startRentPayment(${p.id})">
           <i class="fas fa-key" style="margin-right: 0.5rem;"></i> Louer maintenant
         </button>
-        <a href="https://wa.me/22997000000" class="btn btn-secondary" target="_blank" style="width: 100%; margin-bottom: 0.75rem; text-align:center; display:flex; align-items:center; justify-content:center; gap:0.5rem;">
+        <a href="${whatsappUrl}" class="btn btn-secondary" target="_blank" style="width: 100%; margin-bottom: 0.75rem; text-align:center; display:flex; align-items:center; justify-content:center; gap:0.5rem;">
           <i class="fab fa-whatsapp" style="color:#25D366;"></i> Contacter un agent
         </a>
         <button class="btn btn-secondary" style="width: 100%; border:none; color:var(--gray-600); font-size:0.85rem;" onclick="navigateTo('#trouver')">

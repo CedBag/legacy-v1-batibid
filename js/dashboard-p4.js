@@ -76,7 +76,7 @@ function renderDashboardLocataireGere(user) {
             <strong>Support BatiBid</strong>
             <span>Disponible 24h/7j</span>
           </div>
-          <a href="https://wa.me/22997000000" target="_blank" class="dash-whatsapp-btn">
+          <a href="https://wa.me/2290142484848?text=Bonjour%20BatiBid%2C%20je%20suis%20un%20utilisateur%20de%20l%27application%20et%20j%27ai%20une%20question." target="_blank" class="dash-whatsapp-btn">
             <i class="fab fa-whatsapp"></i>
           </a>
         </div>
@@ -248,7 +248,7 @@ function renderDashP4Overview(user, bien, userTx, incidents, notifs) {
             <button class="btn btn-secondary" onclick="dashTabP4('logement','${user.id}')">
               <i class="fas fa-info-circle"></i> Voir les détails du bail
             </button>
-            <button class="btn btn-secondary" style="border-color:#25D366; color:#2E7D32;" onclick="window.open('https://wa.me/22997000000')">
+            <button class="btn btn-secondary" style="border-color:#25D366; color:#2E7D32;" onclick="window.open('https://wa.me/2290142484848?text=Bonjour%20BatiBid%2C%20je%20suis%20un%20utilisateur%20de%20l%27application%20et%20j%27ai%20une%20question.')">
               <i class="fab fa-whatsapp" style="margin-right:0.5rem;"></i> Contacter le support
             </button>
           </div>
