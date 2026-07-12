@@ -438,3 +438,9 @@
     padding: 0 16px;
   }
 }
+
+@media (max-width: 992px) {
+  .btn-header-cta {
+    display: none !important;
+  }
+}

@@ -129,6 +129,19 @@ a {
   transform: translateY(-1px);
 }
 
+.btn-outline {
+  background-color: transparent;
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-light);
+  color: var(--primary-hover);
+  border-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
 .btn-secondary {
   background-color: transparent;
   border-color: var(--gray-400);
