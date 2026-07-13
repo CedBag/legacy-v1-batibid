@@ -253,3 +253,64 @@ a {
   transform: none !important;
   box-shadow: none !important;
 }
+
+/* ==========================================
+   TIMELINE FLOW STYLING (FAIRE-LOUER)
+   ========================================== */
+.timeline-flow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  max-width: var(--container-max);
+  margin: 3rem auto 0 auto;
+  padding: 0 var(--gutter);
+  position: relative;
+}
+
+.timeline-step {
+  background-color: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  transition: all var(--transition-normal);
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-step:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-light);
+}
+
+.timeline-number {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0 auto 1.5rem auto;
+  box-shadow: 0 4px 10px rgba(217, 94, 43, 0.2);
+}
+
+.timeline-step h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: 0.75rem;
+  text-transform: none;
+}
+
+.timeline-step p {
+  font-size: 0.88rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+  margin: 0;
+}
