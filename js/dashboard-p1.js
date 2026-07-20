@@ -262,10 +262,10 @@ function renderDashP1Biens(user) {
         const dernierLoyer = txBien[0];
         const incidents = mockIncidents.filter(i => i.bienId === b.id);
         return `
-          <div class="dash-bien-detail-card" style="display:flex; flex-direction:column; justify-content:space-between;">
+          <div class="dash-bien-detail-card">
             <div>
               <img src="${b.image}" alt="${b.title}" class="dash-bien-card-img">
-              <div class="dash-bien-card-body" style="padding-bottom:0.5rem;">
+              <div class="dash-bien-card-body">
                 <div class="dash-bien-card-header">
                   <h3>${b.title}</h3>
                   <span class="dash-status-badge dash-status-${b.status.toLowerCase().replace(" ", "-")}">
@@ -307,12 +307,6 @@ function renderDashP1Biens(user) {
                   </div>
                 ` : ""}
               </div>
-            </div>
-            
-            <div style="padding: 0 1.25rem 1.25rem;">
-              <button class="btn btn-secondary" style="width: 100%; font-size: 0.8rem; padding: 0.45rem; border-color: var(--gray-400);" onclick="removePropertyP1('${b.id}', '${user.id}')">
-                <i class="fas fa-trash-alt" style="margin-right: 0.25rem;"></i> Retirer de la gestion
-              </button>
             </div>
           </div>
         `;
