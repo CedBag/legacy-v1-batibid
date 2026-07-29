@@ -38,7 +38,7 @@ let state = {
 // CLIENT ROUTER & DYNAMIC PRELOADER
 // ==========================================
 async function loadAllPages() {
-  const pages = ['home', 'gerer', 'faire-louer', 'trouver', 'construire', 'conseils-juridiques', 'partenariats', 'blog', 'contact', 'auth', 'dashboard', 'detail', 'pay', 'invoices', 'invoice-detail-view'];
+  const pages = ['home', 'gerer', 'mise-en-location', 'trouver', 'construire', 'juridique', 'partenariats', 'blog', 'contact', 'auth', 'dashboard', 'detail', 'pay', 'invoices', 'invoice-detail-view'];
   try {
     await Promise.all(pages.map(async page => {
       // Use dynamic timestamp to prevent browser caching of HTML templates
@@ -129,7 +129,7 @@ function handleRoute() {
 
 function onViewLoad(hash) {
   // Trigger scroll animations on all public pages
-  const publicPages = ['#home', '#gerer', '#faire-louer', '#trouver', '#construire', '#conseils-juridiques', '#partenariats', '#blog', '#contact'];
+  const publicPages = ['#home', '#gerer', '#mise-en-location', '#trouver', '#construire', '#juridique', '#partenariats', '#blog', '#contact'];
   if (publicPages.some(p => hash.startsWith(p))) {
     setTimeout(initScrollAnimations, 150);
   }
@@ -143,7 +143,7 @@ function onViewLoad(hash) {
       initExpertiseTabs();
       initWorkflowSimulator();
     }, 100);
-  } else if (hash === "#conseils-juridiques") {
+  } else if (hash === "#juridique") {
     setTimeout(initCounterUp, 300);
   } else if (hash === "#trouver") {
     showPropertySkeletons(6);
@@ -766,9 +766,9 @@ function updateHeaderAuth() {
     if (navMenu) {
       navMenu.innerHTML = `
         <a href="#gerer" class="nav-link">Gérer</a>
-        <a href="#faire-louer" class="nav-link">Faire louer</a>
-        <a href="#construire" class="nav-link">Construire &amp; Rénover</a>
-        <a href="#conseils-juridiques" class="nav-link">Conseils Juridiques</a>
+        <a href="#mise-en-location" class="nav-link">Mettre en location</a>
+        <a href="#construire" class="nav-link">Construire &amp; rénover</a>
+        <a href="#juridique" class="nav-link">Juridique</a>
         <div class="dropdown">
           <a class="nav-link" style="display: flex; align-items: center; gap: 0.25rem;">
             Découvrir Plus <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i>
@@ -786,10 +786,10 @@ function updateHeaderAuth() {
       mobileLinks.innerHTML = `
         <a href="#home" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-home"></i> Accueil</a>
         <a href="#gerer" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-key"></i> Gérer</a>
-        <a href="#faire-louer" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-bullhorn"></i> Faire louer</a>
+        <a href="#mise-en-location" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-bullhorn"></i> Mettre en location</a>
         <a href="#trouver" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-search"></i> Trouver une location</a>
-        <a href="#construire" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-hard-hat"></i> Construire &amp; Rénover</a>
-        <a href="#conseils-juridiques" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-balance-scale"></i> Conseils Juridiques</a>
+        <a href="#construire" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-hard-hat"></i> Construire &amp; rénover</a>
+        <a href="#juridique" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-balance-scale"></i> Juridique</a>
         <div class="mobile-nav-divider"></div>
         <a href="#partenariats" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-handshake"></i> Partenariats</a>
         <a href="#blog" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-newspaper"></i> Blog</a>
@@ -800,7 +800,7 @@ function updateHeaderAuth() {
     if (mobileFooter) {
       mobileFooter.innerHTML = `
         <a href="#auth" class="btn btn-primary" style="width: 100%;" onclick="toggleMobileMenu()">
-          <i class="fas fa-user" style="margin-right: 0.5rem;"></i> S'identifier
+          <i class="fas fa-user" style="margin-right: 0.5rem;"></i> Se connecter
         </a>
       `;
     }

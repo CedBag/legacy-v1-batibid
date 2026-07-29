@@ -53,9 +53,9 @@
       
       <nav class="nav-menu" id="header-nav-menu">
         <a href="#gerer" class="nav-link">Gérer</a>
-        <a href="#faire-louer" class="nav-link">Faire louer</a>
-        <a href="#construire" class="nav-link">Construire &amp; Rénover</a>
-        <a href="#conseils-juridiques" class="nav-link">Conseils Juridiques</a>
+        <a href="#mise-en-location" class="nav-link">Mettre en location</a>
+        <a href="#construire" class="nav-link">Construire &amp; rénover</a>
+        <a href="#juridique" class="nav-link">Juridique</a>
         
         <!-- Dropdown: Découvrir Plus -->
         <div class="dropdown">
@@ -79,7 +79,7 @@
             </button>
           </div>
           <a href="#contact" class="btn btn-primary btn-header-cta" style="border-radius: var(--radius-sm);"><i class="fas fa-calendar-alt" style="margin-right: 0.5rem;"></i> Prendre RDV</a>
-          <a href="#auth" class="btn btn-outline" style="border-radius: var(--radius-sm);"><i class="fas fa-user" style="margin-right: 0.5rem;"></i> S'identifier</a>
+          <a href="#auth" class="btn btn-outline" style="border-radius: var(--radius-sm);"><i class="fas fa-user" style="margin-right: 0.5rem;"></i> Se connecter</a>
         </div>
         
         <div id="header-user-actions" style="display: none; align-items: center; gap: 1rem;">
@@ -113,10 +113,10 @@
     <!-- Dynamic templates loaded via fetch() inside app.js -->
     <section id="home" class="view-section active"></section>
     <section id="gerer" class="view-section"></section>
-    <section id="faire-louer" class="view-section"></section>
+    <section id="mise-en-location" class="view-section"></section>
     <section id="trouver" class="view-section"></section>
     <section id="construire" class="view-section"></section>
-    <section id="conseils-juridiques" class="view-section"></section>
+    <section id="juridique" class="view-section"></section>
     <section id="partenariats" class="view-section"></section>
     <section id="blog" class="view-section"></section>
     <section id="contact" class="view-section"></section>
@@ -148,9 +148,9 @@
         <h4>Services</h4>
         <ul class="footer-links">
           <li><a href="#gerer">Gestion location</a></li>
-          <li><a href="#faire-louer">Annonces</a></li>
+          <li><a href="#mise-en-location">Mise en location</a></li>
           <li><a href="#trouver">Recherche</a></li>
-          <li><a href="#conseils-juridiques">Conseils Juridiques</a></li>
+          <li><a href="#juridique">Juridique</a></li>
         </ul>
       </div>
       
@@ -366,10 +366,10 @@
       <nav class="mobile-nav-links" id="mobile-nav-links">
         <a href="#home" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-home"></i> Accueil</a>
         <a href="#gerer" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-key"></i> Gérer</a>
-        <a href="#faire-louer" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-bullhorn"></i> Faire louer</a>
+        <a href="#mise-en-location" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-bullhorn"></i> Mettre en location</a>
         <a href="#trouver" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-search"></i> Trouver une location</a>
-        <a href="#construire" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-hard-hat"></i> Construire & Rénover</a>
-        <a href="#conseils-juridiques" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-balance-scale"></i> Conseils Juridiques</a>
+        <a href="#construire" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-hard-hat"></i> Construire &amp; rénover</a>
+        <a href="#juridique" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-balance-scale"></i> Juridique</a>
         <div class="mobile-nav-divider"></div>
         <a href="#partenariats" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-handshake"></i> Partenariats</a>
         <a href="#blog" class="mobile-nav-link" onclick="toggleMobileMenu()"><i class="fas fa-newspaper"></i> Blog</a>
@@ -380,7 +380,7 @@
           <i class="fas fa-calendar-alt" style="margin-right: 0.5rem;"></i> Prendre RDV
         </a>
         <a href="#auth" class="btn btn-outline" style="width: 100%;" onclick="toggleMobileMenu()">
-          <i class="fas fa-user" style="margin-right: 0.5rem;"></i> S'identifier
+          <i class="fas fa-user" style="margin-right: 0.5rem;"></i> Se connecter
         </a>
       </div>
     </div>
