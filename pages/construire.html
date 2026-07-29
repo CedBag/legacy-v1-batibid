@@ -1,29 +1,30 @@
-<div class="premium-hero">
+<div class="premium-hero" style="background: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('./construire_hero.jpg') center/cover no-repeat;">
   <div class="premium-hero-container">
     <div class="premium-hero-content reveal-left">
       <span class="hero-badge" style="background-color: var(--primary-light); color: var(--primary); align-self: start; margin-bottom: 1.5rem;">POUR LA DIASPORA & LES INVESTISSEURS</span>
       <h1 class="headline-xl premium-hero-title">
-        Vous êtes à Paris, Dubai ou New York.<br><span>Votre maison avance à Cotonou.</span>
+        Vous êtes à l'étranger.<br><span>Votre projet avance au Bénin.</span>
       </h1>
       <p class="body-lg premium-hero-desc">
-        Vous rêvez de bâtir votre bien au Bénin mais vous ne pouvez pas surveiller le chantier. BatiBid est vos yeux et vos mains sur le terrain artisans certifiés, photos hebdos, comptes-rendus détaillés. Vous ne bougez pas, votre maison avance.
+        Vous souhaitez construire ou rénover un bien sans pouvoir suivre le chantier au quotidien ? BatiBid représente vos intérêts sur le terrain, coordonne les intervenants, contrôle l'avancement des travaux et vous transmet des comptes rendus réguliers. Où que vous soyez, vous gardez le contrôle.
       </p>
       <div class="premium-hero-actions">
-        <a href="#auth" class="btn btn-primary">Démarrer mon projet <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i></a>
-        <a href="https://wa.me/2290142484848?text=Bonjour%20BatiBid%2C%20je%20souhaite%20%C3%A9changer%20concernant%20un%20projet%20de%20construction%20ou%20de%20r%C3%A9novation." class="btn btn-secondary" target="_blank"><i class="fab fa-whatsapp" style="color: #25D366; margin-right: 0.5rem;"></i> WhatsApp +229 01 42 48 48 48</a>
+        <a href="#estimation-projet-form" class="btn btn-primary">Estimer mon projet <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i></a>
+        <a href="https://wa.me/2290142484848?text=Bonjour%20BatiBid%2C%20je%20souhaite%20%C3%A9changer%20concernant%20un%20projet%20de%20construction%20ou%20de%20r%C3%A9novation." class="btn btn-secondary" target="_blank"><i class="fab fa-whatsapp" style="color: #25D366; margin-right: 0.5rem;"></i> Échanger sur WhatsApp</a>
       </div>
     </div>
     
     <div class="premium-hero-image-wrapper reveal-right">
       <!-- Simulated build estimation questionnaire -->
       <div class="estimation-form-card" id="estimation-projet-form">
-        <h3>Estimer mon projet gratuitement</h3>
+        <div style="font-size: 0.8rem; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-bottom: 0.25rem;">Obtenir une première estimation gratuite</div>
+        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.3;">Recevez une première estimation indicative sous 24 heures.</h3>
         <form onsubmit="event.preventDefault(); showAlert('success', 'Demande reçue !', 'Un expert BatiBid vous contacte sous 24h avec un premier chiffrage détaillé. Gardez votre WhatsApp ouvert.');">
           <div class="form-group">
             <label class="form-label">Type de projet</label>
             <select class="form-control">
               <option>Construction de maison individuelle</option>
-              <option>Rénovation complète</option>
+              <option>Rénovation complète de bien</option>
               <option>Extension / Surélévation</option>
               <option>Construction d'immeuble de rapport</option>
             </select>
@@ -38,102 +39,311 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label">Budget alloué (FCFA)</label>
+            <label class="form-label">Surface approximative (m²)</label>
+            <input type="number" class="form-control" placeholder="Ex: 150">
+          </div>
+          <div class="form-group">
+            <label class="form-label">État du projet</label>
+            <select class="form-control">
+              <option>Idée de projet</option>
+              <option>Terrain acquis</option>
+              <option>Plans de construction disponibles</option>
+              <option>Travaux déjà commencés</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Budget envisagé (FCFA)</label>
             <input type="text" class="form-control" placeholder="Ex: 25 000 000">
           </div>
           <div class="form-group">
             <label class="form-label">Votre numéro WhatsApp <span style="color: var(--error);">*</span></label>
-            <input type="tel" class="form-control" required placeholder="Ex: 01 97 00 00 00">
-            <span style="font-size: 0.75rem; color: var(--gray-500); margin-top: 0.25rem; display: block;">On vous envoie le chiffrage sous 24h sur WhatsApp</span>
+            <input type="tel" class="form-control" required placeholder="Ex: +33 6 00 00 00 00">
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%;">Recevoir mon estimation gratuite</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Recevoir ma première estimation</button>
+          <span style="font-size: 0.72rem; color: var(--gray-600); margin-top: 0.75rem; display: block; line-height: 1.4; text-align: center;">
+            Première estimation indicative. Un chiffrage définitif nécessite l'étude des plans, des surfaces et du niveau de finition.
+          </span>
         </form>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Administrative assistance section -->
-<div class="premium-section alternate">
-  <div class="admin-grid">
-    <div class="admin-card reveal">
-      <div style="background-color: var(--primary-light); color: var(--primary); width: 40px; height: 40px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; margin-bottom: 1.5rem;">
-        <i class="fas fa-file-alt"></i>
-      </div>
-      <h3>Zéro bureaucratie de votre côté</h3>
-      <p class="body-md">Permis de construire, études topographiques, autorisations locales BatiBid prend en charge l'intégralité des démarches administratives. Vous signez, on gère le reste.</p>
-      <ul class="checklist-items">
-        <li class="checklist-item"><i class="fas fa-check-circle" style="color: var(--primary);"></i> Permis de construire (constitution et suivi du dossier jusqu'à obtention)</li>
-        <li class="checklist-item"><i class="fas fa-check-circle" style="color: var(--primary);"></i> Études topographiques & de sol (coordination avec géomètres agréés)</li>
-      </ul>
+<!-- Bandeau de preuves -->
+<div style="background-color: var(--primary-light); padding: 2.5rem 0; border-top: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200);">
+  <div style="max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter); display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center;" class="metrics-grid">
+    <div>
+      <h3 style="color: var(--primary); font-size: 2.2rem; font-weight: 800; margin-bottom: 0.25rem;">32</h3>
+      <p style="font-size: 0.9rem; font-weight: 700; color: var(--secondary);">projets pilotés depuis 2024</p>
     </div>
-    
-    <div class="admin-image">
-      <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=400" alt="Administrative Documents">
+    <div style="border-left: 1px solid var(--gray-300);" class="metrics-border-mobile">
+      <h3 style="color: var(--primary); font-size: 2.2rem; font-weight: 800; margin-bottom: 0.25rem;">11</h3>
+      <p style="font-size: 0.9rem; font-weight: 700; color: var(--secondary);">maîtres d'ouvrage accompagnés</p>
+    </div>
+    <div style="border-left: 1px solid var(--gray-300);" class="metrics-border-mobile">
+      <h3 style="color: var(--primary); font-size: 2.2rem; font-weight: 800; margin-bottom: 0.25rem;">100 %</h3>
+      <p style="font-size: 0.9rem; font-weight: 700; color: var(--secondary);">des rapports de suivi transmis</p>
+    </div>
+    <div style="border-left: 1px solid var(--gray-300);" class="metrics-border-mobile">
+      <h3 style="color: var(--primary); font-size: 2.2rem; font-weight: 800; margin-bottom: 0.25rem;">100 %</h3>
+      <p style="font-size: 0.9rem; font-weight: 700; color: var(--secondary);">des projets livrés dans les délais</p>
     </div>
   </div>
 </div>
 
-<!-- Site supervision section -->
+<!-- Le problème de la distance -->
+<div class="premium-section alternate">
+  <div class="premium-section-header">
+    <span class="hero-badge" style="background-color: var(--error-light); color: var(--error); margin-bottom: 1rem;"><i class="fas fa-exclamation-circle"></i> SÉCURITÉ DES TRAVAUX</span>
+    <h2 class="headline-lg">La distance ne devrait jamais vous faire perdre le contrôle de votre chantier</h2>
+    <p class="body-md">Gérer un chantier de construction ou de rénovation à distance comporte des risques critiques majeurs :</p>
+  </div>
+  
+  <div class="solutions-grid grid-3 stagger-children">
+    <div class="solution-card" style="border-top: 3px solid var(--error);">
+      <div class="solution-icon-box" style="background-color: var(--error-light); color: var(--error);"><i class="fas fa-search-dollar"></i></div>
+      <h3>Manque de visibilité sur les fonds</h3>
+      <p>Risque de détournement des fonds versés à des fins personnelles ou d'utilisation de matériaux de qualité inférieure à celle budgétisée.</p>
+    </div>
+    <div class="solution-card" style="border-top: 3px solid var(--error);">
+      <div class="solution-icon-box" style="background-color: var(--error-light); color: var(--error);"><i class="fas fa-clock"></i></div>
+      <h3>Retards découverts trop tard</h3>
+      <p>L'absence de suivi rigoureux génère des dérives de calendrier importantes qui ne vous sont rapportées que lorsqu'elles deviennent critiques.</p>
+    </div>
+    <div class="solution-card" style="border-top: 3px solid var(--error);">
+      <div class="solution-icon-box" style="background-color: var(--error-light); color: var(--error);"><i class="fas fa-users-slash"></i></div>
+      <h3>Prestataires difficiles à coordonner</h3>
+      <p>Les artisans et corps de métier manquent de pilotage centralisé, ralentissant le déroulement des tâches techniques.</p>
+    </div>
+  </div>
+  
+  <div class="solutions-grid grid-3 stagger-children" style="margin-top: 2rem; justify-content: center; display: flex; gap: 2rem;" class="grid-flex-mobile">
+    <div class="solution-card" style="border-top: 3px solid var(--error); flex: 1; max-width: 360px;">
+      <div class="solution-icon-box" style="background-color: var(--error-light); color: var(--error);"><i class="fas fa-exclamation-triangle"></i></div>
+      <h3>Qualité difficile à contrôler</h3>
+      <p>Les malfaçons structurelles sont masquées par des finitions rapides sans contrôle minutieux par un ingénieur qualifié.</p>
+    </div>
+    <div class="solution-card" style="border-top: 3px solid var(--error); flex: 1; max-width: 360px;">
+      <div class="solution-icon-box" style="background-color: var(--error-light); color: var(--error);"><i class="fas fa-gavel"></i></div>
+      <h3>Décisions sans votre validation</h3>
+      <p>Modifications de plans ou changements arbitraires décidés directement sur le chantier sans votre accord préalable.</p>
+    </div>
+  </div>
+</div>
+
+<!-- La réponse BatiBid : votre représentant sur le terrain -->
 <div class="premium-section">
   <div class="premium-section-header">
-    <h2 class="headline-lg">Votre chantier sous contrôle même à 10 000 km</h2>
-    <p class="body-md">Des photos chaque semaine, des rapports à chaque étape, des artisans qu'on a vérifiés pour vous. Vous gardez le contrôle total sans quitter votre salon.</p>
+    <span class="hero-badge" style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 1rem;">LA SOLUTION BATIBID</span>
+    <h2 class="headline-lg">Votre investissement mérite plus qu'un suivi. Il mérite une représentation.</h2>
+    <p class="body-md">BatiBid représente les intérêts du maître d'ouvrage (vous), coordonne les intervenants, contrôle l'exécution et documente chaque étape du projet.</p>
   </div>
   
   <div class="professional-workflow stagger-children">
     <div class="workflow-card">
-      <div class="workflow-icon"><i class="fas fa-user-tie"></i></div>
-      <h3>Artisans certifiés et sélectionnés</h3>
-      <p class="body-md">Chaque artisan est interviewé et vérifié par BatiBid avant d'être intégré à notre réseau. Vous n'êtes jamais exposé à un prestataire inconnu.</p>
+      <div class="workflow-icon"><i class="fas fa-user-shield"></i></div>
+      <h3>Représentation exclusive d'intérêts</h3>
+      <p class="body-md">Nous sommes votre voix sur le terrain. Nos experts veillent au respect strict des plans, valident les devis de matériaux et s'assurent de la conformité réglementaire.</p>
     </div>
     <div class="workflow-card">
-      <div class="workflow-icon"><i class="fas fa-clipboard-check"></i></div>
-      <h3>Votre argent versé par tranches validées</h3>
-      <p class="body-md">Aucun paiement n'est libéré sans votre validation. Chaque étape est approuvée sur photos avant de passer à la suivante. Zéro risque de détournement.</p>
+      <div class="workflow-icon"><i class="fas fa-wallet"></i></div>
+      <h3>Paiement sécurisé par tranches</h3>
+      <p class="body-md">Les fonds alloués aux travaux sont débloqués par tranches progressives, uniquement après vérification et validation technique de chaque étape sur le terrain.</p>
     </div>
     <div class="workflow-card">
-      <div class="workflow-icon"><i class="fas fa-history"></i></div>
-      <h3>Photos & rapports chaque semaine</h3>
-      <p class="body-md">Suivez votre chantier en temps réel depuis votre téléphone photos, vidéos et rapports détaillés. Vous voyez tout, décidez tout.</p>
+      <div class="workflow-icon"><i class="fas fa-video"></i></div>
+      <h3>Suivi en direct & rapports hebdomadaires</h3>
+      <p class="body-md">Un compte-rendu technique illustré (photos et vidéos) vous est envoyé chaque semaine sur votre espace client et sur WhatsApp. Vous voyez l'avancement réel.</p>
     </div>
   </div>
 </div>
 
-<!-- Timeline flow -->
+<!-- Les services couverts (Construire vs Rénover) -->
 <div class="premium-section alternate">
   <div class="premium-section-header">
-    <h2 class="headline-lg">De votre rêve à la remise des clés</h2>
-    <p class="body-md">Trois étapes claires. Un interlocuteur unique. Zéro mauvaise surprise.</p>
+    <span class="hero-badge" style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 1rem;">NOS DOMAINES D'INTERVENTION</span>
+    <h2 class="headline-lg">Une prise en charge sur mesure de vos chantiers</h2>
+    <p class="body-md">Nos équipes spécialisées accompagnent votre projet de A à Z selon vos objectifs.</p>
+  </div>
+  
+  <div class="solutions-grid grid-3" style="grid-template-columns: repeat(2, 1fr); max-width: 900px; margin: 0 auto;" class="grid-2-mobile">
+    <!-- Construire -->
+    <div class="solution-card" style="background: var(--white); padding: 2.5rem; border-radius: var(--radius-lg); border: 1px solid var(--gray-300);">
+      <div class="solution-icon-box" style="background-color: var(--primary-light); color: var(--primary);"><i class="fas fa-drafting-compass"></i></div>
+      <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 1.5rem;">Construire</h3>
+      <ul style="text-align: left; display: flex; flex-direction: column; gap: 0.75rem; list-style: none; padding: 0;">
+        <li style="display: flex; gap: 0.5rem; align-items: start;"><i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i> <span>Étude de faisabilité et conception architecturale</span></li>
+        <li style="display: flex; gap: 0.5rem; align-items: start;"><i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i> <span>Prise en charge complète des démarches administratives</span></li>
+        <li style="display: flex; gap: 0.5rem; align-items: start;"><i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i> <span>Sélection rigoureuse des entreprises et artisans agréés</span></li>
+        <li style="display: flex; gap: 0.5rem; align-items: start;"><i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i> <span>Pilotage quotidien des travaux et réunions de chantiers</span></li>
+        <li style="display: flex; gap: 0.5rem; align-items: start;"><i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i> <span>Contrôle qualité permanent par nos ingénieurs</span></li>
+        <li style="display: flex; gap: 0.5rem; align-items: start;"><i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i> <span>Réception d'ouvrage et livraison des clés</span></li>
+      </ul>
+    </div>
+    
+    <!-- Rénover -->
+    <div class="solution-card" style="background: var(--white); padding: 2.5rem; border-radius: var(--radius-lg); border: 1px solid var(--gray-300);">
+      <div class="solution-icon-box" style="background-color: var(--primary-light); color: var(--primary);"><i class="fas fa-tools"></i></div>
+      <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 1.5rem;">Rénover</h3>
+      <ul style="text-align: left; display: flex; flex-direction: column; gap: 0.75rem; list-style: none; padding: 0;">
+        <li style="display: flex; gap: 0.5rem; align-items: start;"><i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i> <span>Diagnostic technique complet et structurel du bâtiment</span></li>
+        <li style="display: flex; gap: 0.5rem; align-items: start;"><i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i> <span>Définition précise du programme et chiffrage des travaux</span></li>
+        <li style="display: flex; gap: 0.5rem; align-items: start;"><i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i> <span>Planification stratégique des interventions</span></li>
+        <li style="display: flex; gap: 0.5rem; align-items: start;"><i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i> <span>Coordination méticuleuse des différents corps de métier</span></li>
+        <li style="display: flex; gap: 0.5rem; align-items: start;"><i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i> <span>Contrôle technique et reporting hebdomadaire des finitions</span></li>
+        <li style="display: flex; gap: 0.5rem; align-items: start;"><i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i> <span>Réception finale et livraison après nettoyage complet</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- La méthode : du projet à la remise des clés -->
+<div class="premium-section">
+  <div class="premium-section-header">
+    <span class="hero-badge" style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 1rem;">LA MÉTHODE BATIBID</span>
+    <h2 class="headline-lg">Du projet à la remise des clés</h2>
+    <p class="body-md">Un parcours structuré en 5 grandes étapes clés pour assurer la réussite de vos chantiers.</p>
   </div>
   
   <div class="timeline-flow">
     <div class="timeline-step reveal">
       <div class="timeline-number">1</div>
-      <h4>Consultation & Estimation gratuite</h4>
-      <p class="body-md">Décrivez votre projet. Nous analysons et vous fournissons une estimation chiffrée sous 24h, directement sur votre WhatsApp.</p>
+      <h4>Étude</h4>
+      <p class="body-md">Analyse détaillée de vos besoins, diagnostic de terrain, relevé topographique et étude géotechnique initiale.</p>
     </div>
     <div class="timeline-step reveal">
       <div class="timeline-number">2</div>
-      <h4>Nous gérons l'administratif</h4>
-      <p class="body-md">Plans validés, permis obtenus, autorisations réglisées. Vous n'avez aucune démarche à faire de votre côté.</p>
+      <h4>Conception & chiffrage</h4>
+      <p class="body-md">Élaboration des plans architecturaux 2D/3D et production du devis descriptif estimatif détaillé de vos travaux.</p>
     </div>
     <div class="timeline-step reveal">
       <div class="timeline-number">3</div>
-      <h4>Exécution & Suivi en temps réel</h4>
-      <p class="body-md">Travaux lancés avec rapports hebdomadaires photo/vidéo jusqu'à la remise des clés. Vous êtes aux commandes depuis votre téléphone.</p>
+      <h4>Études & autorisations</h4>
+      <p class="body-md">Calcul de structure béton armé, constitution et dépôt du dossier de permis de construire auprès des autorités locales.</p>
+    </div>
+    <div class="timeline-step reveal">
+      <div class="timeline-number">4</div>
+      <h4>Exécution & contrôle</h4>
+      <p class="body-md">Lancement effectif des travaux sous la direction d'un chef de projet BatiBid, avec suivi hebdos photos/vidéos sur votre espace.</p>
+    </div>
+    <div class="timeline-step reveal">
+      <div class="timeline-number">5</div>
+      <h4>Réception & livraison</h4>
+      <p class="body-md">Visites de contrôle final, réception des ouvrages, levée des éventuelles réserves et remise solennelle des clés.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Le pilotage administratif et technique -->
+<div class="premium-section alternate">
+  <div class="admin-grid">
+    <div class="admin-card reveal">
+      <span class="hero-badge" style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 1.5rem; align-self: start;"><i class="fas fa-file-shield"></i> PILOTAGE & CONTRÔLE</span>
+      <h3>Votre projet sécurisé avant le début des travaux</h3>
+      <p class="body-md" style="margin-bottom: 1.5rem;">Nous gérons à votre place l'ensemble des contraintes techniques, foncières et réglementaires indispensables à la pérennité de votre ouvrage :</p>
+      <ul style="text-align: left; display: flex; flex-direction: column; gap: 0.75rem; list-style: none; padding: 0;">
+        <li style="display: flex; gap: 0.5rem; align-items: start;"><i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i> <span><strong>Permis de construire :</strong> constitution, dépôt et suivi d'obtention de votre dossier officiel en mairie.</span></li>
+        <li style="display: flex; gap: 0.5rem; align-items: start;"><i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i> <span><strong>Études topographiques :</strong> délimitation exacte et bornage foncier par un géomètre expert agréé.</span></li>
+        <li style="display: flex; gap: 0.5rem; align-items: start;"><i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i> <span><strong>Études géotechniques :</strong> analyses de sol complètes par laboratoire spécialisé pour le dimensionnement des fondations.</span></li>
+        <li style="display: flex; gap: 0.5rem; align-items: start;"><i class="fas fa-check-circle" style="color: var(--primary); margin-top: 0.25rem;"></i> <span><strong>Centralisation documentaire :</strong> regroupement de toutes les autorisations administratives dans votre espace client.</span></li>
+      </ul>
+    </div>
+    
+    <div class="admin-image" style="box-shadow: var(--shadow-dark); border-radius: var(--radius-lg); overflow: hidden;">
+      <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=400" alt="Suivi administratif BatiBid">
+    </div>
+  </div>
+</div>
+
+<!-- FAQs Accordion -->
+<div class="premium-section">
+  <div class="premium-section-header">
+    <span class="hero-badge" style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-question-circle"></i> FAQ CONSTRUIRE & RÉNOVER</span>
+    <h2 class="headline-lg">Questions fréquemment posées</h2>
+    <p class="body-md">Toutes les réponses pour préparer votre projet en toute sérénité.</p>
+  </div>
+  
+  <div class="accordion-wrapper reveal" style="max-width: 800px; margin: 0 auto;">
+    <div class="accordion-item" onclick="this.classList.toggle('active')">
+      <div class="accordion-header">
+        <span>BatiBid intervient-il uniquement à Cotonou ?</span>
+        <i class="fas fa-chevron-down accordion-icon"></i>
+      </div>
+      <div class="accordion-content">
+        Non. Nous pilotons des projets de construction et de rénovation dans plusieurs communes du Bénin, notamment à Abomey-Calavi, Porto-Novo, Ouidah et d'autres grandes agglomérations selon l'envergure du projet.
+      </div>
+    </div>
+    
+    <div class="accordion-item" onclick="this.classList.toggle('active')">
+      <div class="accordion-header">
+        <span>Pouvez-vous reprendre un chantier déjà commencé ?</span>
+        <i class="fas fa-chevron-down accordion-icon"></i>
+      </div>
+      <div class="accordion-content">
+        Oui. Nous réalisons au préalable un diagnostic technique et un audit de structure complet de l'existant. Cela nous permet d'identifier d'éventuels vices de construction et de sécuriser la reprise des travaux dans les règles de l'art.
+      </div>
+    </div>
+    
+    <div class="accordion-item" onclick="this.classList.toggle('active')">
+      <div class="accordion-header">
+        <span>Comment les prestataires et artisans sont-ils sélectionnés ?</span>
+        <i class="fas fa-chevron-down accordion-icon"></i>
+      </div>
+      <div class="accordion-content">
+        Chaque prestataire fait l'objet d'une sélection stricte : vérification de sa solvabilité administrative, de son assurance professionnelle, de son historique de réalisations physiques et de la solidité financière de son entreprise avant toute intégration.
+      </div>
+    </div>
+
+    <div class="accordion-item" onclick="this.classList.toggle('active')">
+      <div class="accordion-header">
+        <span>Comment sont contrôlés les paiements ?</span>
+        <i class="fas fa-chevron-down accordion-icon"></i>
+      </div>
+      <div class="accordion-content">
+        Les paiements s'effectuent par tranches successives basées sur des étapes réelles. Nos contrôleurs valident l'avancement technique sur le terrain (ex. coulage de dalle, finitions) avant de débloquer la tranche suivante à l'entreprise de construction.
+      </div>
+    </div>
+
+    <div class="accordion-item" onclick="this.classList.toggle('active')">
+      <div class="accordion-header">
+        <span>À quelle fréquence recevrai-je des rapports ?</span>
+        <i class="fas fa-chevron-down accordion-icon"></i>
+      </div>
+      <div class="accordion-content">
+        Vous recevez un rapport d'avancement technique complet chaque semaine, enrichi de photos, de vidéos explicatives et d'un compte-rendu écrit directement sur votre espace client et résumé sur WhatsApp.
+      </div>
+    </div>
+
+    <div class="accordion-item" onclick="this.classList.toggle('active')">
+      <div class="accordion-header">
+        <span>Comment sont calculés les honoraires de BatiBid ?</span>
+        <i class="fas fa-chevron-down accordion-icon"></i>
+      </div>
+      <div class="accordion-content">
+        Nos honoraires sont clairs et définis au contrat avant le lancement des travaux. Ils prennent la forme d'un pourcentage fixe du budget des travaux ou d'un montant forfaitaire déterminé selon la complexité et la durée de la mission.
+      </div>
+    </div>
+
+    <div class="accordion-item" onclick="this.classList.toggle('active')">
+      <div class="accordion-header">
+        <span>Comment les modifications en cours de chantier sont-elles validées ?</span>
+        <i class="fas fa-chevron-down accordion-icon"></i>
+      </div>
+      <div class="accordion-content">
+        Toute modification (choix de matériaux, modification de plan) est analysée par notre équipe technique. Nous produisons un avenant écrit chiffré précisant l'impact sur le budget et le calendrier, qui requiert votre validation formelle avant d'être exécuté.
+      </div>
     </div>
   </div>
 </div>
 
 <!-- CTA Banner -->
-<div class="premium-section" style="padding-top: 2rem;">
+<div class="premium-section alternate" style="padding-top: 2rem;">
   <div class="cta-banner">
     <div class="cta-banner-card">
       <h2 class="headline-lg">Votre projet immobilier peut commencer aujourd'hui</h2>
-      <p class="body-lg">Nos clients construisent depuis Paris, Montréal et Dubai. Rejoignez-les obtenez votre estimation gratuite sous 24h.</p>
+      <p class="body-lg">Nos clients construisent depuis Paris, Montréal et Dubai. Rejoignez-les, obtenez votre estimation gratuite sous 24h.</p>
       <div class="cta-banner-actions">
-        <button class="btn btn-secondary" style="background-color: var(--white); color: var(--secondary); border: none;" onclick="navigateTo('#auth')">Recevoir mon estimation gratuite</button>
+        <a href="#estimation-projet-form" class="btn btn-secondary" style="background-color: var(--white); color: var(--secondary); border: none; display: inline-flex; align-items: center; justify-content: center;">Recevoir mon estimation gratuite</a>
         <a href="https://wa.me/2290142484848?text=Bonjour%20BatiBid%2C%20je%20souhaite%20%C3%A9changer%20concernant%20un%20projet%20de%20construction%20ou%20de%20r%C3%A9novation." class="btn btn-primary" style="background-color: rgba(28,28,28,0.9); color: var(--white); border: none;" target="_blank"><i class="fab fa-whatsapp" style="color: #25D366; margin-right: 0.5rem;"></i> Parler à un expert maintenant</a>
       </div>
     </div>
