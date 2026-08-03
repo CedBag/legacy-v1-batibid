@@ -771,7 +771,7 @@ function updateHeaderAuth() {
         <a href="#juridique" class="nav-link">Juridique</a>
         <div class="dropdown">
           <a class="nav-link" style="display: flex; align-items: center; gap: 0.25rem;">
-            Découvrir Plus <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i>
+            Plus <i class="fas fa-chevron-down" style="font-size: 0.75rem;"></i>
           </a>
           <div class="dropdown-menu">
             <a href="#partenariats"><i class="fas fa-handshake" style="margin-right: 0.5rem; color: var(--primary);"></i> Partenariats</a>
