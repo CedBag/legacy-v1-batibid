@@ -2,18 +2,6 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then(function(regs) {
-        regs.forEach(function(reg) { reg.unregister(); });
-      });
-    }
-    if ('caches' in window) {
-      caches.keys().then(function(keys) {
-        keys.forEach(function(key) { caches.delete(key); });
-      });
-    }
-  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BatiBid - Refonte Digitale & Gestion Locative au Bénin</title>
   <meta name="description" content="Plateforme proptech de confiance au Bénin pour propriétaires, locataires et professionnels. Gérez vos biens, trouvez votre prochain logement ou menez à bien vos projets.">
@@ -29,7 +17,7 @@
   
   <!-- Leaflet Map library -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="" defer></script>
   
   <!-- Custom Design System styles -->
   <link rel="stylesheet" href="style.css?v=3.2">
@@ -111,7 +99,738 @@
   <main class="main-content">
     
     <!-- Dynamic templates loaded via fetch() inside app.js -->
-    <section id="home" class="view-section active"></section>
+    <section id="home" class="view-section active">
+<!-- ===== HERO ===== -->
+<div class="premium-hero">
+  <div class="premium-hero-container">
+    <div class="premium-hero-content reveal-left">
+      <span class="hero-badge" style="background-color: var(--primary-light); color: var(--primary); align-self: start; margin-bottom: 1.5rem;">🇧🇯 N°1 DE GESTION DE PATRIMOINE IMMOBILIER AU BÉNIN</span>
+      <h1 class="headline-xl premium-hero-title">
+        Confiez votre patrimoine à <span>une équipe d'experts.</span>
+      </h1>
+      <p class="body-lg premium-hero-desc">
+        BatiBid prend en charge la mise en location, la gestion locative, la rénovation, l'accompagnement juridique et le suivi de vos biens, avec un pilotage en temps réel depuis une seule application.
+      </p>
+      <div class="premium-hero-actions">
+        <a href="#gerer" class="btn btn-primary">Je confie mon bien à BatiBid <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i></a>
+        <a href="#trouver" class="btn btn-secondary">Je cherche un logement sécurisé</a>
+      </div>
+      
+      <!-- Live counter strip -->
+      <div class="hero-counter-strip" style="flex-wrap: wrap;">
+        <div class="hero-counter-item">
+          <span style="font-size: 1.6rem; font-weight: 900; color: var(--primary); display: inline-flex; align-items: center;">
+            <span>+</span><span class="counter-num" data-target="500000000">0</span><span>&nbsp;FCFA</span>
+          </span>
+          <span class="counter-label">loyers gérés</span>
+        </div>
+        <div class="hero-counter-divider"></div>
+        <div class="hero-counter-item">
+          <span style="font-size: 1.6rem; font-weight: 900; color: var(--primary); display: inline-flex; align-items: center;">
+            <span>+</span><span class="counter-num" data-target="500">0</span>
+          </span>
+          <span class="counter-label">locataires gérés</span>
+        </div>
+        <div class="hero-counter-divider"></div>
+        <div class="hero-counter-item">
+          <span style="font-size: 1.6rem; font-weight: 900; color: var(--primary); display: inline-flex; align-items: center;">
+            <span class="counter-num" data-target="100">0</span><span>%</span>
+          </span>
+          <span class="counter-label">bailleurs payés</span>
+        </div>
+        <div class="hero-counter-divider"></div>
+        <div class="hero-counter-item">
+          <span style="font-size: 1.6rem; font-weight: 900; color: var(--primary); display: inline-flex; align-items: center;">
+            <span class="counter-num" data-target="73575000">0</span><span>&nbsp;FCFA</span>
+          </span>
+          <span class="counter-label">loyers préfinancés</span>
+        </div>
+      </div>
+
+      <div class="avatar-group" style="margin-top: 1.5rem;">
+        <div class="avatar-stack">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100" alt="avatar 1">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100" alt="avatar 2">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=100" alt="avatar 3">
+        </div>
+        <div class="avatar-group-text">+10 000 utilisateurs nous font confiance</div>
+      </div>
+    </div>
+    
+    <div class="premium-hero-image-wrapper reveal-right">
+      <div class="premium-hero-image-box">
+        <img src="./hero_building.png" alt="BatiBid Modern Building">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SOLUTIONS ===== -->
+<div class="premium-section alternate">
+  <div class="premium-section-header">
+    <h2 class="headline-lg premium-section-title">Toutes les expertises immobilières. Une seule équipe.</h2>
+    <p class="body-md premium-section-subtitle">Chaque étape de votre parcours immobilier est couverte simplement et en toute sécurité au Bénin.</p>
+  </div>
+  
+  <div class="expertises-interactive-container">
+    <!-- Left Column: Tab Selectors -->
+    <div class="expertises-tabs-menu">
+      <div class="expertise-tab active" data-index="0">
+        <div class="expertise-tab-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+        <div class="expertise-tab-info">
+          <h4>1 - Vos revenus sécurisés</h4>
+          <p>Gestion locative complète</p>
+        </div>
+        <div class="expertise-tab-progress"></div>
+      </div>
+      <div class="expertise-tab" data-index="1">
+        <div class="expertise-tab-icon"><i class="fas fa-user-check"></i></div>
+        <div class="expertise-tab-info">
+          <h4>2 - Les bons occupants</h4>
+          <p>Diffusion &amp; Sélection stricte</p>
+        </div>
+        <div class="expertise-tab-progress"></div>
+      </div>
+      <div class="expertise-tab" data-index="2">
+        <div class="expertise-tab-icon"><i class="fas fa-handshake"></i></div>
+        <div class="expertise-tab-info">
+          <h4>3 - Achetez ou Vendez</h4>
+          <p>Transactions immobilières</p>
+        </div>
+        <div class="expertise-tab-progress"></div>
+      </div>
+      <div class="expertise-tab" data-index="3">
+        <div class="expertise-tab-icon"><i class="fas fa-tools"></i></div>
+        <div class="expertise-tab-info">
+          <h4>4 - Projets à distance</h4>
+          <p>Suivi de BTP &amp; chantiers</p>
+        </div>
+        <div class="expertise-tab-progress"></div>
+      </div>
+      <div class="expertise-tab" data-index="4">
+        <div class="expertise-tab-icon"><i class="fas fa-balance-scale"></i></div>
+        <div class="expertise-tab-info">
+          <h4>5 - Protection juridique</h4>
+          <p>Assistance par nos juristes</p>
+        </div>
+        <div class="expertise-tab-progress"></div>
+      </div>
+    </div>
+
+    <!-- Right Column: Panneau de détails -->
+    <div class="expertise-content-panel">
+      
+      <!-- Pane 0: Revenus sécurisés -->
+      <div class="expertise-pane active" id="ext-pane-0">
+        <div class="expertise-pane-body">
+          <span class="hero-badge" style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 1rem;">GESTION LOCATIVE</span>
+          <h3>Tranquillité d'esprit &amp; Loyers garantis</h3>
+          <p class="body-md">Recevez vos loyers sans gérer les contraintes du quotidien. Nous encaissons vos loyers, suivons les paiements, coordonnons les interventions techniques et assurons la gestion complète de votre bien.</p>
+          <ul class="checklist-items" style="margin: 1.5rem 0;">
+            <li class="checklist-item"><i class="fas fa-check-circle"></i> Encaissement automatique par Mobile Money</li>
+            <li class="checklist-item"><i class="fas fa-check-circle"></i> Rapports financiers et quittances consultables 24h/24</li>
+            <li class="checklist-item"><i class="fas fa-check-circle"></i> Garantie Loyers Impayés incluse</li>
+          </ul>
+          <a href="#gerer" class="btn btn-primary">Confier mon bien à BatiBid <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i></a>
+        </div>
+        <div class="expertise-pane-visual">
+          <div class="visual-card-wrapper">
+            <div class="mini-dashboard-card">
+              <span class="v-label">Total Encaissé (Juin)</span>
+              <h4 class="v-value">720 000 FCFA</h4>
+              <div class="v-status success"><i class="fas fa-check-circle"></i> Payé le 05/06</div>
+              <div class="v-progress-bar-wrap">
+                <div class="v-progress-bar-fill" style="width: 100%;"></div>
+              </div>
+              <div class="v-meta">Taux de recouvrement : 100%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pane 1: Bons occupants -->
+      <div class="expertise-pane" id="ext-pane-1">
+        <div class="expertise-pane-body">
+          <span class="hero-badge" style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 1rem;">SELECTION DE LOCATAIRES</span>
+          <h3>Louer plus vite à des locataires fiables</h3>
+          <p class="body-md">Nous valorisons votre bien, diffusons votre annonce sur nos canaux à forte audience, organisons les visites, trions les dossiers de candidatures avec une vérification stricte et sécurisons la signature du contrat.</p>
+          <ul class="checklist-items" style="margin: 1.5rem 0;">
+            <li class="checklist-item"><i class="fas fa-check-circle"></i> Analyse de solvabilité poussée (revenus = 3x le loyer)</li>
+            <li class="checklist-item"><i class="fas fa-check-circle"></i> Vérification des pièces d'identité et antécédents</li>
+            <li class="checklist-item"><i class="fas fa-check-circle"></i> Visites qualifiées menées par nos conseillers terrain</li>
+          </ul>
+          <a href="#mise-en-location" class="btn btn-primary">Publier mon annonce <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i></a>
+        </div>
+        <div class="expertise-pane-visual">
+          <div class="visual-card-wrapper">
+            <div class="mini-dashboard-card user-verify-card">
+              <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                <div class="user-avatar-placeholder">K</div>
+                <div>
+                  <h4 style="font-size: 0.9rem; font-weight: 700; color: var(--secondary); margin: 0;">Koffi A.</h4>
+                  <span style="font-size: 0.65rem; color: var(--gray-500);">Candidat Locataire</span>
+                </div>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <div class="verify-row"><i class="fas fa-check-circle success"></i> Identité : <strong>Vérifiée</strong></div>
+                <div class="verify-row"><i class="fas fa-check-circle success"></i> Solvabilité : <strong>3.2x Loyer</strong></div>
+                <div class="verify-row"><i class="fas fa-check-circle success"></i> Garant : <strong>Présent</strong></div>
+              </div>
+              <div class="badge-status-lg success" style="margin-top: 1rem; text-align: center; font-size: 0.7rem; font-weight: 700; background-color: var(--success-light); color: var(--success); padding: 0.4rem; border-radius: var(--radius-sm);">Dossier Recommandé à 98%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pane 2: Acheter ou Vendez -->
+      <div class="expertise-pane" id="ext-pane-2">
+        <div class="expertise-pane-body">
+          <span class="hero-badge" style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 1rem;">TRANSACTION IMMOBILIÈRE</span>
+          <h3>Achetez ou vendez en toute confiance</h3>
+          <p class="body-md">Nous vous accompagnons à chaque étape de votre projet immobilier au Bénin. Recherche de biens, estimation réelle du marché, négociation rigoureuse, vérification administrative approfondie (cadastre, ANDF) et accompagnement légal chez le notaire.</p>
+          <ul class="checklist-items" style="margin: 1.5rem 0;">
+            <li class="checklist-item"><i class="fas fa-check-circle"></i> Vérification systématique du titre de propriété</li>
+            <li class="checklist-item"><i class="fas fa-check-circle"></i> Rapports de visite et d'évaluation complets</li>
+            <li class="checklist-item"><i class="fas fa-check-circle"></i> Négociation et compromis sécurisés juridiquement</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Acheter ou Vendre un bien <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i></a>
+        </div>
+        <div class="expertise-pane-visual">
+          <div class="visual-card-wrapper">
+            <div class="mini-dashboard-card">
+              <span class="v-label">Statut d'Acquisition Sécurisée</span>
+              <div class="checklist-box" style="margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.4rem;">
+                <div class="check-item checked"><i class="fas fa-check-square"></i> Validation Cadastrale</div>
+                <div class="check-item checked"><i class="fas fa-check-square"></i> Authentification Titre Foncier</div>
+                <div class="check-item"><i class="far fa-square"></i> Signature Acte Notarié (Planifié)</div>
+              </div>
+              <div style="margin-top: 1rem; font-size: 0.7rem; font-weight: 700; color: var(--primary); text-align: right;"><i class="fas fa-shield-alt"></i> Sécurité 100%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pane 3: Projets à distance -->
+      <div class="expertise-pane" id="ext-pane-3">
+        <div class="expertise-pane-body">
+          <span class="hero-badge" style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 1rem;">SUIVI DE CHANTIER</span>
+          <h3>Vos chantiers avancent, où que vous soyez</h3>
+          <p class="body-md">Construisez ou rénovez au Bénin en toute sérénité, même depuis l'étranger. Nos équipes pilotent vos travaux, sélectionnent les artisans, négocient les devis de matériaux et vous partagent des rapports visuels d'avancement hebdomadaires.</p>
+          <ul class="checklist-items" style="margin: 1.5rem 0;">
+            <li class="checklist-item"><i class="fas fa-check-circle"></i> Sélection stricte d'entreprises du bâtiment certifiées</li>
+            <li class="checklist-item"><i class="fas fa-check-circle"></i> Rapports hebdos en photos et vidéos sur votre espace</li>
+            <li class="checklist-item"><i class="fas fa-check-circle"></i> Facturation transparente et contrôle des coûts rigoureux</li>
+          </ul>
+          <a href="#construire" class="btn btn-primary">Démarrer mon projet <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i></a>
+        </div>
+        <div class="expertise-pane-visual">
+          <div class="visual-card-wrapper">
+            <div class="mini-dashboard-card construction-card" style="background: linear-gradient(135deg, #242424 0%, #171717 100%); color: var(--white);">
+              <span class="v-label" style="color: var(--gray-400);">Progression - Villa Calavi</span>
+              <h4 class="v-value" style="color: var(--white); font-size: 1.25rem;">Gros Œuvre <span style="color: var(--primary);">75%</span></h4>
+              <div class="v-progress-bar-wrap" style="background-color: #333; margin: 0.75rem 0;">
+                <div class="v-progress-bar-fill" style="width: 75%; background-color: var(--primary);"></div>
+              </div>
+              <div style="font-size: 0.65rem; color: var(--gray-400); display: flex; justify-content: space-between;">
+                <span>Projet BTP n°832</span>
+                <span style="color: var(--success);"><i class="fas fa-camera"></i> Photos dispo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pane 4: Protection juridique -->
+      <div class="expertise-pane" id="ext-pane-4">
+        <div class="expertise-pane-body">
+          <span class="hero-badge" style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 1rem;">ASSISTANCE JURIDIQUE</span>
+          <h3>Votre patrimoine est juridiquement protégé</h3>
+          <p class="body-md">Sécurisez chacune de vos décisions immobilières. Nos juristes rédigent des baux blindés conformes à la réglementation du foncier au Bénin, anticipent les risques de non-paiement et interviennent en conciliation amiable ou procédure contentieuse.</p>
+          <ul class="checklist-items" style="margin: 1.5rem 0;">
+            <li class="checklist-item"><i class="fas fa-check-circle"></i> Rédaction de contrats de bail sécurisés &amp; d'actes officiels</li>
+            <li class="checklist-item"><i class="fas fa-check-circle"></i> Gestion complète des procédures de mise en demeure</li>
+            <li class="checklist-item"><i class="fas fa-check-circle"></i> Assistance téléphonique juridique illimitée pour nos bailleurs</li>
+          </ul>
+          <a href="#juridique" class="btn btn-primary">Consulter nos juristes <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i></a>
+        </div>
+        <div class="expertise-pane-visual">
+          <div class="visual-card-wrapper">
+            <div class="mini-dashboard-card">
+              <span class="v-label">Couverture Juridique active</span>
+              <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1rem;">
+                <div style="text-align: center;">
+                  <div style="width: 48px; height: 48px; border-radius: 50%; background-color: var(--success-light); color: var(--success); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin: 0 auto 0.4rem auto;"><i class="fas fa-shield-alt"></i></div>
+                  <span style="font-size: 0.6rem; font-weight: 700; color: var(--gray-600);">GLI Active</span>
+                </div>
+                <div style="text-align: center;">
+                  <div style="width: 48px; height: 48px; border-radius: 50%; background-color: var(--primary-light); color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; margin: 0 auto 0.4rem auto;"><i class="fas fa-gavel"></i></div>
+                  <span style="font-size: 0.6rem; font-weight: 700; color: var(--gray-600);">Bail Conforme</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== TESTIMONIALS (Rich cards with stars & photos) ===== -->
+<div class="premium-section">
+  <div class="premium-section-header">
+    <span class="hero-badge" style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 1rem;">CE QU'ILS DISENT</span>
+    <h2 class="headline-lg">Ils nous font confiance</h2>
+    <p class="body-md">Des propriétaires et locataires satisfaits au quotidien au Bénin.</p>
+  </div>
+  
+  <div class="testimonials-grid stagger-children" id="testimonials-grid">
+    <!-- Rendered by renderTestimonialsGrid() in app.js -->
+  </div>
+</div>
+
+<!-- ===== TRUST & INNOVATION ===== -->
+<div class="premium-section alternate">
+  <div class="split-layout-container">
+    <div class="security-checklist-card reveal">
+      <div style="background-color: var(--primary-light); color: var(--primary); width: 48px; height: 48px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.5rem;">
+        <i class="fas fa-shield-alt"></i>
+      </div>
+      <h3>Votre argent et vos données protégés au niveau bancaire</h3>
+      <p class="body-md mb-4">Chaque centime qui transite par BatiBid est sécurisé. Chaque utilisateur est vérifié. Vous ne prenez aucun risque ni en payant, ni en vous inscrivant.</p>
+      <ul class="checklist-items">
+        <li class="checklist-item"><i class="fas fa-check-circle"></i> Vérification d'identité KYC/AML pour chaque compte</li>
+        <li class="checklist-item"><i class="fas fa-check-circle"></i> Paiements chiffrés certifiés PCI-DSS</li>
+        <li class="checklist-item"><i class="fas fa-check-circle"></i> Contrats numériques à valeur juridique légale au Bénin</li>
+      </ul>
+    </div>
+    
+    <div class="reveal-right">
+      <h2 class="headline-lg" style="margin-bottom: 1.5rem;">La technologie qui élimine les tracas immobiliers</h2>
+      <p class="body-lg" style="margin-bottom: 2.5rem;">
+        MTN MoMo, Moov Flooz, virements bancaires, contrats numériques, tableau de bord en temps réel BatiBid intègre tout ce dont vous avez besoin pour gérer votre patrimoine depuis votre téléphone.
+      </p>
+      <a href="#gerer" class="btn btn-secondary">Voir comment ça fonctionne →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TEAM SECTION (Valorisation humaine) ===== -->
+<div class="premium-section">
+  <div class="premium-section-header">
+    <span class="hero-badge" style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-users"></i> L'HUMAIN DERRIÈRE LA TECHNOLOGIE</span>
+    <h2 class="headline-lg">Une équipe d'experts à votre écoute</h2>
+    <p class="body-md">BatiBid n'est pas qu'une simple application. Choisissez un incident ci-dessous pour voir comment notre équipe collabore en direct pour sécuriser vos intérêts.</p>
+  </div>
+  
+  <!-- Scenario Selector Buttons -->
+  <div class="workflow-simulator-scenarios">
+    <button type="button" class="scenario-btn active" data-scenario="leak">
+      <i class="fas fa-tools"></i> 1. Signalement de Fuite d'eau
+    </button>
+    <button type="button" class="scenario-btn" data-scenario="delay">
+      <i class="fas fa-wallet"></i> 2. Loyer en Retard / Impayé
+    </button>
+    <button type="button" class="scenario-btn" data-scenario="tenant">
+      <i class="fas fa-user-plus"></i> 3. Recherche &amp; Installation Locataire
+    </button>
+  </div>
+
+  <!-- Interactive Workflow Steps -->
+  <div class="interactive-workflow-container">
+    <div class="workflow-line">
+      <div class="workflow-line-progress" id="wf-progress-line"></div>
+    </div>
+    <div class="workflow-steps">
+      
+      <!-- Step 1: Gestionnaire -->
+      <div class="workflow-step active" id="wf-step-gestionnaire" data-step="0">
+        <div class="wf-icon-box"><i class="fas fa-key"></i></div>
+        <h4>Gestionnaire Dédié</h4>
+        <span class="wf-badge">Étape 1</span>
+        <div class="wf-tooltip" id="wf-text-0">
+          <strong>Alerte reçue !</strong> Le gestionnaire prend en charge l'incident sous 10min et alerte le propriétaire sur son dashboard.
+        </div>
+      </div>
+
+      <!-- Step 2: Artisan -->
+      <div class="workflow-step" id="wf-step-artisan" data-step="1">
+        <div class="wf-icon-box"><i class="fas fa-tools"></i></div>
+        <h4>Artisan Partenaire</h4>
+        <span class="wf-badge">Étape 2</span>
+        <div class="wf-tooltip" id="wf-text-1">
+          Un artisan plombier partenaire qualifié intervient sous 24h à 48h avec devis validé.
+        </div>
+      </div>
+
+      <!-- Step 3: Juriste -->
+      <div class="workflow-step" id="wf-step-juriste" data-step="2">
+        <div class="wf-icon-box"><i class="fas fa-balance-scale"></i></div>
+        <h4>Juriste Spécialisé</h4>
+        <span class="wf-badge">Étape 3</span>
+        <div class="wf-tooltip" id="wf-text-2">
+          Validation de l'imputation de charge de réparation entre bailleur et locataire selon le Code du foncier béninois.
+        </div>
+      </div>
+
+      <!-- Step 4: Conseiller -->
+      <div class="workflow-step" id="wf-step-conseiller" data-step="3">
+        <div class="wf-icon-box"><i class="fas fa-map-marked-alt"></i></div>
+        <h4>Conseiller Terrain</h4>
+        <span class="wf-badge">Étape 4</span>
+        <div class="wf-tooltip" id="wf-text-3">
+          Le conseiller se rend sur place pour valider la conformité des travaux et clore le ticket d'incident.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== MOBILE APP SHOWCASE ===== -->
+<div class="premium-section alternate">
+  <div class="split-layout-container" style="align-items: center;">
+    <div class="reveal-left">
+      <span class="hero-badge" style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-mobile-alt"></i> L'APPLICATION MOBILE</span>
+      <h2 class="headline-lg" style="margin-bottom: 1.5rem;">Votre gestion immobilière, directement dans votre poche</h2>
+      <p class="body-lg" style="margin-bottom: 2rem; color: var(--gray-600);">
+        Bailleur ou locataire, accédez à votre espace sécurisé 24h/24 et 7j/7. Suivez vos loyers, gérez les réparations, et pilotez vos projets immobiliers en toute liberté.
+      </p>
+      <ul class="checklist-items" style="margin-bottom: 2.5rem;">
+        <li class="checklist-item"><i class="fas fa-check-circle" style="color: var(--primary);"></i> Paiement mobile intégré (MTN MoMo, Moov Flooz, Celtiis Cash)</li>
+        <li class="checklist-item"><i class="fas fa-check-circle" style="color: var(--primary);"></i> Téléchargement des quittances de loyer officielles en 1 clic</li>
+        <li class="checklist-item"><i class="fas fa-check-circle" style="color: var(--primary);"></i> Signature en ligne des contrats de bail conformes</li>
+        <li class="checklist-item"><i class="fas fa-check-circle" style="color: var(--primary);"></i> Signalement et suivi en temps réel des demandes de travaux</li>
+      </ul>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="#auth" class="btn btn-primary"><i class="fab fa-google-play" style="margin-right: 0.5rem;"></i> Play Store</a>
+        <a href="#auth" class="btn btn-secondary"><i class="fab fa-apple" style="margin-right: 0.5rem;"></i> App Store</a>
+      </div>
+    </div>
+    
+    <div class="reveal-right" style="display: flex; justify-content: center; position: relative;">
+      <!-- Elegant App Phone Mockup -->
+      <div class="phone-mockup-wrapper">
+        <div class="phone-mockup-screen">
+          <div class="phone-mockup-header-bar"></div>
+          <div class="phone-mockup-content">
+            <div class="app-screenshot-header">
+              <img src="./BatiBid logo app.svg" alt="BatiBid Logo" style="height: 20px;">
+              <span class="app-user-badge"><i class="fas fa-circle" style="color: #4CAF50; font-size: 0.5rem; margin-right: 0.25rem;"></i> Espace Client</span>
+            </div>
+            <div class="app-screenshot-body">
+              <div class="app-card-balance">
+                <span class="app-balance-label">Total encaissé ce mois</span>
+                <span class="app-balance-value">350 000 FCFA</span>
+                <span class="app-balance-meta">Taux de recouvrement : 99,8%</span>
+              </div>
+              <div class="app-quick-stats">
+                <div class="app-stat-box">
+                  <span class="app-stat-num">3</span>
+                  <span class="app-stat-lbl">Biens gérés</span>
+                </div>
+                <div class="app-stat-box">
+                  <span class="app-stat-num" style="color: var(--primary);">0</span>
+                  <span class="app-stat-lbl">Impayés</span>
+                </div>
+              </div>
+              <div class="app-recent-tx">
+                <h5 style="font-size: 0.75rem; margin-bottom: 0.5rem; font-weight: 700; text-align: left;">Transactions récentes</h5>
+                <div class="app-tx-row">
+                  <div>
+                    <span class="app-tx-title">Studio Cadjehoun</span>
+                    <span class="app-tx-date">Reçu le 05/07/2026</span>
+                  </div>
+                  <span class="app-tx-amount success">+150k</span>
+                </div>
+                <div class="app-tx-row">
+                  <div>
+                    <span class="app-tx-title">Appartement Haie Vive</span>
+                    <span class="app-tx-date">Reçu le 05/07/2026</span>
+                  </div>
+                  <span class="app-tx-amount success">+200k</span>
+                </div>
+              </div>
+              <div class="app-payment-badge">
+                <span>Paiements sécurisés via</span>
+                <div style="display: flex; gap: 0.5rem; align-items: center; margin-top: 0.25rem;">
+                  <span style="background: #fc0; color: #000; font-size: 0.5rem; font-weight: 800; padding: 2px 4px; border-radius: 3px;">MTN MoMo</span>
+                  <span style="background: #0088cc; color: #fff; font-size: 0.5rem; font-weight: 800; padding: 2px 4px; border-radius: 3px;">Moov Flooz</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ===== OFFRES ET FORMULES ===== -->
+<div class="premium-section">
+  <div class="premium-section-header">
+    <span class="hero-badge" style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 1rem; align-items: center; gap: 0.4rem; display: inline-flex;"><i class="fas fa-tags"></i> NOS SOLUTIONS ET TARIFS</span>
+    <h2 class="headline-lg">Des formules claires pour chaque besoin</h2>
+    <p class="body-md">Découvrez nos solutions sur-mesure pour sécuriser, valoriser et gérer vos biens immobiliers au Bénin.</p>
+  </div>
+
+  <!-- Tabs Navigation -->
+  <div class="pricing-tabs-nav" style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; padding: 0 var(--gutter);">
+    <button type="button" class="pricing-tab-btn active" id="tab-btn-management" onclick="switchPricingTab('management')">
+      <i class="fas fa-key"></i> Gestion Locative
+    </button>
+    <button type="button" class="pricing-tab-btn" id="tab-btn-construction" onclick="switchPricingTab('construction')">
+      <i class="fas fa-building"></i> Valorisation du Patrimoine
+    </button>
+    <button type="button" class="pricing-tab-btn" id="tab-btn-legal" onclick="switchPricingTab('legal')">
+      <i class="fas fa-balance-scale"></i> Services Juridiques
+    </button>
+  </div>
+
+  <!-- Tabs Content Containers -->
+  <div class="pricing-tabs-content" style="max-width: var(--container-max); margin: 0 auto; padding: 0 var(--gutter);">
+    
+    <!-- Tab 1: Gestion Locative -->
+    <div class="pricing-tab-pane active" id="pane-management">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+        
+        <!-- Card A: Offre Découverte -->
+        <div class="pricing-card">
+          <div class="pricing-card-header">
+            <span class="pricing-card-badge">Mise en relation</span>
+            <h3>Offre Découverte</h3>
+            <div class="pricing-price">1 mois<span> de loyer (unique)</span></div>
+            <p>Idéal pour trouver rapidement un locataire fiable, sans gestion mensuelle.</p>
+          </div>
+          <div class="pricing-card-body">
+            <ul class="pricing-features">
+              <li><i class="fas fa-check-circle"></i> Diffusion de l'annonce sur nos canaux</li>
+              <li><i class="fas fa-check-circle"></i> Sélection et visites des locataires</li>
+              <li><i class="fas fa-check-circle"></i> Vérification rigoureuse d'identité &amp; revenus</li>
+              <li><i class="fas fa-check-circle"></i> Rédaction du bail officiel conforme</li>
+            </ul>
+          </div>
+          <div class="pricing-card-footer">
+            <a href="#mise-en-location" class="btn btn-secondary" style="width: 100%;">Trouver un locataire</a>
+          </div>
+        </div>
+
+        <!-- Card B: Gestion Mensuelle (Standard / Premium) -->
+        <div class="pricing-card highlighted">
+          <div class="pricing-card-header">
+            <span class="pricing-card-badge highlighted">Gestion Locative Complète</span>
+            <h3>Gestion Mensuelle</h3>
+            
+            <!-- Toggle sub-formula standard vs premium -->
+            <div class="management-toggle-container" style="display: flex; background: #e2e2e2; padding: 4px; border-radius: var(--radius-full); width: fit-content; margin: 1rem auto;">
+              <button type="button" class="management-toggle-btn active" id="m-toggle-standard" onclick="toggleManagementPrice('standard')" style="border: none; background: none; padding: 0.5rem 1.25rem; font-size: 0.85rem; font-weight: 700; border-radius: var(--radius-full); cursor: pointer; transition: all var(--transition-fast);">Standard</button>
+              <button type="button" class="management-toggle-btn" id="m-toggle-premium" onclick="toggleManagementPrice('premium')" style="border: none; background: none; padding: 0.5rem 1.25rem; font-size: 0.85rem; font-weight: 700; border-radius: var(--radius-full); cursor: pointer; transition: all var(--transition-fast);">Premium</button>
+            </div>
+            
+            <!-- Dynamic price display -->
+            <div class="pricing-price" id="m-price-display">8%<span> du loyer / mois</span></div>
+            <p id="m-desc-display">Sécurisation courante de vos loyers et gestion technique de base.</p>
+          </div>
+          <div class="pricing-card-body">
+            <ul class="pricing-features" id="m-features-list">
+              <li><i class="fas fa-check-circle"></i> Collecte automatique des loyers par Mobile Money</li>
+              <li><i class="fas fa-check-circle"></i> Suivi des paiements en temps réel</li>
+              <li><i class="fas fa-check-circle"></i> Accès complet aux rapports financiers</li>
+              <li><i class="fas fa-check-circle"></i> Support client standard</li>
+              <li><i class="fas fa-check-circle"></i> Notifications par e-mail</li>
+            </ul>
+          </div>
+          <div class="pricing-card-footer">
+            <a href="#gerer" class="btn btn-primary" style="width: 100%;">Confier mon bien en gestion</a>
+          </div>
+        </div>
+
+        <!-- Card C: Annonces & Visibilité -->
+        <div class="pricing-card">
+          <div class="pricing-card-header">
+            <span class="pricing-card-badge">Autogestion</span>
+            <h3>Annonces &amp; Visibilité</h3>
+            <div class="pricing-price">6 000 XOF<span> / annonce (Standard)</span></div>
+            <p>Idéal pour publier vos biens vous-même et obtenir un maximum de visibilité.</p>
+          </div>
+          <div class="pricing-card-body">
+            <ul class="pricing-features">
+              <li><i class="fas fa-check-circle"></i> Publication prioritaire sur BatiBid</li>
+              <li><i class="fas fa-check-circle"></i> Partage sur nos canaux de communication</li>
+              <li><i class="fas fa-check-circle"></i> Accès direct aux demandes de recherche</li>
+              <li><i class="fas fa-check-circle"></i> Option Premium boostée (10 000 XOF) disponible</li>
+            </ul>
+          </div>
+          <div class="pricing-card-footer">
+            <a href="#mise-en-location" class="btn btn-secondary" style="width: 100%;">Publier une annonce</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Tab 2: Valorisation du Patrimoine -->
+    <div class="pricing-tab-pane" id="pane-construction" style="display: none;">
+      <div class="pricing-banner-card" style="background: linear-gradient(135deg, #1A1A1A 0%, #2D2D2D 100%); color: var(--white); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-dark); display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; border: 1px solid var(--gray-300);">
+        <div style="padding: 4rem;">
+          <span class="pricing-card-badge" style="background-color: rgba(255,255,255,0.15); color: var(--white); border: 1px solid rgba(255,255,255,0.25); margin-bottom: 1.5rem; display: inline-block;">Construction &amp; Rénovation</span>
+          <h3 class="headline-lg" style="color: var(--white); margin-bottom: 1rem;">Votre projet chiffré et suivi à distance</h3>
+          <p class="body-lg" style="color: var(--gray-400); margin-bottom: 2.5rem; max-width: 540px;">
+            Diaspora ou propriétaire occupé, BatiBid est votre tiers de confiance. Devis sous 24h, artisans vérifiés, et comptes-rendus hebdomadaires sur votre espace client.
+          </p>
+          <ul class="pricing-features" style="margin-bottom: 3rem; color: var(--white);">
+            <li><i class="fas fa-check-circle" style="color: var(--primary);"></i> Rapports réguliers avec photos &amp; vidéos</li>
+            <li><i class="fas fa-check-circle" style="color: var(--primary);"></i> Sélection stricte d'artisans certifiés</li>
+            <li><i class="fas fa-check-circle" style="color: var(--primary);"></i> Devis gratuit et détaillé sous 24h</li>
+          </ul>
+          <a href="#construire" class="btn btn-primary">Estimer mon projet / Demander un devis</a>
+        </div>
+        <div style="height: 100%; min-height: 350px; background-image: url('./plan.webp'); background-size: cover; background-position: center; border-left: 1px solid rgba(255,255,255,0.08);">
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 3: Services Juridiques -->
+    <div class="pricing-tab-pane" id="pane-legal" style="display: none;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
+        
+        <!-- Service Juridique 1 -->
+        <div class="pricing-card">
+          <div class="pricing-card-header" style="border-bottom: 1px solid var(--gray-200); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+            <div style="background-color: var(--primary-light); color: var(--primary); width: 44px; height: 44px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1rem;"><i class="fas fa-gavel"></i></div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.25rem;">Procédure d'Expulsion &amp; Recouvrement</h4>
+            <div class="pricing-price" style="font-size: 1.15rem; margin: 0.5rem 0;">100k - 300k XOF <span>/ forfait de base</span></div>
+            <span class="coverage-tag tag-included"><i class="fas fa-check-double"></i> 100% Inclus en Gestion (8% &amp; 10%)</span>
+          </div>
+          <div class="pricing-card-body" style="padding: 0; min-height: auto;">
+            <p class="body-sm" style="color: var(--gray-600); margin: 0;">Prise en charge complète des procédures de recouvrement forcé et d'expulsion de locataires indélicats.</p>
+          </div>
+        </div>
+
+        <!-- Service Juridique 2 -->
+        <div class="pricing-card">
+          <div class="pricing-card-header" style="border-bottom: 1px solid var(--gray-200); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+            <div style="background-color: var(--primary-light); color: var(--primary); width: 44px; height: 44px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1rem;"><i class="fas fa-shield-alt"></i></div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.25rem;">Plan d'Action / Stratégie Contentieuse</h4>
+            <div class="pricing-price" style="font-size: 1.15rem; margin: 0.5rem 0;">50k - 100k XOF <span>/ analyse initiale</span></div>
+            <span class="coverage-tag tag-included"><i class="fas fa-check-double"></i> 100% Inclus en Gestion (8% &amp; 10%)</span>
+          </div>
+          <div class="pricing-card-body" style="padding: 0; min-height: auto;">
+            <p class="body-sm" style="color: var(--gray-600); margin: 0;">Analyse initiale et élaboration d'une stratégie juridique personnalisée pour résoudre vos litiges immobiliers complexes.</p>
+          </div>
+        </div>
+
+        <!-- Service Juridique 3 -->
+        <div class="pricing-card">
+          <div class="pricing-card-header" style="border-bottom: 1px solid var(--gray-200); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+            <div style="background-color: var(--primary-light); color: var(--primary); width: 44px; height: 44px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1rem;"><i class="fas fa-file-invoice-dollar"></i></div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.25rem;">Optimisation Fiscale Immobilière</h4>
+            <div class="pricing-price" style="font-size: 1.15rem; margin: 0.5rem 0;">75k - 200k XOF <span>/ forfait fiscal</span></div>
+            <span class="coverage-tag tag-premium"><i class="fas fa-star"></i> Inclus formule Premium (10%)</span>
+          </div>
+          <div class="pricing-card-body" style="padding: 0; min-height: auto;">
+            <p class="body-sm" style="color: var(--gray-600); margin: 0;">Suivi fiscal, déclarations et optimisation légale de vos impôts fonciers pour préserver votre rentabilité.</p>
+          </div>
+        </div>
+
+        <!-- Service Juridique 4 -->
+        <div class="pricing-card">
+          <div class="pricing-card-header" style="border-bottom: 1px solid var(--gray-200); padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+            <div style="background-color: var(--primary-light); color: var(--primary); width: 44px; height: 44px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 1rem;"><i class="fas fa-handshake"></i></div>
+            <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.25rem;">Transaction Immobilière Sécurisée</h4>
+            <div class="pricing-price" style="font-size: 1.15rem; margin: 0.5rem 0;">80k - 150k XOF <span>/ conseil initial</span></div>
+            <span class="coverage-tag tag-none"><i class="fas fa-ban"></i> Service à la carte (Non couvert)</span>
+          </div>
+          <div class="pricing-card-body" style="padding: 0; min-height: auto;">
+            <p class="body-sm" style="color: var(--gray-600); margin: 0;">Accompagnement, vérification cadastrale et sécurisation juridique complète lors de l'acquisition ou vente de vos terrains et bâtisses.</p>
+          </div>
+        </div>
+
+      </div>
+      
+      <div style="text-align: center;">
+        <a href="#juridique" class="btn btn-secondary" style="display: inline-flex; align-items: center; gap: 0.5rem; white-space: normal; text-align: center;"><i class="fas fa-balance-scale"></i> Consulter la grille complète des 10 services</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== FAQ SECTION ===== -->
+<div class="premium-section alternate">
+  <div class="premium-section-header">
+    <span class="hero-badge" style="background-color: var(--primary-light); color: var(--primary); margin-bottom: 1rem;">FAQ</span>
+    <h2 class="headline-lg">Vos questions, nos réponses claires</h2>
+    <p class="body-md">Pas de jargon, pas de surprise. Tout ce que vous méritez de savoir avant de nous confier votre bien.</p>
+  </div>
+
+  <div class="accordion-wrapper accordion-grid reveal" style="margin: 0 auto; padding: 0 var(--gutter);">
+    <div class="accordion-item" onclick="this.classList.toggle('active')">
+      <div class="accordion-header">
+        <span>BatiBid prend-il une commission sur les loyers ?</span>
+        <i class="fas fa-chevron-down accordion-icon"></i>
+      </div>
+      <div class="accordion-content">
+        Pour la <strong>Gestion Locative</strong>, BatiBid perçoit entre 8% et 10% du loyer mensuel selon la formule choisie (Standard ou Premium) en échange d'une prise en charge complète : collecte, maintenance, rapports. Pour les <strong>annonces simples</strong> (Faire Louer), il s'agit d'un forfait unique de 6 000 ou 10 000 XOF selon la formule. Aucun frais caché.
+      </div>
+    </div>
+    <div class="accordion-item" onclick="this.classList.toggle('active')">
+      <div class="accordion-header">
+        <span>Comment fonctionne la vérification des locataires ?</span>
+        <i class="fas fa-chevron-down accordion-icon"></i>
+      </div>
+      <div class="accordion-content">
+        Chaque candidat doit soumettre une pièce d'identité, un justificatif de revenus et des références. Notre équipe valide chaque dossier manuellement avant de le transmettre au propriétaire. Seuls les profils qualifiés accèdent aux biens gérés par BatiBid.
+      </div>
+    </div>
+    <div class="accordion-item" onclick="this.classList.toggle('active')">
+      <div class="accordion-header">
+        <span>Quels sont les modes de paiement acceptés ?</span>
+        <i class="fas fa-chevron-down accordion-icon"></i>
+      </div>
+      <div class="accordion-content">
+        Nous acceptons MTN Mobile Money, Moov Flooz, Celtiis Cash et les virements bancaires. Les paiements sont sécurisés par des passerelles certifiées. Le propriétaire reçoit ses fonds sur son compte bancaire à date fixe chaque mois.
+      </div>
+    </div>
+    <div class="accordion-item" onclick="this.classList.toggle('active')">
+      <div class="accordion-header">
+        <span>Puis-je résilier mon contrat avec BatiBid facilement ?</span>
+        <i class="fas fa-chevron-down accordion-icon"></i>
+      </div>
+      <div class="accordion-content">
+        Oui. Les mandats de gestion sont flexibles et résiliables avec un simple préavis de 30 jours, par écrit. Aucune pénalité n'est appliquée. Votre historique et vos documents restent accessibles même après résiliation.
+      </div>
+    </div>
+    <div class="accordion-item" onclick="this.classList.toggle('active')">
+      <div class="accordion-header">
+        <span>Comment puis-je contacter BatiBid rapidement ?</span>
+        <i class="fas fa-chevron-down accordion-icon"></i>
+      </div>
+      <div class="accordion-content">
+        Via notre formulaire de contact, par email à <strong>contact@batibid.com</strong>, par téléphone au <strong>+229 21 30 40 50</strong>, ou directement sur WhatsApp. Notre équipe répond sous 24h en semaine et sous 48h le week-end.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LOCATAIRE CTA BANNER ===== -->
+<div class="premium-section alternate locataire-cta-section">
+  <div class="locataire-cta-banner reveal">
+    <div class="locataire-cta-banner-text">
+      <span class="hero-badge" style="background-color: rgba(217, 94, 43, 0.15); color: var(--primary); margin-bottom: 1rem; display: inline-block;">DÉJÀ LOCATAIRE ?</span>
+      <h2 class="headline-md">Payez votre loyer en 30 secondes depuis votre téléphone</h2>
+      <p class="body-md">Votre propriétaire gère son bien via BatiBid ? Connectez-vous pour payer par MTN MoMo ou Moov Flooz, télécharger vos quittances officielles et signaler un problème sans attendre.</p>
+    </div>
+    <div class="locataire-cta-banner-action">
+      <a href="#auth" class="btn btn-primary" onclick="focusLogin()">
+        <i class="fas fa-wallet"></i> Accéder à mon espace locataire <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+    </section>
     <section id="gerer" class="view-section"></section>
     <section id="mise-en-location" class="view-section"></section>
     <section id="trouver" class="view-section"></section>

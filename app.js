@@ -37,20 +37,52 @@ let state = {
 // ==========================================
 // CLIENT ROUTER & DYNAMIC PRELOADER
 // ==========================================
-async function loadAllPages() {
-  const pages = ['home', 'gerer', 'mise-en-location', 'trouver', 'construire', 'juridique', 'partenariats', 'blog', 'contact', 'auth', 'dashboard', 'detail', 'pay', 'invoices', 'invoice-detail-view'];
-  try {
-    await Promise.all(pages.map(async page => {
-      // Use dynamic timestamp to prevent browser caching of HTML templates
-      const res = await fetch(`pages/${page}.html?v=${Date.now()}`);
-      if (!res.ok) throw new Error(`Impossible de charger la page: ${page}`);
-      const html = await res.text();
-      const el = document.getElementById(page);
-      if (el) el.innerHTML = html;
-    }));
-  } catch (error) {
-    console.error("Erreur de préchargement des pages:", error);
+// In-memory cache for page load promises to avoid duplicate fetches
+const _pageLoadPromises = new Map();
+
+async function ensurePageLoaded(pageName) {
+  if (!pageName) return;
+  const el = document.getElementById(pageName);
+  if (!el) return;
+  // If already loaded (e.g. #home inlined in index.html or already fetched)
+  if (el.children.length > 0 || el.innerHTML.trim().length > 0) return;
+
+  if (_pageLoadPromises.has(pageName)) {
+    return _pageLoadPromises.get(pageName);
   }
+
+  const p = (async () => {
+    try {
+      const res = await fetch(`pages/${pageName}.html`);
+      if (!res.ok) throw new Error(`Impossible de charger la page: ${pageName}`);
+      const html = await res.text();
+      el.innerHTML = html;
+    } catch (err) {
+      console.error(`Erreur chargement page ${pageName}:`, err);
+    } finally {
+      _pageLoadPromises.delete(pageName);
+    }
+  })();
+
+  _pageLoadPromises.set(pageName, p);
+  return p;
+}
+
+function preloadRemainingPages() {
+  const pages = ['gerer', 'mise-en-location', 'trouver', 'construire', 'juridique', 'partenariats', 'blog', 'contact', 'auth', 'dashboard', 'detail', 'pay', 'invoices', 'invoice-detail-view'];
+  const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 250));
+  let idx = 0;
+
+  function next() {
+    if (idx >= pages.length) return;
+    const page = pages[idx++];
+    ensurePageLoaded(page).then(() => {
+      idle(next);
+    });
+  }
+
+  // Start lazy background preload after 400ms idle
+  setTimeout(() => idle(next), 400);
 }
 
 function initRouter() {
@@ -58,7 +90,7 @@ function initRouter() {
   handleRoute();
 }
 
-function handleRoute() {
+async function handleRoute() {
   const hash = window.location.hash || "#home";
   
   // Parse query parameters from hash (e.g. #detail?id=3)
@@ -81,6 +113,10 @@ function handleRoute() {
   }
 
   state.activeView = viewId;
+
+  // Ensure target page template is loaded into DOM before showing
+  const targetPage = viewId.replace("#", "");
+  await ensurePageLoaded(targetPage);
   
   // Update UI sections visibility
   document.querySelectorAll(".view-section").forEach(sec => {
@@ -2445,8 +2481,8 @@ function initHeaderSearch() {
   });
 }
 
-// Initialize on execution after pages are loaded
-document.addEventListener("DOMContentLoaded", async () => {
+// Initialize on execution (instant boot with inlined home & lazy preload)
+document.addEventListener("DOMContentLoaded", () => {
   const storedUser = localStorage.getItem("currentUser");
   if (storedUser) {
     try {
@@ -2455,29 +2491,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       console.error("Erreur de parsing du currentUser stocké", e);
     }
   }
-  await loadAllPages();
   initRouter();
   updateHeaderAuth();
   initHeaderSearch();
+  preloadRemainingPages();
 });
-
-// Unregister all active Service Workers to avoid cache-poisoning/stale content bugs
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.getRegistrations().then((registrations) => {
-    for (let registration of registrations) {
-      registration.unregister().then(() => {
-        console.log("Service Worker BatiBid désenregistré avec succès !");
-      });
-    }
-  });
-}
-
-// Clear all browser caches for BatiBid
-if ("caches" in window) {
-  caches.keys().then((keys) => {
-    return Promise.all(keys.map((key) => {
-      console.log("Nettoyage du cache du navigateur :", key);
-      return caches.delete(key);
-    }));
-  });
-}
